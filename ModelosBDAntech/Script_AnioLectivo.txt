@@ -1,0 +1,15 @@
+SET IDENTITY_INSERT [dbo].[TIPO_USUARIO] OFF;  
+SET IDENTITY_INSERT [dbo].[ANO_LECTIVO] ON; 
+GO  
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (1, '2013');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (2, '2014');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (3, '2015');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (4, '2016');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (5, '2017');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (6, '2018');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (7, '2019');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (8, '2020');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (9, '2021');
+insert into [ANO_LECTIVO] (ID_ANO, ANO_DESCRIP) values (10, '2022');
+
+select * from [ANO_LECTIVO]

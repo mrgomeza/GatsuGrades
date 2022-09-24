@@ -1,0 +1,7 @@
+SET IDENTITY_INSERT [dbo].[TIPO_USUARIO] ON;  
+GO  
+insert into TIPO_USUARIO (ID_TIPOU, TU_DESCRIP) values (1, 'Estudiante');
+insert into TIPO_USUARIO (ID_TIPOU, TU_DESCRIP) values (2, 'Profesor');
+insert into TIPO_USUARIO (ID_TIPOU, TU_DESCRIP) values (3, 'Representante');
+
+select * from tipo_usuario
