@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bfa98d4aef564177bdd1dea0d0aa0c84" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="GatsuGradesModel.ANO_LECTIVO" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.ASISTENCIA" Width="1.5" PointX="9.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.ESTUDIANTE" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.HORARIO" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.MATERIA" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.NOTA" Width="1.5" PointX="7.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.PROFESOR" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.REPRESENTANTE" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesModel.TIPO_USUARIO" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="GatsuGradesModel.FK_NOTA_ANO_ESCOL_ANO_LECT" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_ASISTENC_EST_ASIS_ESTUDIAN" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_ASISTENC_HOR_ASIS_HORARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_ESTUDIAN_REP_EST_REPRESEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_ESTUDIAN_US_EST_TIPO_USU" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_NOTA_NOTA_ESTU_ESTUDIAN" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_HORARIO_MAT_HOR_MATERIA" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_MATERIA_PROF_MATE_PROFESOR" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_NOTA_MATERIA_N_MATERIA" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_PROFESOR_US_PROF_TIPO_USU" ManuallyRouted="false" />
+        <AssociationConnector Association="GatsuGradesModel.FK_REPRESEN_US_REP_TIPO_USU" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
