@@ -1,0 +1,67 @@
+﻿@model GatsuGradesV6.Models.Representante
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Representante</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RepUsu" class="control-label"></label>
+                <input asp-for="RepUsu" class="form-control" />
+                <span asp-validation-for="RepUsu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTipou" class="control-label"></label>
+                <select asp-for="IdTipou" class ="form-control" asp-items="ViewBag.IdTipou"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepNombre" class="control-label"></label>
+                <input asp-for="RepNombre" class="form-control" />
+                <span asp-validation-for="RepNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepApellido" class="control-label"></label>
+                <input asp-for="RepApellido" class="form-control" />
+                <span asp-validation-for="RepApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepCedula" class="control-label"></label>
+                <input asp-for="RepCedula" class="form-control" />
+                <span asp-validation-for="RepCedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepDireccion" class="control-label"></label>
+                <input asp-for="RepDireccion" class="form-control" />
+                <span asp-validation-for="RepDireccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepTelefono" class="control-label"></label>
+                <input asp-for="RepTelefono" class="form-control" />
+                <span asp-validation-for="RepTelefono" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RepPassword" class="control-label"></label>
+                <input asp-for="RepPassword" class="form-control" />
+                <span asp-validation-for="RepPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,104 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = GatsuGradesV6
+build_property.RootNamespace = GatsuGradesV6
+build_property.ProjectDir = C:\Users\Laptop\Documents\6to_Semestre\DesarrolloSI\GatsuGrades-Todas las versiones\GatsuGradesV6\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Laptop\Documents\6to_Semestre\DesarrolloSI\GatsuGrades-Todas las versiones\GatsuGradesV6
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Profesor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Profesor/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Profesor/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Profesor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Profesor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZmVzb3JcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Rep/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Rep/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Rep/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Rep/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Rep/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/TipoUsu/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1VzdVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/TipoUsu/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1VzdVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/TipoUsu/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1VzdVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/TipoUsu/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1VzdVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/TipoUsu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlwb1VzdVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Laptop/Documents/6to_Semestre/DesarrolloSI/GatsuGrades-Todas las versiones/GatsuGradesV6/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-s1nc9x60sk

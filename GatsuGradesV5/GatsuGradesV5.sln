@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatsuGradesV5", "GatsuGradesV5.csproj", "{02094EDA-1AF2-44AF-8CCA-379A95B8C854}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02094EDA-1AF2-44AF-8CCA-379A95B8C854}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02094EDA-1AF2-44AF-8CCA-379A95B8C854}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02094EDA-1AF2-44AF-8CCA-379A95B8C854}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02094EDA-1AF2-44AF-8CCA-379A95B8C854}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEC125F0-1539-45F7-A770-D0EDC0D01D1C}
+	EndGlobalSection
+EndGlobal

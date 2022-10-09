@@ -1,0 +1,77 @@
+﻿@model IEnumerable<GatsuGradesV6.Models.Profesor>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfUsu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfCedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfDireccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfTelf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProfPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipouNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfUsu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfCedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfDireccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfTelf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProfPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipouNavigation.IdTipou)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdProfesor">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdProfesor">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdProfesor">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

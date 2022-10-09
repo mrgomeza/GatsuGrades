@@ -1,0 +1,67 @@
+﻿@model GatsuGradesV6.Models.Profesor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Profesor</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ProfUsu" class="control-label"></label>
+                <input asp-for="ProfUsu" class="form-control" />
+                <span asp-validation-for="ProfUsu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTipou" class="control-label"></label>
+                <select asp-for="IdTipou" class ="form-control" asp-items="ViewBag.IdTipou"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfNombre" class="control-label"></label>
+                <input asp-for="ProfNombre" class="form-control" />
+                <span asp-validation-for="ProfNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfApellido" class="control-label"></label>
+                <input asp-for="ProfApellido" class="form-control" />
+                <span asp-validation-for="ProfApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfCedula" class="control-label"></label>
+                <input asp-for="ProfCedula" class="form-control" />
+                <span asp-validation-for="ProfCedula" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfDireccion" class="control-label"></label>
+                <input asp-for="ProfDireccion" class="form-control" />
+                <span asp-validation-for="ProfDireccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfTelf" class="control-label"></label>
+                <input asp-for="ProfTelf" class="form-control" />
+                <span asp-validation-for="ProfTelf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProfPassword" class="control-label"></label>
+                <input asp-for="ProfPassword" class="form-control" />
+                <span asp-validation-for="ProfPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
