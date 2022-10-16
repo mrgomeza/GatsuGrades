@@ -1,0 +1,139 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<meta name="language" content="es" />
+<meta http-equiv="Content-Type" content="text/html" charset="Iso-8859-15" />
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/www/estilos/esthor.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title> Horario Gatsu Grades</title>
+
+</head>
+
+<body>
+    <h1 class="titulo_h">Horarios Gatsu Grades</h1>
+    
+    <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
+        
+        <div class="col-xs-3">
+            <label class="">Materia:</label>
+            @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+            <button type="submit" name="button" class="btn btn-primary">Consultar</button>
+        </div>
+        <br />
+        <div class="col-xs-3 panel panel-primary">
+            <h4>@ViewData["ProfNombre"]</h4>
+            <h4>@ViewData["Mat"]</h4>
+            <h4>@ViewData["Grado"]</h4>
+        </div>
+
+    </form>
+    
+    <table class="cal">
+
+        <thead>
+
+            <tr>
+                <th></th>
+                <th>Lunes</th>
+                <th>Martes</th>
+                <th>Miércoles</th>
+                <th>Jueeves</th>
+                <th>Viernes</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="horas">7:40 a 8:20 </td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula </span> </td>
+                <td class="bloque"><span> Gimnasio</span> </td>
+
+            </tr>
+
+            <tr>
+                <td class="horas">8:20 a 9:00 </td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula musica</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula</span></td>
+            </tr>
+            <tr>
+                <td class="horas">9:00 a 9:40 </td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span>Aula</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Aula </span></td>
+
+            </tr>
+            <tr>
+                <td class="horas">9:40 a 10:10 </td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+
+            <tr>
+                <td class="horas">10:10 a 10:50 </td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula música</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Info2</span></td>
+                <td class="bloque"><span> Aula </span></td>
+            </tr>
+
+            <tr>
+                <td class="horas">10:50 a 11:30 </td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula música</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Info2</span></td>
+                <td class="bloque"><span> Aula </span></td>
+            </tr>
+            <tr>
+                <td class="horas">11:30 a 11:50 </td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+                <td class="rec">RECREO<span> Patio</span></td>
+            </tr>
+            <tr>
+                <td class="horas">11:50 a 12:30 </td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula música</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Info2</span></td>
+                <td class="bloque"><span> Aula </span></td>
+            </tr>
+            <tr>
+                <td class="horas">12:30 a 13:10 </td>
+                <td class="bloque"><span> Aula </span></td>
+                <td class="bloque"><span> Aula música</span></td>
+                <td class="bloque"><span> Aula</span></td>
+                <td class="bloque"><span> Info2</span></td>
+                <td class="bloque"><span> Aula </span></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+</html>

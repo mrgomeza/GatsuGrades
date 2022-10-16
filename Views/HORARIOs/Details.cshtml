@@ -1,0 +1,42 @@
+﻿@model Prueba.HORARIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HORARIO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HOR_DIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOR_DIA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HOR_HORA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOR_HORA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATERIA.MAT_COD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.MAT_COD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_HORARIO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

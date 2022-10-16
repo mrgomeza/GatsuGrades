@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GatsuGradesv6ModelStoreContainer" CdmEntityContainer="GatsuGradesv6Entities">
+    <EntitySetMapping Name="ANO_LECTIVO">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.ANO_LECTIVO">
+        <MappingFragment StoreEntitySet="ANO_LECTIVO">
+          <ScalarProperty Name="ID_ANO" ColumnName="ID_ANO" />
+          <ScalarProperty Name="ANO_DESCRIP" ColumnName="ANO_DESCRIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ASISTENCIA">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.ASISTENCIA">
+        <MappingFragment StoreEntitySet="ASISTENCIA">
+          <ScalarProperty Name="ID_ASIS" ColumnName="ID_ASIS" />
+          <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="ASIS_FECHA" ColumnName="ASIS_FECHA" />
+          <ScalarProperty Name="ASIS_CONF" ColumnName="ASIS_CONF" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESTUDIANTE">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.ESTUDIANTE">
+        <MappingFragment StoreEntitySet="ESTUDIANTE">
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="EST_USU" ColumnName="EST_USU" />
+          <ScalarProperty Name="ID_REP" ColumnName="ID_REP" />
+          <ScalarProperty Name="ID_TIPOU" ColumnName="ID_TIPOU" />
+          <ScalarProperty Name="EST_NOMBRE" ColumnName="EST_NOMBRE" />
+          <ScalarProperty Name="EST_APELLIDO" ColumnName="EST_APELLIDO" />
+          <ScalarProperty Name="EST_CEDULA" ColumnName="EST_CEDULA" />
+          <ScalarProperty Name="EST_FECHANAC" ColumnName="EST_FECHANAC" />
+          <ScalarProperty Name="EST_PASSWORD" ColumnName="EST_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HORARIO">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.HORARIO">
+        <MappingFragment StoreEntitySet="HORARIO">
+          <ScalarProperty Name="ID_HORARIO" ColumnName="ID_HORARIO" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="HOR_DIA" ColumnName="HOR_DIA" />
+          <ScalarProperty Name="HOR_HORA" ColumnName="HOR_HORA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIA">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.MATERIA">
+        <MappingFragment StoreEntitySet="MATERIA">
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="MAT_COD" ColumnName="MAT_COD" />
+          <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+          <ScalarProperty Name="MAT_NOMBRE" ColumnName="MAT_NOMBRE" />
+          <ScalarProperty Name="MAT_GRADO" ColumnName="MAT_GRADO" />
+          <ScalarProperty Name="MAT_PARALELO" ColumnName="MAT_PARALELO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTA">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.NOTA">
+        <MappingFragment StoreEntitySet="NOTA">
+          <ScalarProperty Name="ID_NOTA" ColumnName="ID_NOTA" />
+          <ScalarProperty Name="ID_MATERIA" ColumnName="ID_MATERIA" />
+          <ScalarProperty Name="ID_ESTUDIANTE" ColumnName="ID_ESTUDIANTE" />
+          <ScalarProperty Name="ID_ANO" ColumnName="ID_ANO" />
+          <ScalarProperty Name="NP1" ColumnName="NP1" />
+          <ScalarProperty Name="NP2" ColumnName="NP2" />
+          <ScalarProperty Name="NP3" ColumnName="NP3" />
+          <ScalarProperty Name="EQ1" ColumnName="EQ1" />
+          <ScalarProperty Name="Q1" ColumnName="Q1" />
+          <ScalarProperty Name="NP4" ColumnName="NP4" />
+          <ScalarProperty Name="NP5" ColumnName="NP5" />
+          <ScalarProperty Name="NP6" ColumnName="NP6" />
+          <ScalarProperty Name="EQ2" ColumnName="EQ2" />
+          <ScalarProperty Name="Q2" ColumnName="Q2" />
+          <ScalarProperty Name="FINAL" ColumnName="FINAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESOR">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.PROFESOR">
+        <MappingFragment StoreEntitySet="PROFESOR">
+          <ScalarProperty Name="ID_PROFESOR" ColumnName="ID_PROFESOR" />
+          <ScalarProperty Name="PROF_USU" ColumnName="PROF_USU" />
+          <ScalarProperty Name="ID_TIPOU" ColumnName="ID_TIPOU" />
+          <ScalarProperty Name="PROF_NOMBRE" ColumnName="PROF_NOMBRE" />
+          <ScalarProperty Name="PROF_APELLIDO" ColumnName="PROF_APELLIDO" />
+          <ScalarProperty Name="PROF_CEDULA" ColumnName="PROF_CEDULA" />
+          <ScalarProperty Name="PROF_DIRECCION" ColumnName="PROF_DIRECCION" />
+          <ScalarProperty Name="PROF_TELF" ColumnName="PROF_TELF" />
+          <ScalarProperty Name="PROF_PASSWORD" ColumnName="PROF_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPRESENTANTE">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.REPRESENTANTE">
+        <MappingFragment StoreEntitySet="REPRESENTANTE">
+          <ScalarProperty Name="ID_REP" ColumnName="ID_REP" />
+          <ScalarProperty Name="REP_USU" ColumnName="REP_USU" />
+          <ScalarProperty Name="ID_TIPOU" ColumnName="ID_TIPOU" />
+          <ScalarProperty Name="REP_NOMBRE" ColumnName="REP_NOMBRE" />
+          <ScalarProperty Name="REP_APELLIDO" ColumnName="REP_APELLIDO" />
+          <ScalarProperty Name="REP_CEDULA" ColumnName="REP_CEDULA" />
+          <ScalarProperty Name="REP_DIRECCION" ColumnName="REP_DIRECCION" />
+          <ScalarProperty Name="REP_TELEFONO" ColumnName="REP_TELEFONO" />
+          <ScalarProperty Name="REP_PASSWORD" ColumnName="REP_PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_USUARIO">
+      <EntityTypeMapping TypeName="GatsuGradesv6Model.TIPO_USUARIO">
+        <MappingFragment StoreEntitySet="TIPO_USUARIO">
+          <ScalarProperty Name="ID_TIPOU" ColumnName="ID_TIPOU" />
+          <ScalarProperty Name="TU_DESCRIP" ColumnName="TU_DESCRIP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_RegistrarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_RegistrarEstudiante" />
+    <FunctionImportMapping FunctionImportName="sp_ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_ValidarEstudiante" />
+    <FunctionImportMapping FunctionImportName="ValidarEstudiante_SP" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante_SP" />
+    <FunctionImportMapping FunctionImportName="ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante" />
+  </EntityContainerMapping>
+</Mapping>

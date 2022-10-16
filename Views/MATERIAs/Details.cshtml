@@ -1,0 +1,59 @@
+﻿@model Prueba.MATERIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MATERIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.MAT_COD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_COD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAT_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAT_GRADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_GRADO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAT_PARALELO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAT_PARALELO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROFESOR.PROF_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROFESOR.PROF_USU)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_MATERIA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

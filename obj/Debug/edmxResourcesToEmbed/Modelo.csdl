@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GatsuGradesv6Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ANO_LECTIVO">
+    <Key>
+      <PropertyRef Name="ID_ANO" />
+    </Key>
+    <Property Name="ID_ANO" Type="Int32" Nullable="false" />
+    <Property Name="ANO_DESCRIP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NOTA" Relationship="Self.FK_NOTA_ANO_ESCOL_ANO_LECT" FromRole="ANO_LECTIVO" ToRole="NOTA" />
+  </EntityType>
+  <EntityType Name="ASISTENCIA">
+    <Key>
+      <PropertyRef Name="ID_ASIS" />
+    </Key>
+    <Property Name="ID_ASIS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_HORARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_ESTUDIANTE" Type="Int32" Nullable="false" />
+    <Property Name="ASIS_FECHA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ASIS_CONF" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK_ASISTENC_EST_ASIS_ESTUDIAN" FromRole="ASISTENCIA" ToRole="ESTUDIANTE" />
+    <NavigationProperty Name="HORARIO" Relationship="Self.FK_ASISTENC_HOR_ASIS_HORARIO" FromRole="ASISTENCIA" ToRole="HORARIO" />
+  </EntityType>
+  <EntityType Name="ESTUDIANTE">
+    <Key>
+      <PropertyRef Name="ID_ESTUDIANTE" />
+    </Key>
+    <Property Name="ID_ESTUDIANTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EST_USU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_REP" Type="Int32" Nullable="false" />
+    <Property Name="ID_TIPOU" Type="Int32" Nullable="false" />
+    <Property Name="EST_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EST_APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EST_CEDULA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EST_FECHANAC" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EST_PASSWORD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ASISTENCIA" Relationship="Self.FK_ASISTENC_EST_ASIS_ESTUDIAN" FromRole="ESTUDIANTE" ToRole="ASISTENCIA" />
+    <NavigationProperty Name="REPRESENTANTE" Relationship="Self.FK_ESTUDIAN_REP_EST_REPRESEN" FromRole="ESTUDIANTE" ToRole="REPRESENTANTE" />
+    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_ESTUDIAN_US_EST_TIPO_USU" FromRole="ESTUDIANTE" ToRole="TIPO_USUARIO" />
+    <NavigationProperty Name="NOTA" Relationship="Self.FK_NOTA_NOTA_ESTU_ESTUDIAN" FromRole="ESTUDIANTE" ToRole="NOTA" />
+  </EntityType>
+  <EntityType Name="HORARIO">
+    <Key>
+      <PropertyRef Name="ID_HORARIO" />
+    </Key>
+    <Property Name="ID_HORARIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+    <Property Name="HOR_DIA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOR_HORA" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ASISTENCIA" Relationship="Self.FK_ASISTENC_HOR_ASIS_HORARIO" FromRole="HORARIO" ToRole="ASISTENCIA" />
+    <NavigationProperty Name="MATERIA" Relationship="Self.FK_HORARIO_MAT_HOR_MATERIA" FromRole="HORARIO" ToRole="MATERIA" />
+  </EntityType>
+  <EntityType Name="MATERIA">
+    <Key>
+      <PropertyRef Name="ID_MATERIA" />
+    </Key>
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+    <Property Name="MAT_COD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_PROFESOR" Type="Int32" Nullable="false" />
+    <Property Name="MAT_NOMBRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAT_GRADO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAT_PARALELO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="HORARIO" Relationship="Self.FK_HORARIO_MAT_HOR_MATERIA" FromRole="MATERIA" ToRole="HORARIO" />
+    <NavigationProperty Name="PROFESOR" Relationship="Self.FK_MATERIA_PROF_MATE_PROFESOR" FromRole="MATERIA" ToRole="PROFESOR" />
+    <NavigationProperty Name="NOTA" Relationship="Self.FK_NOTA_MATERIA_N_MATERIA" FromRole="MATERIA" ToRole="NOTA" />
+  </EntityType>
+  <EntityType Name="NOTA">
+    <Key>
+      <PropertyRef Name="ID_NOTA" />
+    </Key>
+    <Property Name="ID_NOTA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_MATERIA" Type="Int32" Nullable="false" />
+    <Property Name="ID_ESTUDIANTE" Type="Int32" Nullable="false" />
+    <Property Name="ID_ANO" Type="Int32" Nullable="false" />
+    <Property Name="NP1" Type="Single" />
+    <Property Name="NP2" Type="Single" />
+    <Property Name="NP3" Type="Single" />
+    <Property Name="EQ1" Type="Single" />
+    <Property Name="Q1" Type="Single" />
+    <Property Name="NP4" Type="Single" />
+    <Property Name="NP5" Type="Single" />
+    <Property Name="NP6" Type="Single" />
+    <Property Name="EQ2" Type="Single" />
+    <Property Name="Q2" Type="Single" />
+    <Property Name="FINAL" Type="Single" />
+    <NavigationProperty Name="ANO_LECTIVO" Relationship="Self.FK_NOTA_ANO_ESCOL_ANO_LECT" FromRole="NOTA" ToRole="ANO_LECTIVO" />
+    <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK_NOTA_NOTA_ESTU_ESTUDIAN" FromRole="NOTA" ToRole="ESTUDIANTE" />
+    <NavigationProperty Name="MATERIA" Relationship="Self.FK_NOTA_MATERIA_N_MATERIA" FromRole="NOTA" ToRole="MATERIA" />
+  </EntityType>
+  <EntityType Name="PROFESOR">
+    <Key>
+      <PropertyRef Name="ID_PROFESOR" />
+    </Key>
+    <Property Name="ID_PROFESOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PROF_USU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_TIPOU" Type="Int32" Nullable="false" />
+    <Property Name="PROF_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROF_APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROF_CEDULA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROF_DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROF_TELF" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROF_PASSWORD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MATERIA" Relationship="Self.FK_MATERIA_PROF_MATE_PROFESOR" FromRole="PROFESOR" ToRole="MATERIA" />
+    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_PROFESOR_US_PROF_TIPO_USU" FromRole="PROFESOR" ToRole="TIPO_USUARIO" />
+  </EntityType>
+  <EntityType Name="REPRESENTANTE">
+    <Key>
+      <PropertyRef Name="ID_REP" />
+    </Key>
+    <Property Name="ID_REP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="REP_USU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID_TIPOU" Type="Int32" Nullable="false" />
+    <Property Name="REP_NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REP_APELLIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REP_CEDULA" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REP_DIRECCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REP_TELEFONO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REP_PASSWORD" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK_ESTUDIAN_REP_EST_REPRESEN" FromRole="REPRESENTANTE" ToRole="ESTUDIANTE" />
+    <NavigationProperty Name="TIPO_USUARIO" Relationship="Self.FK_REPRESEN_US_REP_TIPO_USU" FromRole="REPRESENTANTE" ToRole="TIPO_USUARIO" />
+  </EntityType>
+  <EntityType Name="TIPO_USUARIO">
+    <Key>
+      <PropertyRef Name="ID_TIPOU" />
+    </Key>
+    <Property Name="ID_TIPOU" Type="Int32" Nullable="false" />
+    <Property Name="TU_DESCRIP" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ESTUDIANTE" Relationship="Self.FK_ESTUDIAN_US_EST_TIPO_USU" FromRole="TIPO_USUARIO" ToRole="ESTUDIANTE" />
+    <NavigationProperty Name="PROFESOR" Relationship="Self.FK_PROFESOR_US_PROF_TIPO_USU" FromRole="TIPO_USUARIO" ToRole="PROFESOR" />
+    <NavigationProperty Name="REPRESENTANTE" Relationship="Self.FK_REPRESEN_US_REP_TIPO_USU" FromRole="TIPO_USUARIO" ToRole="REPRESENTANTE" />
+  </EntityType>
+  <Association Name="FK_NOTA_ANO_ESCOL_ANO_LECT">
+    <End Role="ANO_LECTIVO" Type="Self.ANO_LECTIVO" Multiplicity="1" />
+    <End Role="NOTA" Type="Self.NOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANO_LECTIVO">
+        <PropertyRef Name="ID_ANO" />
+      </Principal>
+      <Dependent Role="NOTA">
+        <PropertyRef Name="ID_ANO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASISTENC_EST_ASIS_ESTUDIAN">
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="1" />
+    <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTE">
+        <PropertyRef Name="ID_ESTUDIANTE" />
+      </Principal>
+      <Dependent Role="ASISTENCIA">
+        <PropertyRef Name="ID_ESTUDIANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASISTENC_HOR_ASIS_HORARIO">
+    <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="1" />
+    <End Role="ASISTENCIA" Type="Self.ASISTENCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HORARIO">
+        <PropertyRef Name="ID_HORARIO" />
+      </Principal>
+      <Dependent Role="ASISTENCIA">
+        <PropertyRef Name="ID_HORARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTUDIAN_REP_EST_REPRESEN">
+    <End Role="REPRESENTANTE" Type="Self.REPRESENTANTE" Multiplicity="1" />
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="REPRESENTANTE">
+        <PropertyRef Name="ID_REP" />
+      </Principal>
+      <Dependent Role="ESTUDIANTE">
+        <PropertyRef Name="ID_REP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESTUDIAN_US_EST_TIPO_USU">
+    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="ID_TIPOU" />
+      </Principal>
+      <Dependent Role="ESTUDIANTE">
+        <PropertyRef Name="ID_TIPOU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTA_NOTA_ESTU_ESTUDIAN">
+    <End Role="ESTUDIANTE" Type="Self.ESTUDIANTE" Multiplicity="1" />
+    <End Role="NOTA" Type="Self.NOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ESTUDIANTE">
+        <PropertyRef Name="ID_ESTUDIANTE" />
+      </Principal>
+      <Dependent Role="NOTA">
+        <PropertyRef Name="ID_ESTUDIANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HORARIO_MAT_HOR_MATERIA">
+    <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="1" />
+    <End Role="HORARIO" Type="Self.HORARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIA">
+        <PropertyRef Name="ID_MATERIA" />
+      </Principal>
+      <Dependent Role="HORARIO">
+        <PropertyRef Name="ID_MATERIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATERIA_PROF_MATE_PROFESOR">
+    <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="1" />
+    <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESOR">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Principal>
+      <Dependent Role="MATERIA">
+        <PropertyRef Name="ID_PROFESOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTA_MATERIA_N_MATERIA">
+    <End Role="MATERIA" Type="Self.MATERIA" Multiplicity="1" />
+    <End Role="NOTA" Type="Self.NOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIA">
+        <PropertyRef Name="ID_MATERIA" />
+      </Principal>
+      <Dependent Role="NOTA">
+        <PropertyRef Name="ID_MATERIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESOR_US_PROF_TIPO_USU">
+    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+    <End Role="PROFESOR" Type="Self.PROFESOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="ID_TIPOU" />
+      </Principal>
+      <Dependent Role="PROFESOR">
+        <PropertyRef Name="ID_TIPOU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REPRESEN_US_REP_TIPO_USU">
+    <End Role="TIPO_USUARIO" Type="Self.TIPO_USUARIO" Multiplicity="1" />
+    <End Role="REPRESENTANTE" Type="Self.REPRESENTANTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_USUARIO">
+        <PropertyRef Name="ID_TIPOU" />
+      </Principal>
+      <Dependent Role="REPRESENTANTE">
+        <PropertyRef Name="ID_TIPOU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GatsuGradesv6Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ANO_LECTIVO" EntityType="Self.ANO_LECTIVO" />
+    <EntitySet Name="ASISTENCIA" EntityType="Self.ASISTENCIA" />
+    <EntitySet Name="ESTUDIANTE" EntityType="Self.ESTUDIANTE" />
+    <EntitySet Name="HORARIO" EntityType="Self.HORARIO" />
+    <EntitySet Name="MATERIA" EntityType="Self.MATERIA" />
+    <EntitySet Name="NOTA" EntityType="Self.NOTA" />
+    <EntitySet Name="PROFESOR" EntityType="Self.PROFESOR" />
+    <EntitySet Name="REPRESENTANTE" EntityType="Self.REPRESENTANTE" />
+    <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" />
+    <AssociationSet Name="FK_NOTA_ANO_ESCOL_ANO_LECT" Association="Self.FK_NOTA_ANO_ESCOL_ANO_LECT">
+      <End Role="ANO_LECTIVO" EntitySet="ANO_LECTIVO" />
+      <End Role="NOTA" EntitySet="NOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASISTENC_EST_ASIS_ESTUDIAN" Association="Self.FK_ASISTENC_EST_ASIS_ESTUDIAN">
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+      <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASISTENC_HOR_ASIS_HORARIO" Association="Self.FK_ASISTENC_HOR_ASIS_HORARIO">
+      <End Role="HORARIO" EntitySet="HORARIO" />
+      <End Role="ASISTENCIA" EntitySet="ASISTENCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTUDIAN_REP_EST_REPRESEN" Association="Self.FK_ESTUDIAN_REP_EST_REPRESEN">
+      <End Role="REPRESENTANTE" EntitySet="REPRESENTANTE" />
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESTUDIAN_US_EST_TIPO_USU" Association="Self.FK_ESTUDIAN_US_EST_TIPO_USU">
+      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTA_NOTA_ESTU_ESTUDIAN" Association="Self.FK_NOTA_NOTA_ESTU_ESTUDIAN">
+      <End Role="ESTUDIANTE" EntitySet="ESTUDIANTE" />
+      <End Role="NOTA" EntitySet="NOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HORARIO_MAT_HOR_MATERIA" Association="Self.FK_HORARIO_MAT_HOR_MATERIA">
+      <End Role="MATERIA" EntitySet="MATERIA" />
+      <End Role="HORARIO" EntitySet="HORARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATERIA_PROF_MATE_PROFESOR" Association="Self.FK_MATERIA_PROF_MATE_PROFESOR">
+      <End Role="PROFESOR" EntitySet="PROFESOR" />
+      <End Role="MATERIA" EntitySet="MATERIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTA_MATERIA_N_MATERIA" Association="Self.FK_NOTA_MATERIA_N_MATERIA">
+      <End Role="MATERIA" EntitySet="MATERIA" />
+      <End Role="NOTA" EntitySet="NOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESOR_US_PROF_TIPO_USU" Association="Self.FK_PROFESOR_US_PROF_TIPO_USU">
+      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+      <End Role="PROFESOR" EntitySet="PROFESOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REPRESEN_US_REP_TIPO_USU" Association="Self.FK_REPRESEN_US_REP_TIPO_USU">
+      <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
+      <End Role="REPRESENTANTE" EntitySet="REPRESENTANTE" />
+    </AssociationSet>
+    <FunctionImport Name="sp_RegistrarEstudiante">
+      <Parameter Name="ID_EST" Mode="In" Type="Int32" />
+      <Parameter Name="EST_USU" Mode="In" Type="String" />
+      <Parameter Name="ID_REP" Mode="In" Type="Int32" />
+      <Parameter Name="ID_TIPOU" Mode="In" Type="Int32" />
+      <Parameter Name="EST_NOMBRE" Mode="In" Type="String" />
+      <Parameter Name="EST_APELLIDO" Mode="In" Type="String" />
+      <Parameter Name="EST_CEDULA" Mode="In" Type="String" />
+      <Parameter Name="EST_FECHANAC" Mode="In" Type="DateTime" />
+      <Parameter Name="EST_PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="REGISTRADO" Mode="InOut" Type="Boolean" />
+      <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_ValidarEstudiante" ReturnType="Collection(Int32)">
+      <Parameter Name="EST_USU" Mode="In" Type="String" />
+      <Parameter Name="EST_PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="REGISTRADO" Mode="InOut" Type="Boolean" />
+      <Parameter Name="MENSAJE" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ValidarEstudiante_SP" ReturnType="Collection(Int32)">
+      <Parameter Name="EST_USU" Mode="In" Type="String" />
+      <Parameter Name="EST_PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ValidarEstudiante" ReturnType="Collection(Int32)">
+      <Parameter Name="EST_USU" Mode="In" Type="String" />
+      <Parameter Name="EST_PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>
