@@ -1,0 +1,26 @@
+﻿@model Prueba.ANO_LECTIVO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ANO_LECTIVO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ANO_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANO_DESCRIP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ANO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

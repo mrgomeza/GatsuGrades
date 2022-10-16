@@ -1,0 +1,82 @@
+﻿@model Prueba.ESTUDIANTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ESTUDIANTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_FECHANAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_FECHANAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REPRESENTANTE.REP_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ESTUDIANTE }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

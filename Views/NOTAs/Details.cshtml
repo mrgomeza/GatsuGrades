@@ -1,0 +1,130 @@
+﻿@model Prueba.NOTA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NOTA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NP1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NP2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NP3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQ1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQ1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NP4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NP5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NP6)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NP6)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EQ2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EQ2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FINAL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FINAL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ANO_LECTIVO.ANO_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ANO_LECTIVO.ANO_DESCRIP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTUDIANTE.EST_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MATERIA.MAT_COD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MATERIA.MAT_COD)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_NOTA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
