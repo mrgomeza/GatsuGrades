@@ -238,6 +238,7 @@
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
     <Content Include="www\estilos\TextosLogin.css" />
+    <Content Include="www\js\cambioColorBoton.js" />
     <Content Include="www\js\llenadoCBHor.js" />
     <EntityDeploy Include="Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

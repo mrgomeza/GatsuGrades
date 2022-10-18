@@ -11,8 +11,7 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MATERIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,18 +20,12 @@ namespace Prueba
             this.HORARIO = new HashSet<HORARIO>();
             this.NOTA = new HashSet<NOTA>();
         }
-
-        [Display(Name = "Materia")]
+    
         public int ID_MATERIA { get; set; }
-        [Display(Name = "COD Materia")]
         public string MAT_COD { get; set; }
-        [Display(Name = "Profesor")]
         public int ID_PROFESOR { get; set; }
-        [Display(Name = "Nombre")]
         public string MAT_NOMBRE { get; set; }
-        [Display(Name = "Grado")]
         public string MAT_GRADO { get; set; }
-        [Display(Name = "Paralelo")]
         public string MAT_PARALELO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

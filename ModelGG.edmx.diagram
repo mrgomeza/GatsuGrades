@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="15aeefb5011d4ed796a4b138907adf67" Name="Diagram1">
-        <EntityTypeShape EntityType="GatsuGradesv8Model.ANO_LECTIVO" Width="1.5" PointX="5.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="GatsuGradesv8Model.ANO_LECTIVO" Width="1.5" PointX="5.125" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GatsuGradesv8Model.ASISTENCIA" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GatsuGradesv8Model.ESTUDIANTE" Width="1.5" PointX="5.25" PointY="13.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GatsuGradesv8Model.HORARIO" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />

@@ -11,19 +11,13 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class ASISTENCIA
     {
-        [Display(Name = "Id Asistencia")]
         public int ID_ASIS { get; set; }
-        [Display(Name = "Horario")]
         public int ID_HORARIO { get; set; }
-        [Display(Name = "Estudiante")]
         public int ID_ESTUDIANTE { get; set; }
-        [Display(Name = "Fecha")]
         public System.DateTime ASIS_FECHA { get; set; }
-        [Display(Name = "Confirmado")]
         public string ASIS_CONF { get; set; }
     
         public virtual ESTUDIANTE ESTUDIANTE { get; set; }

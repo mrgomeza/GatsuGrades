@@ -34,13 +34,14 @@ namespace Prueba.Controllers
             ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", ID_MATERIA);
             return View();
         }
+        #region Botones Horas
         [HttpPost]
         public ActionResult PresionaBotonL1(string L1)
         {
             
             string auxdia = "Lunes";
             DateTime auxhora= DateTime.Parse("2022-10-16 7:40:00.000");
-            return PresionaBotondef(auxdia, auxhora,"Conf");
+            return PresionaBotondef1(auxdia, auxhora,"Conf","Confc1");
         }
 
         [HttpPost]
@@ -49,7 +50,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 7:40:00.000");
-            return PresionaBotondef(auxdia, auxhora,"Conf2");
+            return PresionaBotondef1(auxdia, auxhora, "Conf2", "Confc2");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI1(string MI1)
@@ -57,7 +58,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 7:40:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf3");
+            return PresionaBotondef1(auxdia, auxhora, "Conf3", "Confc3");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ1(string J1)
@@ -65,7 +66,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 7:40:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf4");
+            return PresionaBotondef1(auxdia, auxhora, "Conf4", "Confc4");
         }
         [HttpPost]
         public ActionResult PresionaBotonV1(string V1)
@@ -73,7 +74,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 7:40:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf5");
+            return PresionaBotondef1(auxdia, auxhora, "Conf5", "Confc5");
         }
         [HttpPost]
         public ActionResult PresionaBotonL2(string L2)
@@ -81,7 +82,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 8:20:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf6");
+            return PresionaBotondef1(auxdia, auxhora, "Conf6", "Confc6");
         }
 
         [HttpPost]
@@ -90,7 +91,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 8:20:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf7");
+            return PresionaBotondef1(auxdia, auxhora, "Conf7", "Confc7");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI2(string MI2)
@@ -98,7 +99,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 8:20:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf8");
+            return PresionaBotondef1(auxdia, auxhora, "Conf8", "Confc8");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ2(string J2)
@@ -106,7 +107,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 8:20:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf9");
+            return PresionaBotondef1(auxdia, auxhora, "Conf9", "Confc9");
         }
         [HttpPost]
         public ActionResult PresionaBotonV2(string V2)
@@ -114,7 +115,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 8:20:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf10");
+            return PresionaBotondef1(auxdia, auxhora, "Conf10", "Confc10");
         }
         [HttpPost]
         public ActionResult PresionaBotonL3(string L3)
@@ -122,7 +123,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 9:00:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf11");
+            return PresionaBotondef1(auxdia, auxhora, "Conf11", "Confc11");
         }
 
         [HttpPost]
@@ -131,7 +132,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 9:00:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf12");
+            return PresionaBotondef1(auxdia, auxhora, "Conf12", "Confc12");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI3(string MI3)
@@ -139,7 +140,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 9:00:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf13");
+            return PresionaBotondef1(auxdia, auxhora, "Conf13", "Confc13");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ3(string J3)
@@ -147,7 +148,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 9:00:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf14");
+            return PresionaBotondef1(auxdia, auxhora, "Conf14", "Confc14");
         }
         [HttpPost]
         public ActionResult PresionaBotonV3(string V3)
@@ -155,7 +156,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 9:00:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf15");
+            return PresionaBotondef1(auxdia, auxhora, "Conf15", "Confc15");
         }
         [HttpPost]
         public ActionResult PresionaBotonL4(string L4)
@@ -163,7 +164,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:10:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf16");
+            return PresionaBotondef1(auxdia, auxhora, "Conf16", "Confc16");
         }
 
         [HttpPost]
@@ -172,7 +173,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:10:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf17");
+            return PresionaBotondef1(auxdia, auxhora, "Conf17", "Confc17");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI4(string MI4)
@@ -180,7 +181,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:10:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf18");
+            return PresionaBotondef1(auxdia, auxhora, "Conf18", "Confc18");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ4(string J4)
@@ -188,7 +189,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:10:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf19");
+            return PresionaBotondef1(auxdia, auxhora, "Conf19", "Confc19");
         }
         [HttpPost]
         public ActionResult PresionaBotonV4(string V4)
@@ -196,7 +197,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:10:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf20");
+            return PresionaBotondef1(auxdia, auxhora, "Conf20", "Confc20");
         }
         [HttpPost]
         public ActionResult PresionaBotonL5(string L5)
@@ -204,7 +205,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf21");
+            return PresionaBotondef1(auxdia, auxhora, "Conf21", "Confc21");
         }
 
         [HttpPost]
@@ -213,7 +214,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf22");
+            return PresionaBotondef1(auxdia, auxhora, "Conf22", "Confc22");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI5(string MI5)
@@ -221,7 +222,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf23");
+            return PresionaBotondef1(auxdia, auxhora, "Conf23", "Confc23");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ5(string J5)
@@ -229,7 +230,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf24");
+            return PresionaBotondef1(auxdia, auxhora, "Conf24", "Confc24");
         }
         [HttpPost]
         public ActionResult PresionaBotonV5(string V5)
@@ -237,7 +238,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 10:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf25");
+            return PresionaBotondef1(auxdia, auxhora, "Conf25", "Confc25");
         }
         [HttpPost]
         public ActionResult PresionaBotonL6(string L6)
@@ -245,7 +246,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 11:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf26");
+            return PresionaBotondef1(auxdia, auxhora, "Conf26", "Confc26");
         }
 
         [HttpPost]
@@ -254,7 +255,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 11:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf27");
+            return PresionaBotondef1(auxdia, auxhora, "Conf27", "Confc27");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI6(string MI6)
@@ -262,7 +263,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 11:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf28");
+            return PresionaBotondef1(auxdia, auxhora, "Conf28", "Confc28");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ6(string J6)
@@ -270,7 +271,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 11:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf29");
+            return PresionaBotondef1(auxdia, auxhora, "Conf29", "Confc29");
         }
         [HttpPost]
         public ActionResult PresionaBotonV6(string V6)
@@ -278,7 +279,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 11:50:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf30");
+            return PresionaBotondef1(auxdia, auxhora, "Conf30", "Confc30");
         }
         [HttpPost]
         public ActionResult PresionaBotonL7(string L7)
@@ -286,7 +287,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Lunes";
             DateTime auxhora = DateTime.Parse("2022-10-16 12:30:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf31");
+            return PresionaBotondef1(auxdia, auxhora, "Conf31", "Confc31");
         }
 
         [HttpPost]
@@ -295,7 +296,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Martes";
             DateTime auxhora = DateTime.Parse("2022-10-16 12:30:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf32");
+            return PresionaBotondef1(auxdia, auxhora, "Conf32", "Confc32");
         }
         [HttpPost]
         public ActionResult PresionaBotonMI7(string MI7)
@@ -303,7 +304,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Miércoles";
             DateTime auxhora = DateTime.Parse("2022-10-16 12:30:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf33");
+            return PresionaBotondef1(auxdia, auxhora, "Conf33", "Confc33");
         }
         [HttpPost]
         public ActionResult PresionaBotonJ7(string J7)
@@ -311,7 +312,7 @@ namespace Prueba.Controllers
 
             string auxdia = "Jueves";
             DateTime auxhora = DateTime.Parse("2022-10-16 12:30:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf34");
+            return PresionaBotondef1(auxdia, auxhora, "Conf34", "Confc34");
         }
         [HttpPost]
         public ActionResult PresionaBotonV7(string V7)
@@ -319,8 +320,10 @@ namespace Prueba.Controllers
 
             string auxdia = "Viernes";
             DateTime auxhora = DateTime.Parse("2022-10-16 12:30:00.000");
-            return PresionaBotondef(auxdia, auxhora, "Conf35");
+            return PresionaBotondef1(auxdia, auxhora, "Conf35", "Confc35");
         }
+        #endregion
+        #region PresionaBotonDef
         [HttpPost]
         private ActionResult PresionaBotondef(string dia, DateTime hora,string dat)
         {
@@ -328,17 +331,20 @@ namespace Prueba.Controllers
 
             List<HORARIO> lsth= db.HORARIO.ToList();
             List<MATERIA> lstm = db.MATERIA.ToList();
+
+            List<MATERIA> mate = new List<MATERIA>();
+            List<int> matid = new List<int>();
             List<HORARIO> lsthemp = new List<HORARIO>();
             List<MATERIA> lstmprof = new List<MATERIA>();
             List<HORARIO> lstmproftemp = new List<HORARIO>();
+
             PROFESOR proftemp = new PROFESOR();
             HORARIO hortemp = new HORARIO();
             HORARIO hortemp2 = new HORARIO();
             List<HORARIO> lsthemp2 = new List<HORARIO>();
             //Materia ingresada en el combo
             MATERIA matemp= db.MATERIA.Find(idtemp);
-            //string auxdia = "Lunes";
-            //DateTime auxhora= DateTime.Parse("2022-10-16 7:40:00.000");
+            
             string auxdia = dia;
             DateTime auxhora = hora;
             bool val = false;
@@ -349,52 +355,41 @@ namespace Prueba.Controllers
                 if (lstm[i].MAT_GRADO ==matemp.MAT_GRADO && lstm[i].ID_MATERIA!=matemp.ID_MATERIA)
                 {
                     val = true;
+
                     //La materia tiene dia y hora disponible
-                    int id = lstm[i].ID_MATERIA;
-                    lsthemp = db.HORARIO.Where(hor => hor.ID_MATERIA== id && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
-                    
-                    //El profesor esta disponible
-                    proftemp.ID_PROFESOR = matemp.ID_PROFESOR;
-                    //lista temporal materias que dicta el profesor
-                    lstmprof = db.MATERIA.Where(mat => mat.ID_PROFESOR == proftemp.ID_PROFESOR).ToList();
-                    //Recorres la lista de las materias que dicta el profesor
-                    for(int j = 0; j < lstmprof.Count(); j++)
+                    string grad = lstm[i].MAT_GRADO;
+                    mate = db.MATERIA.Where(mat => mat.MAT_GRADO == grad).ToList();
+                    matid= mate.Select(mat => mat.ID_MATERIA).ToList();
+                    lsthemp = db.HORARIO.Where(hor => matid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+
+
+                    int idprof = matemp.ID_PROFESOR;
+                    var materiap = db.MATERIA.Where(mat => mat.ID_PROFESOR == idprof).ToList();
+                    var matpid = materiap.Select(mat => mat.ID_MATERIA).ToList();
+
+                    lstmproftemp = db.HORARIO.Where(hor => matpid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+                    if (lstmproftemp.Count == 0 && lsthemp.Count==0)
                     {
-                        int id2 = lstmprof[j].ID_MATERIA;
-                        //Disponibilidad del profesor en día y hora
-                        lstmproftemp= db.HORARIO.Where(hor => hor.ID_MATERIA == id2 && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
-                        if(lstmproftemp.Count == 0 && lsthemp.Count == 0) 
-                        {
-                            hortemp.ID_MATERIA = matemp.ID_MATERIA;
-                            hortemp.HOR_DIA = auxdia;
-                            hortemp.HOR_HORA = auxhora;
-                            db.HORARIO.Add(hortemp);
-                            db.SaveChanges();
-                            ViewData[dat] = "Se ingreso la materia";
-                            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
-                            return View("HorarioDesp");
-                        }
-                        else
-                        {
-                            continue;
-                        }
+                        hortemp.ID_MATERIA = matemp.ID_MATERIA;
+                        hortemp.HOR_DIA = auxdia;
+                        hortemp.HOR_HORA = auxhora;
+                        db.HORARIO.Add(hortemp);
+                        db.SaveChanges();
+                        ViewData[dat] = "Se ingreso la materia";
+                        ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
+                        return View("HorarioDesp");
                     }
 
                 }
                 
             }
-            if (val == false)
+            if (val == false)//Si la materia es nueva
             {
-                //El profesor esta disponible
-                proftemp.ID_PROFESOR = matemp.ID_PROFESOR;
-                //lista temporal materias que dicta el profesor
-                lstmprof = db.MATERIA.Where(mat => mat.ID_PROFESOR == proftemp.ID_PROFESOR).ToList();
-                //Recorres la lista de las materias que dicta el profesor
-                for (int j = 0; j < lstmprof.Count(); j++)
-                {
-                    int id2 = lstmprof[j].ID_MATERIA;
-                    //Disponibilidad del profesor en día y hora
-                    lstmproftemp = db.HORARIO.Where(hor => hor.ID_MATERIA == id2 && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+                int idprof = matemp.ID_PROFESOR;
+                var materiap = db.MATERIA.Where(mat => mat.ID_PROFESOR == idprof).ToList();
+                var matpid = materiap.Select(mat => mat.ID_MATERIA).ToList();
+
+                lstmproftemp = db.HORARIO.Where(hor => matpid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
                     if (lstmproftemp.Count == 0)
                     {
                         hortemp.ID_MATERIA = matemp.ID_MATERIA;
@@ -406,16 +401,95 @@ namespace Prueba.Controllers
                         ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
                         return View("HorarioDesp");
                     }
-                    else
+            }
+            //ViewBag.Alert = "Lo sentimos, esta solicitud no existe.";
+            ViewData[dat] = "No se pudo ingresar";
+            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
+            return View("HorarioDesp");
+
+        }
+        #endregion
+        private ActionResult PresionaBotondef1(string dia, DateTime hora, string dat,string dat1)
+        {
+            //Validacion
+
+            List<HORARIO> lsth = db.HORARIO.ToList();
+            List<MATERIA> lstm = db.MATERIA.ToList();
+
+            List<MATERIA> mate = new List<MATERIA>();
+            List<int> matid = new List<int>();
+            List<HORARIO> lsthemp = new List<HORARIO>();
+            List<MATERIA> lstmprof = new List<MATERIA>();
+            List<HORARIO> lstmproftemp = new List<HORARIO>();
+
+            PROFESOR proftemp = new PROFESOR();
+            HORARIO hortemp = new HORARIO();
+            HORARIO hortemp2 = new HORARIO();
+            List<HORARIO> lsthemp2 = new List<HORARIO>();
+            //Materia ingresada en el combo
+            MATERIA matemp = db.MATERIA.Find(idtemp);
+
+            string auxdia = dia;
+            DateTime auxhora = hora;
+            bool val = false;
+
+
+            for (int i = 0; i < lstm.Count(); i++)
+            {
+                if (lstm[i].MAT_GRADO == matemp.MAT_GRADO && lstm[i].ID_MATERIA != matemp.ID_MATERIA)
+                {
+                    val = true;
+
+                    //La materia tiene dia y hora disponible
+                    string grad = lstm[i].MAT_GRADO;
+                    mate = db.MATERIA.Where(mat => mat.MAT_GRADO == grad).ToList();
+                    matid = mate.Select(mat => mat.ID_MATERIA).ToList();
+                    lsthemp = db.HORARIO.Where(hor => matid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+
+
+                    int idprof = matemp.ID_PROFESOR;
+                    var materiap = db.MATERIA.Where(mat => mat.ID_PROFESOR == idprof).ToList();
+                    var matpid = materiap.Select(mat => mat.ID_MATERIA).ToList();
+
+                    lstmproftemp = db.HORARIO.Where(hor => matpid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+                    if (lstmproftemp.Count == 0 && lsthemp.Count == 0)
                     {
-                        continue;
+                        hortemp.ID_MATERIA = matemp.ID_MATERIA;
+                        hortemp.HOR_DIA = auxdia;
+                        hortemp.HOR_HORA = auxhora;
+                        db.HORARIO.Add(hortemp);
+                        db.SaveChanges();
+                        ViewData[dat] = "Se ingreso la materia";
+                        ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
+                        return View("HorarioDesp");
                     }
 
+                }
+
+            }
+            if (val == false)//Si la materia es nueva
+            {
+                int idprof = matemp.ID_PROFESOR;
+                var materiap = db.MATERIA.Where(mat => mat.ID_PROFESOR == idprof).ToList();
+                var matpid = materiap.Select(mat => mat.ID_MATERIA).ToList();
+
+                lstmproftemp = db.HORARIO.Where(hor => matpid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
+                if (lstmproftemp.Count == 0)
+                {
+                    hortemp.ID_MATERIA = matemp.ID_MATERIA;
+                    hortemp.HOR_DIA = auxdia;
+                    hortemp.HOR_HORA = auxhora;
+                    db.HORARIO.Add(hortemp);
+                    db.SaveChanges();
+                    ViewData[dat] = "Se ingreso la materia";
+                    ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
+                    return View("HorarioDesp");
                 }
             }
             //ViewBag.Alert = "Lo sentimos, esta solicitud no existe.";
             ViewData[dat] = "No se pudo ingresar";
-            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD",matemp.ID_MATERIA);
+            ViewData[dat1] = "red";
+            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", matemp.ID_MATERIA);
             return View("HorarioDesp");
 
         }

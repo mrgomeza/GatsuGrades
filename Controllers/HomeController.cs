@@ -12,7 +12,7 @@ namespace Prueba.Controllers
         {
             return View();
         }
-
+        
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -30,5 +30,6 @@ namespace Prueba.Controllers
         {
             return View();
         }
+        
     }
 }

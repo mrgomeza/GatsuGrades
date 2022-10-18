@@ -11,8 +11,7 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PROFESOR
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,24 +19,15 @@ namespace Prueba
         {
             this.MATERIA = new HashSet<MATERIA>();
         }
-
-        [Display(Name = "Id Profesor")]
+    
         public int ID_PROFESOR { get; set; }
-        [Display(Name = "Usuario")]
         public string PROF_USU { get; set; }
-        [Display(Name = "Tipo Usuario")]
         public int ID_TIPOU { get; set; }
-        [Display(Name = "Nombre")]
         public string PROF_NOMBRE { get; set; }
-        [Display(Name = "Apellido")]
         public string PROF_APELLIDO { get; set; }
-        [Display(Name = "CI")]
         public string PROF_CEDULA { get; set; }
-        [Display(Name = "Dirección")]
         public string PROF_DIRECCION { get; set; }
-        [Display(Name = "Teléfono")]
         public string PROF_TELF { get; set; }
-        [Display(Name = "Contraseña")]
         public string PROF_PASSWORD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
