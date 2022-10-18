@@ -3,7 +3,9 @@ html {
     margin: 0;
     padding: 0;
     height: 100%;
-    background: #60a3bc !important;
+    background: #2980B9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .user_card {
@@ -11,7 +13,10 @@ html {
     width: 350px;
     margin-top: auto;
     margin-bottom: auto;
-    background: #f39c12;
+    background: #12c2e9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #f64f59, #c471ed, #12c2e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     position: relative;
     display: flex;
     justify-content: center;
@@ -25,18 +30,21 @@ html {
 
 .brand_logo_container {
     position: absolute;
-    height: 170px;
-    width: 170px;
+    height: 180px;
+    width: 200px;
     top: -75px;
     border-radius: 50%;
-    background: #60a3bc;
+    background: #8360c3; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2ebf91, #8360c3); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2ebf91, #8360c3); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     padding: 10px;
     text-align: center;
 }
 
 .brand_logo {
-    height: 150px;
-    width: 150px;
+    height: 160px;
+    width: 170px;
     border-radius: 50%;
     border: 2px solid white;
 }

@@ -11,7 +11,8 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ESTUDIANTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,15 +21,24 @@ namespace Prueba
             this.ASISTENCIA = new HashSet<ASISTENCIA>();
             this.NOTA = new HashSet<NOTA>();
         }
-    
+
+        [Display(Name = "Id EStudiante")]
         public int ID_ESTUDIANTE { get; set; }
+        [Display(Name = "Usuario")]
         public string EST_USU { get; set; }
+        [Display(Name = "Representante")]
         public int ID_REP { get; set; }
+        [Display(Name = "Tipo Usuario")]
         public int ID_TIPOU { get; set; }
+        [Display(Name = "Nombre")]
         public string EST_NOMBRE { get; set; }
+        [Display(Name = "Apellido")]
         public string EST_APELLIDO { get; set; }
+        [Display(Name = "CI")]
         public string EST_CEDULA { get; set; }
+        [Display(Name = "Fecha Nacimiento")]
         public System.DateTime EST_FECHANAC { get; set; }
+        [Display(Name = "Contraseña")]
         public string EST_PASSWORD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

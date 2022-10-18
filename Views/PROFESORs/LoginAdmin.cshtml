@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -6,7 +7,10 @@
 
 <html>
 <head>
-    <title>Login</title>
+    <title>Login Administrador</title>
+
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -14,10 +18,13 @@
     <link href="~/Content/Estilos/Login.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link href="~/www/estilos/TextosLogin.css" rel="stylesheet" />
+
+
+
 </head>
 <body>
-
-
+    
     <div class="container my-5">
         <div class="d-flex justify-content-center h-100">
             <div class="user_card">
@@ -25,24 +32,35 @@
                     <div class="brand_logo_container">
                         <img src="https://scontent.fuio1-1.fna.fbcdn.net/v/t39.30808-6/302030583_412434430874076_3795862924176287979_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=8zN-I74T-aUAX_qRwEB&tn=pKXQcB7Afi4dAFt6&_nc_ht=scontent.fuio1-1.fna&oh=00_AT_2B6Kim3fgZ5W0WsqDuWsXzNSbZZ-lur5Gfq2CvTt7aA&oe=63522EFA" class="brand_logo" alt="Logo">
                     </div>
+
+
                 </div>
+
                 <div class="d-flex justify-content-center form_container">
-                    <form action="@Url.Action("Login","ESTUDIANTEs")" method="post">
+
+                    <form action="@Url.Action("LoginAdmin","PROFESORs")" method="post">
+
+                        <!--Le puse aqui porque estan encima de las imagenes-->
+                        <h3 class="h3TitleL">Administrador</h3>
                         <div class="input-group mb-3">
+
+
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
+
                             <input type="text" name="us" class="form-control input_user" value="" placeholder="Nombre de usuario">
                         </div>
-                        <div class="input-group mb-2">
+                        <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
                             <input type="password" name="clave" class="form-control input_pass" value="" placeholder="Contraseña">
                         </div>
+
+
                         <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="button" class="btn login_btn">Iniciar Sesión</button>
-                            <a href="@Url.Action("Create","ESTUDIANTEs")" class="btn btn-primary ml-2">Registrarse</a>
+                            <button type="submit" name="button" class="btn btn-success">Iniciar Sesión</button>
                         </div>
                     </form>
                 </div>

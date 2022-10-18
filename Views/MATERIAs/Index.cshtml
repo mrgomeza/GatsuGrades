@@ -4,7 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Gestión Materias</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -46,7 +49,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.PROFESOR.PROF_USU)
         </td>
-        <td>
+        <td align="right">
             @Html.ActionLink("Edit", "Edit", new { id=item.ID_MATERIA }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID_MATERIA }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID_MATERIA })

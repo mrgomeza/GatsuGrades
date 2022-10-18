@@ -4,10 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>TIpos de usuario</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "TIPO_USUARIO", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -22,10 +24,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.TU_DESCRIP)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TIPOU }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_TIPOU }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TIPOU })
+        <td align="right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TIPOU }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_TIPOU }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TIPOU }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

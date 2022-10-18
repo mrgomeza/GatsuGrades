@@ -4,7 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Detalles de asistencia</h2>
 
 <div>
     <h4>ASISTENCIA</h4>
@@ -45,6 +48,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ASIS }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ASIS }, new {@class="btn btn-success"}) |
+    @Html.ActionLink("Back to List", "Index", "ASISTENCIAs", new { @class = "btn btn-primary" })
 </p>

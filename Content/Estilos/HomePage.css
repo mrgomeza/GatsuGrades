@@ -1,4 +1,4 @@
-﻿a,
+﻿﻿a,
 a:focus,
 a:hover {
     color: #fff;
@@ -22,9 +22,9 @@ a:hover {
 html,
 body {
     /*css for full size background image*/
-    background-size: cover;
+    background-image: url(https://scontent.fuio1-1.fna.fbcdn.net/v/t1.6435-9/117951977_584149465592657_4581451875401117936_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=Y0tDomd_8KUAX--JVIA&_nc_ht=scontent.fuio1-1.fna&oh=00_AT82SeWEdLqpQxaWwc-kqsacY4Pu2VhKOM77sZJH-tTxSQ&oe=6370E2CF);
     height: 100%;
-    color:black;
+    color: black;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
@@ -51,7 +51,7 @@ body {
 
 /* Padding for spacing */
 .inner {
-    padding: 30px;
+    padding: 10px;
 }
 
 

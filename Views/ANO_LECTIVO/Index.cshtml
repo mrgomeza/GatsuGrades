@@ -4,10 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Vista de año lectivo</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "ANO_LECTIVO", new {@class="btn btn-success"})
 </p>
 <table class="table">
     <tr>
@@ -22,10 +25,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.ANO_DESCRIP)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ANO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_ANO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ANO })
+        <td align="right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ANO }, new {@class="btn btn-primary"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_ANO }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ANO }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

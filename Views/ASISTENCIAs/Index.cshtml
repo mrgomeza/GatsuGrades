@@ -4,10 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Gestión Asistencias</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "ASISTENCIAs", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -40,10 +44,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.HORARIO.HOR_DIA)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ASIS }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_ASIS }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ASIS })
+        <td align="right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ASIS }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_ASIS }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ASIS }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }

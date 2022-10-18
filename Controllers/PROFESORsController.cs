@@ -20,7 +20,28 @@ namespace Prueba.Controllers
             var pROFESOR = db.PROFESOR.Include(p => p.TIPO_USUARIO);
             return View(pROFESOR.ToList());
         }
+        public ActionResult LoginAdmin()
+        {
+            return View();
+        }
+        //NOE CAMBIOS
+        [HttpPost]
+        public ActionResult LoginAdmin(string us, string clave)
+        {
+            List<PROFESOR> prof_temp = new List<PROFESOR>();
+            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave && prof.ID_TIPOU==4).ToList();
 
+            if (prof_temp.Count != 0) //Usuario existe
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewData["Mensaje"] = "Usuario no encontrado";
+                return View();
+            }
+
+        }
         // GET: PROFESORs/Details/5
         public ActionResult Details(int? id)
         {
