@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Prueba.REPRESENTANTE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Gestión Representantes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_USU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_APELLIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_CEDULA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_DIRECCION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REP_PASSWORD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_USU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_NOMBRE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_APELLIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_CEDULA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_DIRECCION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_PASSWORD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_REP }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_REP }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_REP })
+        </td>
+    </tr>
+}
+
+</table>

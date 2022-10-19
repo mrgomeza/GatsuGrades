@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Prueba.NOTA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" /> 
+
+
+<h2>Gestión de Notas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NP1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Q1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP5)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP6)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Q2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FINAL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ANO_LECTIVO.ANO_DESCRIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MATERIA.MAT_COD)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EQ1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Q1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP4)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP5)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NP6)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EQ2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Q2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FINAL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ANO_LECTIVO.ANO_DESCRIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTUDIANTE.EST_USU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MATERIA.MAT_COD)
+        </td>
+        <td align="right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_NOTA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_NOTA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_NOTA })
+        </td>
+    </tr>
+}
+
+</table>

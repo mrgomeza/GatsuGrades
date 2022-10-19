@@ -1,0 +1,28 @@
+﻿@model Prueba.TIPO_USUARIO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2> TIPO DE USUARIO</h2>
+
+<div>
+    <h4>Editar tipo de usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TU_DESCRIP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_TIPOU }, new {@class="btn btn-success"}) |
+    @Html.ActionLink("Back to List", "Index", "Home", new {@class="btn btn-primary"})
+</p>

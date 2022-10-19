@@ -1,0 +1,53 @@
+﻿@model Prueba.ASISTENCIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Detalles de asistencia</h2>
+
+<div>
+    <h4>ASISTENCIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ASIS_FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASIS_FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASIS_CONF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASIS_CONF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTUDIANTE.EST_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORARIO.HOR_DIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORARIO.HOR_DIA)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_ASIS }, new {@class="btn btn-success"}) |
+    @Html.ActionLink("Back to List", "Index", "ASISTENCIAs", new { @class = "btn btn-primary" })
+</p>

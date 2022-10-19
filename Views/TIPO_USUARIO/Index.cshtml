@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Prueba.TIPO_USUARIO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Gestión de Usuarios</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create", "TIPO_USUARIO", new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TU_DESCRIP)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TU_DESCRIP)
+        </td>
+        <td align="right">
+            @Html.ActionLink("Editar", "Edit", new { id=item.ID_TIPOU }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.ID_TIPOU }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID_TIPOU }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

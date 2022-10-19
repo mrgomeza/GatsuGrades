@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Prueba.ASISTENCIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Gestión Asistencias</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "ASISTENCIAs", new { @class = "btn btn-success" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ASIS_FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASIS_CONF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORARIO.HOR_DIA)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASIS_FECHA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASIS_CONF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ESTUDIANTE.EST_USU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORARIO.HOR_DIA)
+        </td>
+        <td align="right">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ASIS }, new { @class = "btn btn-primary" }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_ASIS }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ASIS }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

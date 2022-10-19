@@ -1,0 +1,84 @@
+﻿@model Prueba.PROFESOR
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Details</h2>
+
+<div>
+    <h4>PROFESOR</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_TELF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_TELF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PROF_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PROF_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_PROFESOR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

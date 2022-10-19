@@ -1,0 +1,59 @@
+﻿@model Prueba.ASISTENCIA
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Eliminar asistencia</h2>
+
+<div>
+    <h4>ASISTENCIA</h4>
+    <h5>¿Está seguro de eliminar?</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ASIS_FECHA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASIS_FECHA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ASIS_CONF)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ASIS_CONF)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTUDIANTE.EST_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HORARIO.HOR_DIA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HORARIO.HOR_DIA)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            @Html.ActionLink("Back to List", "Index", "ASISTENCIAs", new {@class="btn btn-primary"})
+        </div>
+    }
+</div>

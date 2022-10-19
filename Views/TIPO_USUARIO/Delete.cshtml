@@ -1,0 +1,36 @@
+﻿@model Prueba.TIPO_USUARIO
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Borrar tipo usuario</h2>
+
+
+<div>
+    <h4>BORRAR DE USUARIO</h4>
+    <h5>¿Está seguro de eliminar?</h5>
+    <hr />
+    <dl class="dl-horizontal table table-bordered table-hover">
+        <dt>
+            @Html.DisplayNameFor(model => model.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TU_DESCRIP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger mx-1 my-1" /> |
+            @Html.ActionLink("Volver", "Index", "Home", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

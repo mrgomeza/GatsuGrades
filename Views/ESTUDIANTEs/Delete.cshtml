@@ -1,0 +1,92 @@
+﻿@model Prueba.ESTUDIANTE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+
+<h2>Eliminar estudiante</h2>
+
+
+<div>
+    <h4>ESTUDIANTE</h4>
+    <h5>¿Está seguro de eliminar?</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_FECHANAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_FECHANAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EST_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EST_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REPRESENTANTE.REP_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-success" /> |
+            @Html.ActionLink("Back to List", "Index", "ESTUDIANTEs", new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

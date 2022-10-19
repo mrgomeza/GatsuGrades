@@ -1,0 +1,85 @@
+﻿@model Prueba.REPRESENTANTE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
+
+<h2>Details</h2>
+
+<div>
+    <h4>REPRESENTANTE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_USU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_USU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_NOMBRE)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_NOMBRE)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_APELLIDO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_APELLIDO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_CEDULA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_CEDULA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_DIRECCION)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_DIRECCION)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_TELEFONO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_TELEFONO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.REP_PASSWORD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.REP_PASSWORD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_REP }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
