@@ -48,13 +48,14 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_TIPOU,TU_DESCRIP")] TIPO_USUARIO tIPO_USUARIO)
         {
-            if (ModelState.IsValid)
+            List<TIPO_USUARIO> usu = db.TIPO_USUARIO.Where(us => us.ID_TIPOU == tIPO_USUARIO.ID_TIPOU || us.TU_DESCRIP== tIPO_USUARIO.TU_DESCRIP).ToList();
+            if (ModelState.IsValid && usu.Count==0)
             {
                 db.TIPO_USUARIO.Add(tIPO_USUARIO);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewData["Val"] = "No puede ingresar un usuario con el mismo id de rol o descripción";
             return View(tIPO_USUARIO);
         }
 
@@ -80,12 +81,14 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_TIPOU,TU_DESCRIP")] TIPO_USUARIO tIPO_USUARIO)
         {
-            if (ModelState.IsValid)
+            List<TIPO_USUARIO> usu = db.TIPO_USUARIO.Where(us=> us.TU_DESCRIP == tIPO_USUARIO.TU_DESCRIP).ToList();
+            if (ModelState.IsValid && usu.Count==0)
             {
                 db.Entry(tIPO_USUARIO).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewData["Val"] = "Ingrese otra descripción de usuario";
             return View(tIPO_USUARIO);
         }
 

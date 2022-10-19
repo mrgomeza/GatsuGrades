@@ -60,7 +60,7 @@ namespace Prueba.Controllers
         // GET: PROFESORs/Create
         public ActionResult Create()
         {
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP");
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View();
         }
 
@@ -71,14 +71,21 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_PROFESOR,PROF_USU,ID_TIPOU,PROF_NOMBRE,PROF_APELLIDO,PROF_CEDULA,PROF_DIRECCION,PROF_TELF,PROF_PASSWORD")] PROFESOR pROFESOR)
         {
-            if (ModelState.IsValid)
+            List<PROFESOR> usu=db.PROFESOR.Where(pr=>pr.PROF_USU ==pROFESOR.PROF_USU).ToList();
+            List<PROFESOR> na = db.PROFESOR.Where(pr => pr.PROF_NOMBRE == pROFESOR.PROF_NOMBRE && pr.PROF_APELLIDO==pROFESOR.PROF_APELLIDO).ToList();
+            List<PROFESOR> ce = db.PROFESOR.Where(pr => pr.PROF_CEDULA == pROFESOR.PROF_CEDULA).ToList();
+            List<ESTUDIANTE> est = db.ESTUDIANTE.Where(estu => estu.EST_USU == pROFESOR.PROF_USU).ToList();
+            List<REPRESENTANTE> reps = db.REPRESENTANTE.Where(rep => rep.REP_USU == pROFESOR.PROF_USU).ToList();
+
+            if (ModelState.IsValid && usu.Count==0 && na.Count==0 && ce.Count==0 && est.Count==0 && reps.Count==0)
             {
+                pROFESOR.ID_TIPOU = 2;
                 db.PROFESOR.Add(pROFESOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewData["Val"] = "Existen campos coincidentes con otro usuario";
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View(pROFESOR);
         }
 
@@ -94,7 +101,7 @@ namespace Prueba.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View(pROFESOR);
         }
 
@@ -111,7 +118,7 @@ namespace Prueba.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View(pROFESOR);
         }
 

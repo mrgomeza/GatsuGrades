@@ -9,7 +9,7 @@
 <h2>Gestión de Profesores</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
@@ -67,9 +67,9 @@
             @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
         </td>
         <td align="right">
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_PROFESOR }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_PROFESOR }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_PROFESOR })
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_PROFESOR }, new { @class = "btn btn-primary" })  |
+            @Html.ActionLink("Detalle", "Details", new { id=item.ID_PROFESOR }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.ID_PROFESOR }, new { @class = "btn btn-danger" })
         </td>
     </tr>
 }
