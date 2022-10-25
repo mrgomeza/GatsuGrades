@@ -1,0 +1,240 @@
+﻿
+@{
+    ViewBag.Title = "DespHor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/www/estilos/esthor.css">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<title> Horario Gatsu Grades</title>
+
+
+
+<body>
+    <h1 class="titulo_h2">Asignar Horarios</h1>
+    <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
+
+        <div class="col-xs-3">
+            <label class="">Materia:</label>
+            @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+            <br />
+            <button type="submit" name="button" class="btn btn-primary">Consultar</button>
+        </div>
+        <br />
+        <div class="col-xs-3 panel panel-primary">
+            <h4>@ViewData["ProfNombre"]</h4>
+            <h4>@ViewData["Mat"]</h4>
+            <h4>@ViewData["Grado"]</h4>
+        </div>
+
+    </form>
+    <form method="post">
+        <table class="cal">
+
+            <thead>
+
+                <tr>
+                    <th></th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="horas">7:40 a 8:20 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L1" id="L1" value="L1" class="btn_bloque" style="background-color:@ViewData["Confc1"]" formaction="/HORARIOs/PresionaBotonL1"><p id="lp1">@ViewData["Conf"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M1" id="M1" value="M1" class="btn_bloque" style="background-color:@ViewData["Confc2"]" formaction="/HORARIOs/PresionaBotonM1"><p>@ViewData["Conf2"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI1" id="MI1" value="MI1" class="btn_bloque" style="background-color:@ViewData["Confc3"]" formaction="/HORARIOs/PresionaBotonMI1"><p>@ViewData["Conf3"]</p></button>
+                        <span> Aula </span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J1" id="J1" value="J1" class="btn_bloque" style="background-color:@ViewData["Confc4"]" formaction="/HORARIOs/PresionaBotonJ1"><p>@ViewData["Conf4"]</p></button>
+                        <span> Aula </span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V1" id="V1" value="V1" class="btn_bloque" style="background-color:@ViewData["Confc5"]" formaction="/HORARIOs/PresionaBotonV1"><p>@ViewData["Conf5"]</p></button>
+                        <span> Aula </span>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="horas">8:20 a 9:00 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L2" id="L2" value="L2" class="btn_bloque" style="background-color:@ViewData["Confc6"]" formaction="/HORARIOs/PresionaBotonL2"><p>@ViewData["Conf6"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M2" id="M2" value="M2" class="btn_bloque" style="background-color:@ViewData["Confc7"]" formaction="/HORARIOs/PresionaBotonM2"><p>@ViewData["Conf7"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI2" id="MI2" value="MI2" class="btn_bloque" style="background-color:@ViewData["Confc8"]" formaction="/HORARIOs/PresionaBotonMI2"><p>@ViewData["Conf8"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J2" id="J2" value="J2" class="btn_bloque" style="background-color:@ViewData["Confc9"]" formaction="/HORARIOs/PresionaBotonJ2"><p>@ViewData["Conf9"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V2" id="V2" value="V2" class="btn_bloque" style="background-color:@ViewData["Confc10"]" formaction="/HORARIOs/PresionaBotonV2"><p>@ViewData["Conf10"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="horas">9:00 a 9:40 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L3" id="L3" value="L3" class="btn_bloque" style="background-color:@ViewData["Confc11"]" formaction="/HORARIOs/PresionaBotonL3"><p>@ViewData["Conf11"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M3" id="M3" value="M3" class="btn_bloque" style="background-color:@ViewData["Confc12"]" formaction="/HORARIOs/PresionaBotonM3"><p>@ViewData["Conf12"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI3" id="MI3" value="MI3" class="btn_bloque" style="background-color:@ViewData["Confc13"]" formaction="/HORARIOs/PresionaBotonMI3"><p>@ViewData["Conf13"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J3" id="J3" value="J3" class="btn_bloque" style="background-color:@ViewData["Confc14"]" formaction="/HORARIOs/PresionaBotonJ3"><p>@ViewData["Conf14"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V3" id="V3" value="V3" class="btn_bloque" style="background-color:@ViewData["Confc15"]" formaction="/HORARIOs/PresionaBotonV3"><p>@ViewData["Conf15"]</p></button>
+                        <span> Aula</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="horas">9:40 a 10:10 </td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+
+                <tr>
+                    <td class="horas">10:10 a 10:50 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L4" id="L4" value="L4" class="btn_bloque" style="background-color:@ViewData["Confc16"]" formaction="/HORARIOs/PresionaBotonL4"><p>@ViewData["Conf16"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M4" id="M4" value="M4" class="btn_bloque" style="background-color:@ViewData["Confc17"]" formaction="/HORARIOs/PresionaBotonM4"><p>@ViewData["Conf17"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI4" id="MI4" value="MI4" class="btn_bloque" style="background-color:@ViewData["Confc18"]" formaction="/HORARIOs/PresionaBotonMI4"><p>@ViewData["Conf18"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J4" id="J4" value="J4" class="btn_bloque" style="background-color:@ViewData["Confc19"]" formaction="/HORARIOs/PresionaBotonJ4"><p>@ViewData["Conf19"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V4" id="V4" value="V4" class="btn_bloque" style="background-color:@ViewData["Confc20"]" formaction="/HORARIOs/PresionaBotonV4"><p>@ViewData["Conf20"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="horas">10:50 a 11:30 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L5" id="L5" value="L5" class="btn_bloque" style="background-color:@ViewData["Confc21"]" formaction="/HORARIOs/PresionaBotonL5"><p>@ViewData["Conf21"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M5" id="M5" value="M5" class="btn_bloque" style="background-color:@ViewData["Confc22"]" formaction="/HORARIOs/PresionaBotonM5"><p>@ViewData["Conf22"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI5" id="MI5" value="MI5" class="btn_bloque" style="background-color:@ViewData["Confc23"]" formaction="/HORARIOs/PresionaBotonMI5"><p>@ViewData["Conf23"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J5" id="J5" value="J5" class="btn_bloque" style="background-color:@ViewData["Confc24"]" formaction="/HORARIOs/PresionaBotonJ5"><p>@ViewData["Conf24"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V5" id="V5" value="V5" class="btn_bloque" style="background-color:@ViewData["Confc25"]" formaction="/HORARIOs/PresionaBotonV5"><p>@ViewData["Conf25"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="horas">11:30 a 11:50 </td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                    <td class="rec">RECREO<span> Patio</span></td>
+                </tr>
+                <tr>
+                    <td class="horas">11:50 a 12:30 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L6" id="L6" value="L6" class="btn_bloque" style="background-color:@ViewData["Confc26"]" formaction="/HORARIOs/PresionaBotonL6"><p>@ViewData["Conf26"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M6" id="M6" value="M6" class="btn_bloque" style="background-color:@ViewData["Confc27"]" formaction="/HORARIOs/PresionaBotonM6"><p>@ViewData["Conf27"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI6" id="MI6" value="MI6" class="btn_bloque" style="background-color:@ViewData["Confc28"]" formaction="/HORARIOs/PresionaBotonMI6"><p>@ViewData["Conf28"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J6" id="J6" value="J6" class="btn_bloque" style="background-color:@ViewData["Confc29"]" formaction="/HORARIOs/PresionaBotonJ6"><p>@ViewData["Conf29"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V6" id="V6" value="V6" class="btn_bloque" style="background-color:@ViewData["Confc30"]" formaction="/HORARIOs/PresionaBotonV6"><p>@ViewData["Conf30"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="horas">12:30 a 13:10 </td>
+                    <td class="bloque">
+                        <button type="submit" name="L7" id="L7" value="L7" class="btn_bloque" style="background-color:@ViewData["Confc31"]" formaction="/HORARIOs/PresionaBotonL7"><p>@ViewData["Conf31"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="M7" id="M7" value="M7" class="btn_bloque" style="background-color:@ViewData["Confc32"]" formaction="/HORARIOs/PresionaBotonM7"><p>@ViewData["Conf32"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="MI7" id="MI7" value="MI7" class="btn_bloque" style="background-color:@ViewData["Confc33"]" formaction="/HORARIOs/PresionaBotonMI7"><p>@ViewData["Conf33"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="J7" id="J7" value="J7" class="btn_bloque" style="background-color:@ViewData["Confc34"]" formaction="/HORARIOs/PresionaBotonJ7"><p>@ViewData["Conf34"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                    <td class="bloque">
+                        <button type="submit" name="V7" id="V7" value="V7" class="btn_bloque1" style="background-color:@ViewData["Confc35"]" formaction="/HORARIOs/PresionaBotonV7"><p>@ViewData["Conf35"]</p></button>
+                        <span> Aula</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+</body>
+

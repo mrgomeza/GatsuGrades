@@ -1,294 +1,248 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Desplegar Horario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html lang="es">
-<meta name="language" content="es" />
-<meta http-equiv="Content-Type" content="text/html" charset="Iso-8859-15" />
-<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="~/www/estilos/esthor.css">
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    
+   
     <title> Horario Gatsu Grades</title>
 
-</head>
-
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="img-circle" href="#"><img src="data:image/jpeg;base64,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" width="70" height="50" /></a>
+    <div class="container">
+        <h1 class="titulo_h2">Horarios Gatsu Grades</h1>
+    </div>    
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Información</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Contacto</a>
-                        </li>
+    <div class="container">
+        <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Acciones
-                            </a>
-                            <ul class="dropdown-menu  bg-info">
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("TIPO USUARIO", "Index", "TIPO_USUARIO") </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("PROFESORES", "Index", "PROFESORs")</li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("REPRESENTANTES", "Index", "REPRESENTANTEs")</li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("ESTUDIANTES", "Index", "ESTUDIANTEs")  </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("PERÍODO", "Index", "ANO_LECTIVO")  </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("HORARIOS", "Index", "HORARIOs") </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("ASISTENCIAS", "Index", "ASISTENCIAs") </li>
-                                <li class="nav-item mx-1 my-auto2">@Html.ActionLink("MATERIAS", "Index", "MATERIAs")  </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("NOTAS", "Index", "NOTAs") </li>
-                                <li class="nav-item mx-1 my-auto">@Html.ActionLink("GESTIÓN HORARIO", "HorarioDesp", "HORARIOs") </li>
-
-                            </ul>
-                        </li>
-
-                    </ul>
-
-                </div>
-                <span class="navbar-text m-auto">
-                    <a href=""><img src="https://cdn-icons-png.flaticon.com/128/8669/8669632.png" alt="Admin" width="40" height="40" /></a>
-                </span>
+            <div class="col-xs-3">
+                <label class="">Materia:</label>
+                @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+                <br />
+                <button type="submit" name="button" class="btn btn-primary">Consultar</button>
             </div>
-        </nav>
-    </header>
-    <h1 class="titulo_h">Horarios Gatsu Grades</h1>
-
-
-    <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
-
-        <div class="col-xs-3">
-            <label class="">Materia:</label>
-            @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
             <br />
-            <button type="submit" name="button" class="btn btn-primary">Consultar</button>
+            <div class="col-xs-3 panel panel-primary">
+                <h4>@ViewData["ProfNombre"]</h4>
+                <h4>@ViewData["Mat"]</h4>
+                <h4>@ViewData["Grado"]</h4>
+            </div>
+        </form>
+    </div>
+    <br />
+    <div class="container">
+        <div class="table-responsive">
+            <form method="post">
+                <table class="cal" >
+
+                    <thead>
+
+                        <tr class="table-primary">
+                            <th></th>
+                            <th>Lunes</th>
+                            <th>Martes</th>
+                            <th>Miércoles</th>
+                            <th>Jueves</th>
+                            <th>Viernes</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td class="horas">7:40 a 8:20 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L1" id="L1" value="L1" class="btn_bloque" style="background-color:@ViewData["Confc1"]" formaction="/HORARIOs/PresionaBotonL1"><p id="lp1">@ViewData["Conf"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M1" id="M1" value="M1" class="btn_bloque" style="background-color:@ViewData["Confc2"]" formaction="/HORARIOs/PresionaBotonM1"><p>@ViewData["Conf2"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI1" id="MI1" value="MI1" class="btn_bloque" style="background-color:@ViewData["Confc3"]" formaction="/HORARIOs/PresionaBotonMI1"><p>@ViewData["Conf3"]</p></button>
+                                <span> Aula </span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J1" id="J1" value="J1" class="btn_bloque" style="background-color:@ViewData["Confc4"]" formaction="/HORARIOs/PresionaBotonJ1"><p>@ViewData["Conf4"]</p></button>
+                                <span> Aula </span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V1" id="V1" value="V1" class="btn_bloque" style="background-color:@ViewData["Confc5"]" formaction="/HORARIOs/PresionaBotonV1"><p>@ViewData["Conf5"]</p></button>
+                                <span> Aula </span>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="horas">8:20 a 9:00 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L2" id="L2" value="L2" class="btn_bloque" style="background-color:@ViewData["Confc6"]" formaction="/HORARIOs/PresionaBotonL2"><p>@ViewData["Conf6"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M2" id="M2" value="M2" class="btn_bloque" style="background-color:@ViewData["Confc7"]" formaction="/HORARIOs/PresionaBotonM2"><p>@ViewData["Conf7"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI2" id="MI2" value="MI2" class="btn_bloque" style="background-color:@ViewData["Confc8"]" formaction="/HORARIOs/PresionaBotonMI2"><p>@ViewData["Conf8"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J2" id="J2" value="J2" class="btn_bloque" style="background-color:@ViewData["Confc9"]" formaction="/HORARIOs/PresionaBotonJ2"><p>@ViewData["Conf9"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V2" id="V2" value="V2" class="btn_bloque" style="background-color:@ViewData["Confc10"]" formaction="/HORARIOs/PresionaBotonV2"><p>@ViewData["Conf10"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="horas">9:00 a 9:40 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L3" id="L3" value="L3" class="btn_bloque" style="background-color:@ViewData["Confc11"]" formaction="/HORARIOs/PresionaBotonL3"><p>@ViewData["Conf11"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M3" id="M3" value="M3" class="btn_bloque" style="background-color:@ViewData["Confc12"]" formaction="/HORARIOs/PresionaBotonM3"><p>@ViewData["Conf12"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI3" id="MI3" value="MI3" class="btn_bloque" style="background-color:@ViewData["Confc13"]" formaction="/HORARIOs/PresionaBotonMI3"><p>@ViewData["Conf13"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J3" id="J3" value="J3" class="btn_bloque" style="background-color:@ViewData["Confc14"]" formaction="/HORARIOs/PresionaBotonJ3"><p>@ViewData["Conf14"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V3" id="V3" value="V3" class="btn_bloque" style="background-color:@ViewData["Confc15"]" formaction="/HORARIOs/PresionaBotonV3"><p>@ViewData["Conf15"]</p></button>
+                                <span> Aula</span>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td class="horas">9:40 a 10:10 </td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+
+                        <tr>
+                            <td class="horas">10:10 a 10:50 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L4" id="L4" value="L4" class="btn_bloque" style="background-color:@ViewData["Confc16"]" formaction="/HORARIOs/PresionaBotonL4"><p>@ViewData["Conf16"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M4" id="M4" value="M4" class="btn_bloque" style="background-color:@ViewData["Confc17"]" formaction="/HORARIOs/PresionaBotonM4"><p>@ViewData["Conf17"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI4" id="MI4" value="MI4" class="btn_bloque" style="background-color:@ViewData["Confc18"]" formaction="/HORARIOs/PresionaBotonMI4"><p>@ViewData["Conf18"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J4" id="J4" value="J4" class="btn_bloque" style="background-color:@ViewData["Confc19"]" formaction="/HORARIOs/PresionaBotonJ4"><p>@ViewData["Conf19"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V4" id="V4" value="V4" class="btn_bloque" style="background-color:@ViewData["Confc20"]" formaction="/HORARIOs/PresionaBotonV4"><p>@ViewData["Conf20"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="horas">10:50 a 11:30 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L5" id="L5" value="L5" class="btn_bloque" style="background-color:@ViewData["Confc21"]" formaction="/HORARIOs/PresionaBotonL5"><p>@ViewData["Conf21"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M5" id="M5" value="M5" class="btn_bloque" style="background-color:@ViewData["Confc22"]" formaction="/HORARIOs/PresionaBotonM5"><p>@ViewData["Conf22"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI5" id="MI5" value="MI5" class="btn_bloque" style="background-color:@ViewData["Confc23"]" formaction="/HORARIOs/PresionaBotonMI5"><p>@ViewData["Conf23"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J5" id="J5" value="J5" class="btn_bloque" style="background-color:@ViewData["Confc24"]" formaction="/HORARIOs/PresionaBotonJ5"><p>@ViewData["Conf24"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V5" id="V5" value="V5" class="btn_bloque" style="background-color:@ViewData["Confc25"]" formaction="/HORARIOs/PresionaBotonV5"><p>@ViewData["Conf25"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="horas">11:30 a 11:50 </td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                            <td class="rec">RECREO<span> Patio</span></td>
+                        </tr>
+                        <tr>
+                            <td class="horas">11:50 a 12:30 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L6" id="L6" value="L6" class="btn_bloque" style="background-color:@ViewData["Confc26"]" formaction="/HORARIOs/PresionaBotonL6"><p>@ViewData["Conf26"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M6" id="M6" value="M6" class="btn_bloque" style="background-color:@ViewData["Confc27"]" formaction="/HORARIOs/PresionaBotonM6"><p>@ViewData["Conf27"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI6" id="MI6" value="MI6" class="btn_bloque" style="background-color:@ViewData["Confc28"]" formaction="/HORARIOs/PresionaBotonMI6"><p>@ViewData["Conf28"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J6" id="J6" value="J6" class="btn_bloque" style="background-color:@ViewData["Confc29"]" formaction="/HORARIOs/PresionaBotonJ6"><p>@ViewData["Conf29"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V6" id="V6" value="V6" class="btn_bloque" style="background-color:@ViewData["Confc30"]" formaction="/HORARIOs/PresionaBotonV6"><p>@ViewData["Conf30"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="horas">12:30 a 13:10 </td>
+                            <td class="bloque">
+                                <button type="submit" name="L7" id="L7" value="L7" class="btn_bloque" style="background-color:@ViewData["Confc31"]" formaction="/HORARIOs/PresionaBotonL7"><p>@ViewData["Conf31"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="M7" id="M7" value="M7" class="btn_bloque" style="background-color:@ViewData["Confc32"]" formaction="/HORARIOs/PresionaBotonM7"><p>@ViewData["Conf32"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="MI7" id="MI7" value="MI7" class="btn_bloque" style="background-color:@ViewData["Confc33"]" formaction="/HORARIOs/PresionaBotonMI7"><p>@ViewData["Conf33"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="J7" id="J7" value="J7" class="btn_bloque" style="background-color:@ViewData["Confc34"]" formaction="/HORARIOs/PresionaBotonJ7"><p>@ViewData["Conf34"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                            <td class="bloque">
+                                <button type="submit" name="V7" id="V7" value="V7" class="btn_bloque1" style="background-color:@ViewData["Confc35"]" formaction="/HORARIOs/PresionaBotonV7"><p>@ViewData["Conf35"]</p></button>
+                                <span> Aula</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
         </div>
-        <br />
-        <div class="col-xs-3 panel panel-primary">
-            <h4>@ViewData["ProfNombre"]</h4>
-            <h4>@ViewData["Mat"]</h4>
-            <h4>@ViewData["Grado"]</h4>
-        </div>
+    </div>
 
-    </form>
-    <form method="post">
-        <table class="cal">
-
-            <thead>
-
-                <tr>
-                    <th></th>
-                    <th>Lunes</th>
-                    <th>Martes</th>
-                    <th>Miércoles</th>
-                    <th>Jueves</th>
-                    <th>Viernes</th>
-
-                </tr>
-
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td class="horas">7:40 a 8:20 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L1" id="L1" value="L1" class="btn_bloque" style="background-color:@ViewData["Confc1"]" formaction="/HORARIOs/PresionaBotonL1"><p id="lp1">@ViewData["Conf"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M1" id="M1" value="M1" class="btn_bloque" style="background-color:@ViewData["Confc2"]" formaction="/HORARIOs/PresionaBotonM1"><p>@ViewData["Conf2"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI1" id="MI1" value="MI1" class="btn_bloque" style="background-color:@ViewData["Confc3"]" formaction="/HORARIOs/PresionaBotonMI1"><p>@ViewData["Conf3"]</p></button>
-                        <span> Aula </span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J1" id="J1" value="J1" class="btn_bloque" style="background-color:@ViewData["Confc4"]" formaction="/HORARIOs/PresionaBotonJ1"><p>@ViewData["Conf4"]</p></button>
-                        <span> Aula </span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V1" id="V1" value="V1" class="btn_bloque" style="background-color:@ViewData["Confc5"]" formaction="/HORARIOs/PresionaBotonV1"><p>@ViewData["Conf5"]</p></button>
-                        <span> Aula </span>
-                    </td>
-
-                </tr>
-
-                <tr>
-                    <td class="horas">8:20 a 9:00 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L2" id="L2" value="L2" class="btn_bloque" style="background-color:@ViewData["Confc6"]" formaction="/HORARIOs/PresionaBotonL2"><p>@ViewData["Conf6"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M2" id="M2" value="M2" class="btn_bloque" style="background-color:@ViewData["Confc7"]" formaction="/HORARIOs/PresionaBotonM2"><p>@ViewData["Conf7"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI2" id="MI2" value="MI2" class="btn_bloque" style="background-color:@ViewData["Confc8"]" formaction="/HORARIOs/PresionaBotonMI2"><p>@ViewData["Conf8"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J2" id="J2" value="J2" class="btn_bloque" style="background-color:@ViewData["Confc9"]" formaction="/HORARIOs/PresionaBotonJ2"><p>@ViewData["Conf9"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V2" id="V2" value="V2" class="btn_bloque" style="background-color:@ViewData["Confc10"]" formaction="/HORARIOs/PresionaBotonV2"><p>@ViewData["Conf10"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="horas">9:00 a 9:40 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L3" id="L3" value="L3" class="btn_bloque" style="background-color:@ViewData["Confc11"]" formaction="/HORARIOs/PresionaBotonL3"><p>@ViewData["Conf11"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M3" id="M3" value="M3" class="btn_bloque" style="background-color:@ViewData["Confc12"]" formaction="/HORARIOs/PresionaBotonM3"><p>@ViewData["Conf12"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI3" id="MI3" value="MI3" class="btn_bloque" style="background-color:@ViewData["Confc13"]" formaction="/HORARIOs/PresionaBotonMI3"><p>@ViewData["Conf13"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J3" id="J3" value="J3" class="btn_bloque" style="background-color:@ViewData["Confc14"]" formaction="/HORARIOs/PresionaBotonJ3"><p>@ViewData["Conf14"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V3" id="V3" value="V3" class="btn_bloque" style="background-color:@ViewData["Confc15"]" formaction="/HORARIOs/PresionaBotonV3"><p>@ViewData["Conf15"]</p></button>
-                        <span> Aula</span>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td class="horas">9:40 a 10:10 </td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-
-                <tr>
-                    <td class="horas">10:10 a 10:50 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L4" id="L4" value="L4" class="btn_bloque" style="background-color:@ViewData["Confc16"]" formaction="/HORARIOs/PresionaBotonL4"><p>@ViewData["Conf16"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M4" id="M4" value="M4" class="btn_bloque" style="background-color:@ViewData["Confc17"]" formaction="/HORARIOs/PresionaBotonM4"><p>@ViewData["Conf17"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI4" id="MI4" value="MI4" class="btn_bloque" style="background-color:@ViewData["Confc18"]" formaction="/HORARIOs/PresionaBotonMI4"><p>@ViewData["Conf18"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J4" id="J4" value="J4" class="btn_bloque" style="background-color:@ViewData["Confc19"]" formaction="/HORARIOs/PresionaBotonJ4"><p>@ViewData["Conf19"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V4" id="V4" value="V4" class="btn_bloque" style="background-color:@ViewData["Confc20"]" formaction="/HORARIOs/PresionaBotonV4"><p>@ViewData["Conf20"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="horas">10:50 a 11:30 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L5" id="L5" value="L5" class="btn_bloque" style="background-color:@ViewData["Confc21"]" formaction="/HORARIOs/PresionaBotonL5"><p>@ViewData["Conf21"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M5" id="M5" value="M5" class="btn_bloque" style="background-color:@ViewData["Confc22"]"formaction="/HORARIOs/PresionaBotonM5"><p>@ViewData["Conf22"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI5" id="MI5" value="MI5" class="btn_bloque" style="background-color:@ViewData["Confc23"]" formaction="/HORARIOs/PresionaBotonMI5"><p>@ViewData["Conf23"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J5" id="J5" value="J5" class="btn_bloque" style="background-color:@ViewData["Confc24"]" formaction="/HORARIOs/PresionaBotonJ5"><p>@ViewData["Conf24"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V5" id="V5" value="V5" class="btn_bloque" style="background-color:@ViewData["Confc25"]" formaction="/HORARIOs/PresionaBotonV5"><p>@ViewData["Conf25"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="horas">11:30 a 11:50 </td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                    <td class="rec">RECREO<span> Patio</span></td>
-                </tr>
-                <tr>
-                    <td class="horas">11:50 a 12:30 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L6" id="L6" value="L6" class="btn_bloque" style="background-color:@ViewData["Confc26"]" formaction="/HORARIOs/PresionaBotonL6"><p>@ViewData["Conf26"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M6" id="M6" value="M6" class="btn_bloque" style="background-color:@ViewData["Confc27"]" formaction="/HORARIOs/PresionaBotonM6"><p>@ViewData["Conf27"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI6" id="MI6" value="MI6" class="btn_bloque" style="background-color:@ViewData["Confc28"]" formaction="/HORARIOs/PresionaBotonMI6"><p>@ViewData["Conf28"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J6" id="J6" value="J6" class="btn_bloque" style="background-color:@ViewData["Confc29"]" formaction="/HORARIOs/PresionaBotonJ6"><p>@ViewData["Conf29"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V6" id="V6" value="V6" class="btn_bloque" style="background-color:@ViewData["Confc30"]" formaction="/HORARIOs/PresionaBotonV6"><p>@ViewData["Conf30"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="horas">12:30 a 13:10 </td>
-                    <td class="bloque">
-                        <button type="submit" name="L7" id="L7" value="L7" class="btn_bloque" style="background-color:@ViewData["Confc31"]" formaction="/HORARIOs/PresionaBotonL7"><p>@ViewData["Conf31"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="M7" id="M7" value="M7" class="btn_bloque" style="background-color:@ViewData["Confc32"]" formaction="/HORARIOs/PresionaBotonM7"><p>@ViewData["Conf32"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="MI7" id="MI7" value="MI7" class="btn_bloque" style="background-color:@ViewData["Confc33"]" formaction="/HORARIOs/PresionaBotonMI7"><p>@ViewData["Conf33"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="J7" id="J7" value="J7" class="btn_bloque" style="background-color:@ViewData["Confc34"]" formaction="/HORARIOs/PresionaBotonJ7"><p>@ViewData["Conf34"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                    <td class="bloque">
-                        <button type="submit" name="V7" id="V7" value="V7" class="btn_bloque1" style="background-color:@ViewData["Confc35"]" formaction="/HORARIOs/PresionaBotonV7"><p>@ViewData["Conf35"]</p></button>
-                        <span> Aula</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+   
 
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/www/js/cambioColorBoton.js"></script>
@@ -302,4 +256,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-</html>
+

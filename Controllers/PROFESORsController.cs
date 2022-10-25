@@ -12,7 +12,108 @@ namespace Prueba.Controllers
 {
     public class PROFESORsController : Controller
     {
+        #region validar cedula
+        private string validar(string cedula)
+        {
+            string result = "";
+
+            //Preguntamos si la cedula consta de 10 digitos
+            if (cedula == null)
+            {
+                result = "incorrecta";
+            }
+            if (cedula.Length == 10)
+            {
+
+                //Obtenemos el digito de la region que sonlos dos primeros digitos
+                int digito_region = int.Parse(cedula.Substring(0, 2));
+
+                //Pregunto si la region existe ecuador se divide en 24 regiones
+                if (digito_region >= 1 && digito_region <= 24)
+                {
+
+                    // Extraigo el ultimo digito
+                    string ultimo_digito = cedula.Substring(9);
+
+                    //Agrupo todos los pares y los sumo
+                    int par1 = 0, par2 = 0, par3 = 0, par4 = 0, par5 = 0;
+                    int impar1 = 0, impar2 = 0, impar3 = 0, impar4 = 0, impar5 = 0;
+
+
+                    par1 = int.Parse(cedula.Substring(1, 1));
+                    par2 = int.Parse(cedula.Substring(3, 1));
+                    par3 = int.Parse(cedula.Substring(5, 1));
+                    par4 = int.Parse(cedula.Substring(7, 1));
+
+                    int pares = par1 + par2 + par3 + par4;
+
+                    //Agrupo los impares, los multiplico por un factor de 2, si la resultante es > que 9 le restamos el 9 a la resultante
+                    impar1 = int.Parse(cedula.Substring(0, 1)) * 2;
+                    if (impar1 > 9) { impar1 = (impar1 - 9); }
+
+                    impar2 = int.Parse(cedula.Substring(2, 1)) * 2;
+                    if (impar2 > 9) { impar2 = (impar2 - 9); }
+
+                    impar3 = int.Parse(cedula.Substring(4, 1)) * 2;
+                    if (impar3 > 9) { impar3 = (impar3 - 9); }
+
+                    impar4 = int.Parse(cedula.Substring(6, 1)) * 2;
+                    if (impar4 > 9) { impar4 = (impar4 - 9); }
+
+                    impar5 = int.Parse(cedula.Substring(8, 1)) * 2;
+                    if (impar5 > 9) { impar5 = (impar5 - 9); }
+
+                    int impares = impar1 + impar2 + impar3 + impar4 + impar5;
+
+                    //Suma total
+                    int suma_total = (pares + impares);
+
+                    //extraemos el primero digito
+                    string primer_digito_suma = (suma_total).ToString().Substring(0, 1);
+
+                    //Obtenemos la decena inmediata
+                    int decena = (int.Parse(primer_digito_suma) + 1) * 10;
+
+                    //Obtenemos la resta de la decena inmediata - la suma_total esto nos da el digito validador
+                    int digito_validador = decena - suma_total;
+
+                    //Si el digito validador es = a 10 toma el valor de 0
+                    if (digito_validador == 10)
+                        digito_validador = 0;
+
+                    //Validamos que el digito validador sea igual al de la cedula
+                    if (digito_validador == int.Parse(ultimo_digito))
+                    {
+                        result = ("correcto");
+                    }
+                    else
+                    {
+                        result = ("la cédula:" + cedula + "es incorrecta");
+                    }
+
+                }
+                else
+                {
+                    // imprimimos en consola si la region no pertenece
+                    result = ("Esta cédula no pertenece a ninguna region");
+                }
+            }
+            else if (cedula.Length > 10)
+            {
+                //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
+                result = ("Esta cédula tiene más de 10 dígitos");
+            }
+            else
+            {
+                //imprimimos en consola si la cedula tiene mas o menos de 10 digitos
+                result = ("Esta cédula tiene menos de 10 dígitos");
+            }
+            return result;
+        }
+        #endregion
         private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
+        public static int usu = 0;
+        public static string cel = "";
 
         // GET: PROFESORs
         public ActionResult Index()
@@ -38,6 +139,38 @@ namespace Prueba.Controllers
             else
             {
                 ViewData["Mensaje"] = "Usuario no encontrado";
+                return View();
+            }
+
+        }
+        public ActionResult HomeProfesores()
+        {
+            PROFESOR prof = db.PROFESOR.Find(usu);
+            ViewData["nombre"] = "Bienvenido/a " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
+            return View();
+        }
+        public ActionResult LoginProf()
+        {
+            
+            return View();
+        }
+        
+        //NOE CAMBIOS
+        [HttpPost]
+        public ActionResult LoginProf(string us, string clave)
+        {
+            List<PROFESOR> prof_temp = new List<PROFESOR>();
+            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave).ToList();
+            
+
+            if (prof_temp.Count != 0) //Usuario existe
+            {
+                usu = prof_temp.First().ID_PROFESOR;
+                return RedirectToAction("HomeProfesores", "PROFESORs");
+            }
+            else
+            {
+                ViewData["Mensaje"] = "Usuario no encontrado/Contraseña Incorrecta";
                 return View();
             }
 
@@ -77,7 +210,8 @@ namespace Prueba.Controllers
             List<ESTUDIANTE> est = db.ESTUDIANTE.Where(estu => estu.EST_USU == pROFESOR.PROF_USU).ToList();
             List<REPRESENTANTE> reps = db.REPRESENTANTE.Where(rep => rep.REP_USU == pROFESOR.PROF_USU).ToList();
 
-            if (ModelState.IsValid && usu.Count==0 && na.Count==0 && ce.Count==0 && est.Count==0 && reps.Count==0)
+            cel = validar(pROFESOR.PROF_CEDULA);
+            if (ModelState.IsValid && usu.Count==0 && na.Count==0 && ce.Count==0 && est.Count==0 && reps.Count==0 && cel == "correcto")
             {
                 pROFESOR.ID_TIPOU = 2;
                 db.PROFESOR.Add(pROFESOR);

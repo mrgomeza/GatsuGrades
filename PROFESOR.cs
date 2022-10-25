@@ -21,36 +21,72 @@ namespace Prueba
             this.MATERIA = new HashSet<MATERIA>();
         }
         public int ID_PROFESOR { get; set; }
+
+
+
         [Display(Name = "USUARIO PROFESOR")]
-        [StringLength(10, ErrorMessage = "El usuario debe ser de máximo 10 caracteres")]
+        [StringLength(10, ErrorMessage =
+            "El usuario debe ser de máximo 10 caracteres")]
+        [RegularExpression(@"^[a-z]+$",
+            ErrorMessage = "Coloque solo letras en minúscula porfavor")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string PROF_USU { get; set; }
+
+
+
         [Display(Name = "ROL")]
         [Required(ErrorMessage = "Campo Requerido")]
         public int ID_TIPOU { get; set; }
-        [Display(Name = "NOMBRE PROFESOR")]
+
+
+
+        [Display(Name = "NOMBRE")]
         [StringLength(15, ErrorMessage = "El nombre debe ser de máximo 15 caracteres")]
+        [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
+            ErrorMessage = "Coloque solo letras porfavor")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string PROF_NOMBRE { get; set; }
-        [Display(Name = "APELLIDO PROFESOR")]
+
+
+
+        [Display(Name = "APELLIDO")]
         [StringLength(15, ErrorMessage = "El apellido debe ser de máximo 15 caracteres")]
+        [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
+            ErrorMessage = "Coloque solo letras porfavor")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string PROF_APELLIDO { get; set; }
+
+
+
+
 
         [Display(Name = "CÉDULA")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string PROF_CEDULA { get; set; }
+
+
+
         [Display(Name = "DIRECCIÓN")]
         [StringLength(30, ErrorMessage = "La dirección debe ser de máximo 30 caracteres")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string PROF_DIRECCION { get; set; }
-        [Display(Name = "TELÉFONO")]
+
+
+
+        [Display(Name = "TELÉFONO CELULAR")]
+        [StringLength(10, ErrorMessage =
+            "El teléfono debe tener 10 dígitos")]
         [Required(ErrorMessage = "Campo Requerido")]
         [RegularExpression("^[0-9,$]*$",
             ErrorMessage = "Teléfono inválido")]
         public string PROF_TELF { get; set; }
+
+
+
         [Display(Name = "CONTRASEÑA")]
         [Required(ErrorMessage = "Campo Requerido")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$",
+            ErrorMessage = "Contraseña: letra minúscula, mayúscula, un número y de logitud de 8")]
         public string PROF_PASSWORD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

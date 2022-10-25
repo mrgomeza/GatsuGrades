@@ -6,7 +6,7 @@
 
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
-<h2>Edit</h2>
+<h2>Editar Profesor</h2>
 
 
 @using (Html.BeginForm())
@@ -85,15 +85,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                @Html.ActionLink("Volver", "Index", "PROFESORs", new { @class = "btn btn-primary" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

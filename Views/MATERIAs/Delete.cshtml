@@ -7,9 +7,9 @@
 
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
-<h2>Delete</h2>
+<h2>Borrar Materia</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Estás seguro que deseas borrar?</h3>
 <div>
     <h4>MATERIA</h4>
     <hr />
@@ -59,9 +59,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Borrar" class="btn btn-danger" /> |
+    @Html.ActionLink("Volver", "Index", "MATERIAs", new { @class = "btn btn-primary" })
+</div>
     }
 </div>

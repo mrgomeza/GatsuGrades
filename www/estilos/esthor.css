@@ -28,9 +28,12 @@ table > caption {
     text-align: center;
     background-color: #008080;
     color: #ffffff;
-    font-size: 50px;
+    font-size: 10px;
     padding: 1% 1% 1% 1%;
     margin: 2% 2% 2% 2%;
+}
+.titulo_h2 {
+    text-align: center;  
 }
 
 thead > tr > th {
@@ -96,7 +99,11 @@ th {
 .horas {
     margin: 0;
     padding: 0;
-    background-color: #FFD180;
+    background-color: #A4E7ED;
+    font-size: 200%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: solid 2px #29a6F6;
+    border-radius: 10px;
 }
 
 .Lengua {
@@ -129,10 +136,12 @@ th {
     background-color: #A5D6A7;
 }
 
-.rec{
+.rec {
     padding: 0;
     margin: 0;
-    background-color: #29a6F6;
+    background-color: #EDCDA4;
+    font-size: 200%;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .recreo {
@@ -157,13 +166,13 @@ td:active > span {
 .btn_bloque {
     width: 100%;
     height: 100%;
-    background-color: #A5D6A7;
+    background-color: #89D188;
     border: 2px outset white;
 }
 
 .btn_bloque1 {
     width: 100%;
     height: 100%;
-    background-color: #A5D6A7;
+    background-color: #89D188;
     border: none;
 }

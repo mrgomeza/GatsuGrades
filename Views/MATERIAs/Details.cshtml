@@ -6,7 +6,7 @@
 
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
-<h2>Details</h2>
+<h2>Información</h2>
 
 <div>
     <h4>MATERIA</h4>
@@ -56,6 +56,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_MATERIA }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_MATERIA }, new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Volver", "Index", "MATERIAs", new { @class = "btn btn-primary" })
 </p>

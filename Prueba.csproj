@@ -235,9 +235,11 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Validaciones.js" />
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
     <Content Include="www\estilos\TextosLogin.css" />
+    <Content Include="www\IMGS\logo.jpeg" />
     <Content Include="www\js\cambioColorBoton.js" />
     <Content Include="www\js\llenadoCBHor.js" />
     <EntityDeploy Include="Modelo.edmx">
@@ -333,13 +335,19 @@
     <Content Include="Views\Home\PagPrincipal.cshtml" />
     <Content Include="Views\HORARIOs\HorarioDesp.cshtml" />
     <Content Include="Views\PROFESORs\LoginAdmin.cshtml" />
+    <Content Include="Views\ESTUDIANTEs\HomeEstudiante.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\PROFESORs\LoginProf.cshtml" />
+    <Content Include="Views\PROFESORs\HomeProfesores.cshtml" />
+    <Content Include="Views\REPRESENTANTEs\LoginRep.cshtml" />
+    <Content Include="Views\REPRESENTANTEs\HomeRepresentantes.cshtml" />
+    <Content Include="Views\HORARIOs\DespHor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="class\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="www\IMG\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -11,7 +11,8 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ESTUDIANTE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,13 +23,52 @@ namespace Prueba
         }
     
         public int ID_ESTUDIANTE { get; set; }
+
+        [Display(Name = "USUARIO ESTUDIANTE")]
+        [StringLength(10, ErrorMessage =
+            "El usuario debe ser de máximo 10 caracteres")]
+        [RegularExpression(@"^[a-z]+$",
+            ErrorMessage = "Coloque solo letras en minúscula porfavor")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string EST_USU { get; set; }
+
+
+
+        [Display(Name = "REPRESENTANTE")]
         public int ID_REP { get; set; }
+
+        [Display(Name = "ROL")]
+
         public int ID_TIPOU { get; set; }
+
+        [Display(Name = "NOMBRE")]
+        [StringLength(15, ErrorMessage = "El nombre debe ser de máximo 15 caracteres")]
+        [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
+            ErrorMessage = "Coloque solo letras porfavor")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string EST_NOMBRE { get; set; }
+
+        [Display(Name = "APELLIDO")]
+        [StringLength(15, ErrorMessage = "El apellido debe ser de máximo 15 caracteres")]
+        [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
+            ErrorMessage = "Coloque solo letras porfavor")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string EST_APELLIDO { get; set; }
+
+
+        [Display(Name = "CÉDULA")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public string EST_CEDULA { get; set; }
+
+        [Display(Name = "FECHA NACIMIENTO")]
+        [Required(ErrorMessage = "Campo Requerido")]
         public System.DateTime EST_FECHANAC { get; set; }
+
+
+        [Display(Name = "CONTRASEÑA")]
+        [Required(ErrorMessage = "Campo Requerido")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$",
+            ErrorMessage = "Contraseña: letra minúscula, mayúscula, un número y de logitud de 8")]
         public string EST_PASSWORD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

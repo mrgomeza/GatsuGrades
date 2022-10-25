@@ -7,13 +7,16 @@
 
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
-<h2>Gestión Representantes</h2>
+<h2>Gestión de Representantes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Crear", "Create", "REPRESENTANTEs", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.REP_USU)
         </th>
@@ -35,44 +38,43 @@
         <th>
             @Html.DisplayNameFor(model => model.REP_PASSWORD)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_USU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_APELLIDO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_CEDULA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_DIRECCION)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_TELEFONO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REP_PASSWORD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_REP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_REP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_REP })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_USU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_NOMBRE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_APELLIDO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_CEDULA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_DIRECCION)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_TELEFONO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REP_PASSWORD)
+    </td>
+
+    <td>
+        @Html.ActionLink("Editar", "Edit", new { id = item.ID_REP }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Detalle", "Details", new { id = item.ID_REP }, new { @class = "btn btn-info" })|
+        @Html.ActionLink("Borrar", "Delete", new { id = item.ID_REP }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
 }
 
 </table>

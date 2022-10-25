@@ -8,13 +8,19 @@
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
 
-<h2>Vista de estudiantes</h2>
+<h2>Gestión de Estudiantes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create","ESTUDIANTEs", new { @class = "btn btn-success" })
+    @Html.ActionLink("Crear", "Create","ESTUDIANTEs", new { @class = "btn btn-success" })
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.EST_USU)
         </th>
@@ -33,47 +39,43 @@
         <th>
             @Html.DisplayNameFor(model => model.EST_PASSWORD)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_USU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_NOMBRE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_APELLIDO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_CEDULA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_FECHANAC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EST_PASSWORD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.REPRESENTANTE.REP_USU)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
-        </td>
-        <td align="right">
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ESTUDIANTE }, new { @class = "btn btn-primary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_ESTUDIANTE }, new { @class = "btn btn-info" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ESTUDIANTE }, new { @class = "btn btn-danger" })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.REPRESENTANTE.REP_USU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_USU)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_CEDULA)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_FECHANAC)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EST_PASSWORD)
+    </td>
+
+    <td align="right">
+        @Html.ActionLink("Editar", "Edit", new { id = item.ID_ESTUDIANTE }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Detalle", "Details", new { id = item.ID_ESTUDIANTE }, new { @class = "btn btn-info" }) |
+        @Html.ActionLink("Borrar", "Delete", new { id = item.ID_ESTUDIANTE }, new { @class = "btn btn-danger" })
+    </td>
+</tr>
 }
 
 </table>

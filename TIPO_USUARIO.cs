@@ -26,7 +26,7 @@ namespace Prueba
         [Required(ErrorMessage = "Campo Requerido")]
         [Display(Name = "ID TIPO USUARIO")]
         public int ID_TIPOU { get; set; }
-        [Display(Name = "DESCRIPCIÓN ROL")]
+        [Display(Name = "ROL")]
         [StringLength(10, ErrorMessage = "La descripción debe ser de máximo 10 caracteres")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string TU_DESCRIP { get; set; }

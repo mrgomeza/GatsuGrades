@@ -26,7 +26,7 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ID_TIPOU, "ID_TIPOU", htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.ID_TIPOU, "TIPO USUARIO", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownList("ID_TIPOU", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
             @Html.ValidationMessageFor(model => model.ID_TIPOU, "", new { @class = "text-danger" })
@@ -52,8 +52,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PROF_CEDULA, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PROF_CEDULA, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PROF_CEDULA, "", new { @class = "text-danger" })
+            
+                <input class="form-control text-box single-line" id="ced" name="PROF_CEDULA" type="text">
+
+                <span class="field-validation-valid text-danger" id="salida" data-valmsg-for="PROF_CEDULA" data-valmsg-replace="true"></span>
+            
         </div>
     </div>
 
@@ -86,9 +89,10 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-success" />
+            <input type="submit" value="Crear" onclick="validar()" class="btn btn-success" />
             @Html.ActionLink("Volver", "Index", "PROFESOREs", new { @class = "btn btn-primary" })
         </div>
+        <script src="~/Scripts/Validaciones.js"></script>
     </div>
 </div>
 }
