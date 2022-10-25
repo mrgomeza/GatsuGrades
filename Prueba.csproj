@@ -187,6 +187,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="NOTA.cs">
       <DependentUpon>ModelGG.tt</DependentUpon>
     </Compile>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MoreLinq;
 using Prueba;
 
 namespace Prueba.Controllers
@@ -167,7 +168,38 @@ namespace Prueba.Controllers
         #endregion
         public ActionResult DespHor()
         {
-            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD");
+            List<string> lst1 = db.MATERIA.Select(mat=> mat.MAT_NOMBRE).Distinct().ToList();
+
+            List<SelectListItem> lst = new List<SelectListItem>();
+            List<SelectListItem> lst22 = new List<SelectListItem>();
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            List<string> lst2 = db.MATERIA.Where(mate=>mate.MAT_NOMBRE == "Programacion").Select(mat => mat.MAT_GRADO).ToList();
+            for (int i = 0; i < lst2.Count; i++)
+            {
+                lst22.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
+            }
+            /*{
+            List<SelectListItem> lstmat = (List<SelectListItem>)db.MATERIA.Select(c => new SelectListItem
+                Value = c.MAT_NOMBRE,
+                Text = c.MAT_NOMBRE
+            }).DistinctBy(it => it.Value);*/
+
+
+            /*lst.Add(new SelectListItem() { Text = "Matemática", Value = "Matemática" });
+            lst.Add(new SelectListItem() { Text = "E.Física", Value = "E.Física" });
+            lst.Add(new SelectListItem() { Text = "Ciencias Naturales", Value = "Ciencias Naturales" });
+            lst.Add(new SelectListItem() { Text = "Ciencias Sociales", Value = "Ciencias Sociales" });
+            lst.Add(new SelectListItem() { Text = "Lengua", Value = "Lengua" });
+            lst.Add(new SelectListItem() { Text = "Inglés", Value = "Inglés" });*/
+
+            //ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "MAT_NOMBRE", "MAT_NOMBRE");
+
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.DP_GRADO = lst22;
             return View();
         }
         [HttpPost]
