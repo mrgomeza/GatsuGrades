@@ -3,58 +3,65 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Index</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NP1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NP2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NP3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EQ1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Q1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NP4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NP5)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NP6)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EQ2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Q2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FINAL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ANO_LECTIVO.ANO_DESCRIP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MATERIA.MAT_COD)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP3)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EQ1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Q1)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP4)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP5)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NP6)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EQ2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Q2)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FINAL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ANO_LECTIVO.ANO_DESCRIP)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ESTUDIANTE.EST_USU)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MATERIA.MAT_COD)
+                </th>
+                <th></th>
+            </tr>
+        </table>
+    </div>
+</div>
 
 @foreach (var item in Model) {
     <tr>

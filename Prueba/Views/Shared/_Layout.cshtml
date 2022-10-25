@@ -1,47 +1,72 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Gatsu Grades", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("TIPO_USUARIO", "Index", "TIPO_USUARIO") </li>
-                    <li>@Html.ActionLink("PROFESORES", "Index", "PROFESORs") </li>
-                    <li>@Html.ActionLink("REPRESENTANTES", "Index", "REPRESENTANTEs") </li>
-                    <li>@Html.ActionLink("ESTUDIANTES", "Index", "ESTUDIANTEs") </li>
-                    <li>@Html.ActionLink("ANO_LECTIVO", "Index", "ANO_LECTIVO") </li>
-                    <li>@Html.ActionLink("HORARIOS", "Index", "HORARIOs") </li>
-                    <li>@Html.ActionLink("ASISTENCIAS", "Index", "ASISTENCIAs") </li>
-                    <li>@Html.ActionLink("MATERIAS", "Index", "MATERIAs") </li>
-                    <li>@Html.ActionLink("NOTAS", "Index", "NOTAs") </li>
+    <nav class="navbar navbar-expand-lg navbar-fixed-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">GATSUGRADES</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Acciones
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item affix"> @Html.ActionLink("TIPO_USUARIO", "Index", "TIPO_USUARIO")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("PROFESORES", "Index", "PROFESORs")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("REPRESENTANTES", "Index", "REPRESENTANTEs") </a></li>
+                            <li><a class="dropdown-item">@Html.ActionLink("ESTUDIANTES", "Index", "ESTUDIANTEs")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("ANO_LECTIVO", "Index", "ANO_LECTIVO")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("HORARIOS", "Index", "HORARIOs")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("ASISTENCIAS", "Index", "ASISTENCIAs")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("MATERIAS", "Index", "MATERIAs")</a> </li>
+                            <li><a class="dropdown-item">@Html.ActionLink("NOTAS", "Index", "NOTAs")</a> </li>
+
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
-    </div>
+    </nav>
+
+
+   
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - AnTech</p>
         </footer>
     </div>
 
+
+
+   
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

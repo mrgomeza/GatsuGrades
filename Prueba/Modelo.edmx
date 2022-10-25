@@ -243,33 +243,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_RegistrarEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="ID_EST" Type="int" Mode="In" />
-          <Parameter Name="EST_USU" Type="varchar" Mode="In" />
-          <Parameter Name="ID_REP" Type="int" Mode="In" />
-          <Parameter Name="ID_TIPOU" Type="int" Mode="In" />
-          <Parameter Name="EST_NOMBRE" Type="varchar" Mode="In" />
-          <Parameter Name="EST_APELLIDO" Type="varchar" Mode="In" />
-          <Parameter Name="EST_CEDULA" Type="varchar" Mode="In" />
-          <Parameter Name="EST_FECHANAC" Type="datetime" Mode="In" />
-          <Parameter Name="EST_PASSWORD" Type="varchar" Mode="In" />
-          <Parameter Name="REGISTRADO" Type="bit" Mode="InOut" />
-          <Parameter Name="MENSAJE" Type="varchar" Mode="InOut" />
-        </Function>
-        <Function Name="sp_ValidarEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EST_USU" Type="varchar" Mode="In" />
-          <Parameter Name="EST_PASSWORD" Type="varchar" Mode="In" />
-          <Parameter Name="REGISTRADO" Type="bit" Mode="InOut" />
-          <Parameter Name="MENSAJE" Type="varchar" Mode="InOut" />
-        </Function>
-        <Function Name="ValidarEstudiante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EST_USU" Type="varchar" Mode="In" />
-          <Parameter Name="EST_PASSWORD" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="ValidarEstudiante_SP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="EST_USU" Type="varchar" Mode="In" />
-          <Parameter Name="EST_PASSWORD" Type="varchar" Mode="In" />
-        </Function>
         <EntityContainer Name="GatsuGradesv6ModelStoreContainer">
           <EntitySet Name="ANO_LECTIVO" EntityType="Self.ANO_LECTIVO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ASISTENCIA" EntityType="Self.ASISTENCIA" Schema="dbo" store:Type="Tables" />
@@ -792,11 +765,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_RegistrarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_RegistrarEstudiante" />
-          <FunctionImportMapping FunctionImportName="sp_ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_ValidarEstudiante" />
-          <FunctionImportMapping FunctionImportName="ValidarEstudiante_SP" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante_SP" />
-          <FunctionImportMapping FunctionImportName="ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante" />
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
