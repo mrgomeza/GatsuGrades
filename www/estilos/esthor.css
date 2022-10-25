@@ -42,7 +42,7 @@ thead > tr > th {
     border-radius: 10px;
     height: 50px;
     text-align: center;
-    vertical-align:center;
+    vertical-align:central;
     font-size: 25px;
     margin: 1%;
     padding: 1%;
@@ -100,10 +100,12 @@ th {
     margin: 0;
     padding: 0;
     background-color: #A4E7ED;
-    font-size: 200%;
+    font-size: 100%;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border: solid 2px #29a6F6;
     border-radius: 10px;
+    text-align:center;
+    vertical-align:central;
 }
 
 .Lengua {
@@ -140,8 +142,11 @@ th {
     padding: 0;
     margin: 0;
     background-color: #EDCDA4;
-    font-size: 200%;
+    font-size: 100%;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    vertical-align:central;
+    text-align:center;
+    justify-content:center;
 }
 
 .recreo {

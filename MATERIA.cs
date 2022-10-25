@@ -11,8 +11,7 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class MATERIA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,33 +20,12 @@ namespace Prueba
             this.HORARIO = new HashSet<HORARIO>();
             this.NOTA = new HashSet<NOTA>();
         }
-        [Range(1, 100, ErrorMessage = "Ingrese valores positivos")]
-        [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name = "ID MATERIA")]
+    
         public int ID_MATERIA { get; set; }
-
-
-
-        [Display(Name = "CÓDIGO MATERIA")]
-        [StringLength(5, ErrorMessage = "El cídigo debe tener hasta 5 caracteres")]
-        [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_COD { get; set; }
-
-
         public int ID_PROFESOR { get; set; }
-
-        [Display(Name = "MATERIA")]
-        [StringLength(15, ErrorMessage = "El nombre debe tener hasta 15 caracteres")]
-        [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_NOMBRE { get; set; }
-
-        [Display(Name = "GRADO")]
-        [StringLength(2, ErrorMessage = "El grado puede tener hasta 2 caracteres")]//Debe contener número
-        [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_GRADO { get; set; }
-
-        [Display(Name = "PARALELO")]
-        [StringLength(1, ErrorMessage = "El paralelo solo es una letra")]//Debe ser solo una letra
         public string MAT_PARALELO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

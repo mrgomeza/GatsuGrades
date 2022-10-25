@@ -11,8 +11,7 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TIPO_USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,13 +21,8 @@ namespace Prueba
             this.PROFESOR = new HashSet<PROFESOR>();
             this.REPRESENTANTE = new HashSet<REPRESENTANTE>();
         }
-        [Range(1, 100, ErrorMessage = "Ingrese valores positivos")]
-        [Required(ErrorMessage = "Campo Requerido")]
-        [Display(Name = "ID TIPO USUARIO")]
+    
         public int ID_TIPOU { get; set; }
-        [Display(Name = "ROL")]
-        [StringLength(10, ErrorMessage = "La descripción debe ser de máximo 10 caracteres")]
-        [Required(ErrorMessage = "Campo Requerido")]
         public string TU_DESCRIP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
