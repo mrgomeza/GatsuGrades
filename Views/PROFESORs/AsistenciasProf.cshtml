@@ -1,0 +1,117 @@
+﻿
+@model IEnumerable<Prueba.ESTUDIANTE>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AsistenciasProf</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <br />
+    <form action="@Url.Action("AsistenciasProf","PROFESORs")" method="post">
+
+        <div class="col-xs-3">
+            <label class="">Grado:</label>
+
+            <select name="Grado" class="myselect">
+                <option value="1">1 EGB</option>
+                <option value="2">2 EGB</option>
+                <option value="3">3 EGB</option>
+                <option value="4">4 EGB</option>
+                <option value="5">5 EGB</option>
+                <option value="6">6 EGB</option>
+                <option value="7">7 EGB</option>
+            </select>
+
+
+
+            <label class="">Materia:</label>
+
+            <select name="Materia" class="myselect">
+                <option value="MA">Matemática</option>
+                <option value="LC">Lenguaje y Comunicación</option>
+                <option value="CN">Ciencias Naturales</option>
+                <option value="CS">Ciencias Sociales</option>
+                <option value="EN">Inglés</option>
+                <option value="IN">Computación</option>
+            </select>
+
+            <button type="submit" name="button" class="btn btn-primary btn-sm">Consultar</button>
+        </div>
+        <br />
+
+        <label class="">Horario:</label>
+        @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "dropdown-menu-left", placeholder = "Este dato es necesario..." })
+
+        <div class="col-xs-3 panel panel-primary">
+            <h4>@ViewData["Mensaje"]</h4>
+        </div>
+
+        <br />
+        <br />
+    </form>
+
+
+    <button class="btn btn-success  btn-sm" onclick="seleccionarTodo()">Marcar Todos</button>
+    <button class="btn btn-warning  btn-sm" onclick="desmarcarTodo()">Desmarcar Todos</button>
+
+    <br />
+    <br />
+
+    <form name="f1" action="@Url.Action("CrearAsistencia","PROFESORs")" method="post">
+        <input type="date" id="start" name="fecha"
+               value="2022-10-24"
+               min="2008-01-01" max="2040-12-31">
+        <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+        <br />
+        <br />
+
+        <table class="table" align="center" style="width:65%">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EST_NOMBRE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EST_APELLIDO)
+                </th>
+                <th>
+                    Asistencia
+                </th>
+            </tr>
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+                        </td>
+                        <td align="right">
+                            @Html.CheckBox("asis", true, htmlAttributes: new { @class = "checkbox-inline" })
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+        <h4>@ViewData["Res"]</h4>
+    </form>
+    <script src="~/Scripts/ManejoCheckBox.js"></script>
+</body>
+</html>

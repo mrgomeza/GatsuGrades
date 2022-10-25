@@ -260,6 +260,7 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ManejoCheckBox.js" />
     <Content Include="Scripts\Validaciones.js" />
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
@@ -366,6 +367,7 @@
     <Content Include="Views\Home\PagPrincipal.cshtml" />
     <Content Include="Views\HORARIOs\HorarioDesp.cshtml" />
     <Content Include="Views\PROFESORs\LoginAdmin.cshtml" />
+    <Content Include="Views\PROFESORs\AsistenciasProf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
