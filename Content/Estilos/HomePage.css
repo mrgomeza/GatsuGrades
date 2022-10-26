@@ -22,7 +22,7 @@ a:hover {
 html,
 body {
     /*css for full size background image*/
-    background-image: url(https://scontent.fuio1-1.fna.fbcdn.net/v/t1.6435-9/117951977_584149465592657_4581451875401117936_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=Y0tDomd_8KUAX--JVIA&_nc_ht=scontent.fuio1-1.fna&oh=00_AT82SeWEdLqpQxaWwc-kqsacY4Pu2VhKOM77sZJH-tTxSQ&oe=6370E2CF);
+    background-color: rgb(235, 255, 253);
     height: 100%;
     color: black;
     text-align: center;
