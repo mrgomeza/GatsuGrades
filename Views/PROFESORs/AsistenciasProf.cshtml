@@ -20,7 +20,7 @@
         <div class="col-xs-3">
             <label class="">Grado:</label>
 
-            <select name="Grado" class="myselect">
+            <select name="Grado" class="myselect" id="opt_grado">
                 <option value="1">1 EGB</option>
                 <option value="2">2 EGB</option>
                 <option value="3">3 EGB</option>
@@ -28,13 +28,14 @@
                 <option value="5">5 EGB</option>
                 <option value="6">6 EGB</option>
                 <option value="7">7 EGB</option>
+                <option value="8">8 EGB</option>
+                <option value="9">9 EGB</option>
             </select>
-
 
 
             <label class="">Materia:</label>
 
-            <select name="Materia" class="myselect">
+            <select name="Materia" class="myselect" id="opt_materia">
                 <option value="MA">Matemática</option>
                 <option value="LC">Lenguaje y Comunicación</option>
                 <option value="CN">Ciencias Naturales</option>
@@ -43,16 +44,20 @@
                 <option value="IN">Computación</option>
             </select>
 
-            <button type="submit" name="button" class="btn btn-primary btn-sm">Consultar</button>
+            <button type="submit" onclick="cargar()" name="button" class="btn btn-primary btn-sm">Consultar</button>
         </div>
         <br />
 
         <label class="">Horario:</label>
         @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "dropdown-menu-left", placeholder = "Este dato es necesario..." })
 
-        <div class="col-xs-3 panel panel-primary">
-            <h4>@ViewData["Mensaje"]</h4>
-        </div>
+
+        @if (ViewBag.Alert != null)
+        {
+            <script>
+        alert("@ViewBag.Alert");
+            </script>
+        }
 
         <br />
         <br />
@@ -61,6 +66,12 @@
 
     <button class="btn btn-success  btn-sm" onclick="seleccionarTodo()">Marcar Todos</button>
     <button class="btn btn-warning  btn-sm" onclick="desmarcarTodo()">Desmarcar Todos</button>
+
+    <br />
+    <br />
+
+    <h3>@ViewData["Mat"]</h3>
+
 
     <br />
     <br />
@@ -110,8 +121,10 @@
                 }
             }
         </table>
-        <h4>@ViewData["Res"]</h4>
+        <br />
+        <h5>@ViewData["Res"]</h5>
     </form>
     <script src="~/Scripts/ManejoCheckBox.js"></script>
+
 </body>
 </html>

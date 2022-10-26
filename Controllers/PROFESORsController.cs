@@ -88,6 +88,7 @@ namespace Prueba.Controllers
 
                 if (horario_mat_grado.Count != 0)
                 {
+                    ViewData["Mat"] = "Gestión de Asistencias " + materias_prof[0].MAT_NOMBRE + " " +Grado +  " EGB";
                     AsistenciasProf();
                     //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
                     //Listar combo box con dia y hora del horario
@@ -106,16 +107,16 @@ namespace Prueba.Controllers
                 }
                 else
                 {
-                    ViewBag.Horario = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == 0), "ID_HORARIO", "HOR_DIA");
-                    ViewData["Mensaje"] = "La Materia no tiene un horario asignado";
+                    //ViewBag.Horario = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == 0), "ID_HORARIO", "HOR_DIA");
+                    ViewBag.Alert = "La Materia " + materias_prof[0].MAT_NOMBRE + " no tiene un horario asignado en " + Grado + " EGB";
                     AsistenciasProf();
                 }
 
             }
             else
             {
-                ViewBag.Horario = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == 0), "ID_HORARIO", "HOR_DIA");
-                ViewData["Mensaje"] = "El profesor seleccionado no dicta la materia seleccionada";
+                //ViewBag.Horario = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == 0), "ID_HORARIO", "HOR_DIA");
+                ViewBag.Alert = "El profesor seleccionado no dicta la materia ";
                 AsistenciasProf();
             }
             return View();
@@ -181,7 +182,7 @@ namespace Prueba.Controllers
             if(asis_val_aux.Count == est_grado.Count)
             {
                 //LLAMAR AL METODO
-                ViewData["Res"] = "Ya existen asistencias de los estudiantes en la materia seleccionada";
+                ViewData["Res"] = "Ya existen asistencias registradas de los estudiantes en la fecha seleccionada";
             }
             else //Crea asistencias 
             {
