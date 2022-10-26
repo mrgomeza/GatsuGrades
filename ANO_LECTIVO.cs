@@ -11,7 +11,8 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class ANO_LECTIVO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,8 +20,10 @@ namespace Prueba
         {
             this.NOTA = new HashSet<NOTA>();
         }
-    
+
+        [DisplayName("ID AÑO")]
         public int ID_ANO { get; set; }
+        [DisplayName("AÑO")]
         public string ANO_DESCRIP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -9,82 +9,90 @@
 <h2>Borrar Profesor</h2>
 
 <h3>Estás seguro que deseas borrar?</h3>
-<div>
+
     <h4>PROFESOR</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_USU)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_USU)
-        </dd>
+<div class="container">
+    <div class="container-fluid">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_USU)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_NOMBRE)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_USU)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_NOMBRE)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_NOMBRE)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_APELLIDO)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_NOMBRE)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_APELLIDO)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_APELLIDO)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_CEDULA)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_APELLIDO)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_CEDULA)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_CEDULA)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_DIRECCION)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_CEDULA)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_DIRECCION)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_DIRECCION)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_TELF)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_DIRECCION)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_TELF)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_TELF)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_PASSWORD)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_TELF)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_PASSWORD)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_PASSWORD)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_PASSWORD)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+        </dl>
 
-<div class="form-actions no-color">
-    <input type="submit" value="Borrar" class="btn btn-danger" /> |
-    @Html.ActionLink("Volver", "Index", "PROFESORs", new { @class = "btn btn-primary" })
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-danger" /> |
+                @Html.ActionLink("Volver", "Index", "PROFESORs", new { @class = "btn btn-primary" })
+            </div>
+        }
+    </div>
 </div>
-    }
-</div>
+
+   
+

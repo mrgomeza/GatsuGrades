@@ -11,7 +11,8 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class TIPO_USUARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace Prueba
             this.PROFESOR = new HashSet<PROFESOR>();
             this.REPRESENTANTE = new HashSet<REPRESENTANTE>();
         }
-    
+
+
+        [DisplayName(" ID TIPO USUARIO")]
         public int ID_TIPOU { get; set; }
+        [DisplayName("DESCRIPCIÓN")]
         public string TU_DESCRIP { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

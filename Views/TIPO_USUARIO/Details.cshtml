@@ -11,18 +11,29 @@
 <div>
     <h4>Editar tipo de usuario</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TU_DESCRIP)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TU_DESCRIP)
-        </dd>
+    <div class="container">
+        <div class="container-fluid">
 
-    </dl>
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TU_DESCRIP)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TU_DESCRIP)
+                </dd>
+
+            </dl>
+
+            <p>
+                @Html.ActionLink("Editar", "Edit", new { id = Model.ID_TIPOU }, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Volver", "Index", "Home", new { @class = "btn btn-primary" })
+            </p>
+
+        </div>
+    </div>
+
+    
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_TIPOU }, new {@class="btn btn-success"}) |
-    @Html.ActionLink("Volver", "Index", "Home", new {@class="btn btn-primary"})
-</p>

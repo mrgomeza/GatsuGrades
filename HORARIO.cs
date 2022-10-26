@@ -11,7 +11,8 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class HORARIO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +20,15 @@ namespace Prueba
         {
             this.ASISTENCIA = new HashSet<ASISTENCIA>();
         }
-    
+
+
+        [DisplayName("ID HORARIO")]
         public int ID_HORARIO { get; set; }
+        [DisplayName("ID MATERIA")]
         public int ID_MATERIA { get; set; }
+        [DisplayName("DIA")]
         public string HOR_DIA { get; set; }
+        [DisplayName("HORA")]
         public System.DateTime HOR_HORA { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -116,6 +116,7 @@ namespace Prueba.Controllers
         public static string cel = "";
         public ActionResult HomeRepresentantes()
         {
+
             REPRESENTANTE rep = db.REPRESENTANTE.Find(usu);
             ViewData["nombre"] = "Bienvenido/a " + rep.REP_NOMBRE.ToString() + " " + rep.REP_APELLIDO.ToString();
             return View();

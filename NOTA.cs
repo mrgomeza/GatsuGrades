@@ -11,12 +11,18 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+
     public partial class NOTA
     {
+
+        [DisplayName("ID NOTA")]
         public int ID_NOTA { get; set; }
+        [DisplayName("ID MATERIA")]
         public int ID_MATERIA { get; set; }
+        [DisplayName("ID EST")]
         public int ID_ESTUDIANTE { get; set; }
+        [DisplayName("AÑO")]
         public int ID_ANO { get; set; }
         public Nullable<float> NP1 { get; set; }
         public Nullable<float> NP2 { get; set; }

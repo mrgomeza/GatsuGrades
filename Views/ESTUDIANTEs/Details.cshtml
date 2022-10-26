@@ -9,77 +9,85 @@
 
 <h2>Información</h2>
 
-<div>
-    <h4>ESTUDIANTE</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_USU)
-        </dt>
+<div class="container">
+    <div class="container-fluid">
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_USU)
-        </dd>
+        <div>
+            <h4>ESTUDIANTE</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_USU)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_NOMBRE)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_USU)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_NOMBRE)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_NOMBRE)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_APELLIDO)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_NOMBRE)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_APELLIDO)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_APELLIDO)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_CEDULA)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_APELLIDO)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_CEDULA)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_CEDULA)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_FECHANAC)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_CEDULA)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_FECHANAC)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_FECHANAC)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EST_PASSWORD)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_FECHANAC)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.EST_PASSWORD)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.EST_PASSWORD)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EST_PASSWORD)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.REPRESENTANTE.REP_USU)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.REPRESENTANTE.REP_USU)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.ID_ESTUDIANTE }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Volver", "Index", "ESTUDIANTEs", new { @class = "btn btn-primary" })
+        </p>
+
+
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_ESTUDIANTE }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Volver", "Index", "ESTUDIANTEs", new { @class = "btn btn-primary" })
-</p>
+

@@ -1,4 +1,7 @@
-﻿h2{
+﻿body {
+    background-color: rgb(235, 255, 253);
+}
+h2{
     text-align:center;
     font-weight:bold;
     color:darkblue;
@@ -7,4 +10,16 @@
 h4{
     font-weight:bold;
     color:darkblue;
+}
+.imagenC{
+    max-height:500px;
+    min-height:200px;
+    
+}
+
+.cuerpo {
+    background-image: url(https://adclichosting.com/wp-content/uploads/2021/10/Pagina-en-construccion.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }

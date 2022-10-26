@@ -350,7 +350,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="class\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -12,74 +12,85 @@
 <div>
     <h4>REPRESENTANTE</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_USU)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_USU)
-        </dd>
+    <div class="container">
+        <div class="container-fluid">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_NOMBRE)
-        </dt>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_USU)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_NOMBRE)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_USU)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_APELLIDO)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_NOMBRE)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_APELLIDO)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_NOMBRE)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_CEDULA)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_APELLIDO)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_CEDULA)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_APELLIDO)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_DIRECCION)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_CEDULA)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_DIRECCION)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_CEDULA)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_TELEFONO)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_DIRECCION)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_TELEFONO)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_DIRECCION)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.REP_PASSWORD)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_TELEFONO)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.REP_PASSWORD)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_TELEFONO)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.REP_PASSWORD)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.REP_PASSWORD)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_REP }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Volver", "Index", "REPRESENTANTEs", new { @class = "btn btn-primary" })
-</p>
+                <dt>
+                    @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.ID_REP }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Volver", "Index", "REPRESENTANTEs", new { @class = "btn btn-primary" })
+        </p>
+
+
+    </div>
+    </div>
+
+
+    

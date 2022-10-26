@@ -23,9 +23,7 @@
                 <div class="container-fluid">
                     <a class="img-circle" href="#"><img src="~/www/IMGS/logo.jpeg" width="70" height="50" /></a>
 
-                    <button class="navbar-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                   
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">
                             <li class="nav-item">
@@ -44,7 +42,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Acciones
                                 </a>
-                                <ul class="dropdown-menu  bg-primary text-center">
+                                <ul class="dropdown-menu   bg-light text-center">
                                     <li class="nav-item mx-1 my-auto"><a href="@Url.Action("Index","TIPO_USUARIO")">TIPO USUARIO</a></li>
                                     <li class="nav-item mx-1 my-auto">@Html.ActionLink("PROFESORES", "Index", "PROFESORs")</li>
                                     <li class="nav-item mx-1 my-auto">@Html.ActionLink("REPRESENTANTES", "Index", "REPRESENTANTEs")</li>
@@ -62,7 +60,7 @@
                         </ul>
 
                     </div>
-                    <a class="btn btn-primary" href="/Home/PagPrincipal?Length=4">Log Out</a>
+                    <a class="btn btn-primary" href="/Home/PagPrincipal?Length=4">CERRAR SESIÓN</a>
 
                 </div>
             </nav>

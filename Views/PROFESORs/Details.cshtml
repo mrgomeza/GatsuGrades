@@ -7,78 +7,88 @@
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
 
 <h2>Información</h2>
+<h4>PROFESOR</h4>
+<hr />
 
-<div>
-    <h4>PROFESOR</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_USU)
-        </dt>
+<div class="container">
+    <div class="container-fluid">
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_USU)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_NOMBRE)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_USU)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_NOMBRE)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_USU)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_APELLIDO)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_NOMBRE)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_APELLIDO)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_NOMBRE)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_CEDULA)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_APELLIDO)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_CEDULA)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_APELLIDO)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_DIRECCION)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_CEDULA)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_DIRECCION)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_CEDULA)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_TELF)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_DIRECCION)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_TELF)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_DIRECCION)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PROF_PASSWORD)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_TELF)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PROF_PASSWORD)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_TELF)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.PROF_PASSWORD)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.PROF_PASSWORD)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+            </dd>
+
+        </dl>
+
+    </div>
+
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PROFESOR }, new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Volver", "Index", "PROFESORs", new { @class = "btn btn-primary" })
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID_PROFESOR }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Volver", "Index", "PROFESORs", new { @class = "btn btn-primary" })
-</p>
+
+
+
