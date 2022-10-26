@@ -37,12 +37,12 @@ namespace Prueba
         public int ID_PROFESOR { get; set; }
 
         [Display(Name = "MATERIA")]
-        [StringLength(15, ErrorMessage = "El nombre debe tener hasta 15 caracteres")]
+        [StringLength(30, ErrorMessage = "El nombre debe tener hasta 30 caracteres")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_NOMBRE { get; set; }
 
         [Display(Name = "GRADO")]
-        [StringLength(2, ErrorMessage = "El grado puede tener hasta 2 caracteres")]//Debe contener número
+        [StringLength(5, ErrorMessage = "El grado puede tener hasta 5 caracteres")]//Debe contener número
         [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_GRADO { get; set; }
 

@@ -187,6 +187,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\ComboMatGradViewModel.cs" />
     <Compile Include="Modelos\MATGRAD.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="NOTA.cs">

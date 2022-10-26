@@ -171,28 +171,7 @@ namespace Prueba.Controllers
             }
         }
         #endregion
-        public ActionResult DespHor()
-        {
-            List<string> lst1 = db.MATERIA.Select(mat=> mat.MAT_NOMBRE).Distinct().ToList();
-
-            List<SelectListItem> lst = new List<SelectListItem>();
-            List<SelectListItem> lst2 = new List<SelectListItem>();
-
-            for (int i = 0; i < lst1.Count; i++)
-            {
-                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
-            }
-
-            ViewBag.ID_MATERIA = lst;
-            ViewBag.CB_GRADO = lst2;
-
-            MATGRAD model = new MATGRAD(){
-                matList = new SelectList(lst,"MAT_NOMBRE","MAT_NOMBRE")
-            };
-
-
-            return View(model);
-        }
+        
         [HttpPost]
         public ActionResult DesplegarGrados(string ID_MATERIA)
         {
@@ -222,34 +201,32 @@ namespace Prueba.Controllers
                 matNombre =ID_MATERIA,
                 gradList= new SelectList(lstgrad, "MAT_GRADO", "MAT_GRADO")
             };
-
+            mats = ID_MATERIA;
             model2 = model;
-            return View("DespHor",model);
+            return View("HorarioDesp",model);
         }
-      
-        [HttpPost]
-        public ActionResult DespHor1(string ID_MATERIA,string CB_GRADO)
+        public ActionResult ObtenerDatos(string CB_GRADO)
         {
-            List<MATERIA> mat = db.MATERIA.Where(ma => ma.MAT_NOMBRE == ID_MATERIA && ma.MAT_GRADO == CB_GRADO).ToList();
+            List<MATERIA> mat = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats && ma.MAT_GRADO == CB_GRADO).ToList();
 
             PROFESOR prof = db.PROFESOR.Find(mat.First().ID_PROFESOR);
             idtemp = mat.First().ID_MATERIA;
             List<HORARIO> hora = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
 
-            ViewData["ProfNombre"] = "Nombre Profesor:" + prof.PROF_NOMBRE.ToString();
-            ViewData["Mat"] = "Materia:" + mat.First().MAT_NOMBRE.ToString();
-            ViewData["Grado"] = "Grado:" + mat.First().MAT_GRADO.ToString();
+            ViewData["ProfNombre"] = "Nombre Profesor:" + prof.PROF_NOMBRE.ToString()+" "+ prof.PROF_APELLIDO.ToString();
+            ViewData["Mat"] = "Materia: " + mat.First().MAT_NOMBRE.ToString();
+            ViewData["Grado"] = "Grado: " + mat.First().MAT_GRADO.ToString();
             Pintar(hora);
 
 
             //Grados en base a materia Ingresada
             List<SelectListItem> lstgrad = new List<SelectListItem>();
-            List<string> lst2 = db.MATERIA.Where(mate => mate.MAT_NOMBRE == ID_MATERIA).Select(mate => mate.MAT_GRADO).ToList();
+            List<string> lst2 = db.MATERIA.Where(mate => mate.MAT_NOMBRE == mats).Select(mate => mate.MAT_GRADO).ToList();
             for (int i = 0; i < lst2.Count; i++)
             {
                 lstgrad.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
             }
-            List<string> lst1 = db.MATERIA.Select(mate=> mate.MAT_NOMBRE).Distinct().ToList();
+            List<string> lst1 = db.MATERIA.Select(mate => mate.MAT_NOMBRE).Distinct().ToList();
 
             //Llenamos de nuevo el combo de materias
             List<SelectListItem> lst = new List<SelectListItem>();
@@ -259,33 +236,32 @@ namespace Prueba.Controllers
             {
                 lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
             }
-            ViewBag.ID_MATERIA = lst;
+            ViewBag.ID_MATERIA = new SelectList(lst,"Text","Value",mats);
             ViewBag.CB_GRADO = lstgrad;
 
-            return View("DespHor");
+            return View("HorarioDesp");
         }
+        
         //Horario DESP
         public ActionResult HorarioDesp()
         {
-            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD");
+            List<string> lst1 = db.MATERIA.Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            List<SelectListItem> lst = new List<SelectListItem>();
+            List<SelectListItem> lst2 = new List<SelectListItem>();
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.CB_GRADO = lst2;
+
+
             return View();
         }
-        [HttpPost]
-        public ActionResult HorarioDesp(int ID_MATERIA)
-        {
-            MATERIA mat = db.MATERIA.Find(ID_MATERIA);
-            PROFESOR prof=db.PROFESOR.Find(mat.ID_PROFESOR);
-            idtemp = ID_MATERIA;
-            List<HORARIO> hora=db.HORARIO.Where(hor => hor.ID_MATERIA==idtemp).ToList();
-            
-            ViewData["ProfNombre"]="Nombre Profesor:"+prof.PROF_NOMBRE.ToString();
-            ViewData["Mat"] = "Materia:"+mat.MAT_NOMBRE.ToString();
-            ViewData["Grado"] = "Grado:" + mat.MAT_GRADO.ToString();
-            Pintar(hora);
-           
-            ViewBag.ID_MATERIA = new SelectList(db.MATERIA, "ID_MATERIA", "MAT_COD", ID_MATERIA);
-            return View();
-        }
+        
         #region Botones Horas
         [HttpPost]
         public ActionResult PresionaBotonL1(string L1)
