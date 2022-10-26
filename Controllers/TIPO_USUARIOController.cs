@@ -48,7 +48,9 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_TIPOU,TU_DESCRIP")] TIPO_USUARIO tIPO_USUARIO)
         {
-            List<TIPO_USUARIO> usu = db.TIPO_USUARIO.Where(us => us.ID_TIPOU == tIPO_USUARIO.ID_TIPOU || us.TU_DESCRIP== tIPO_USUARIO.TU_DESCRIP).ToList();
+            List<TIPO_USUARIO> usuarios = db.TIPO_USUARIO.ToList();
+            tIPO_USUARIO.ID_TIPOU= usuarios.Last().ID_TIPOU + 1;
+            List <TIPO_USUARIO> usu = db.TIPO_USUARIO.Where(us => us.ID_TIPOU == tIPO_USUARIO.ID_TIPOU || us.TU_DESCRIP== tIPO_USUARIO.TU_DESCRIP).ToList();
             if (ModelState.IsValid && usu.Count==0)
             {
                 db.TIPO_USUARIO.Add(tIPO_USUARIO);

@@ -57,7 +57,7 @@ namespace Prueba
 
 
         [Display(Name = "DIRECCIÓN")]
-        [StringLength(30, ErrorMessage = "La dirección debe ser de máximo 30 caracteres")]
+        [StringLength(255, ErrorMessage = "La dirección debe ser de máximo 255 caracteres")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string REP_DIRECCION { get; set; }
 

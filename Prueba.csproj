@@ -187,6 +187,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\MATGRAD.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="NOTA.cs">
       <DependentUpon>ModelGG.tt</DependentUpon>
@@ -243,6 +244,7 @@
     <Content Include="www\IMGS\logo.jpeg" />
     <Content Include="www\js\cambioColorBoton.js" />
     <Content Include="www\js\llenadoCBHor.js" />
+    <Content Include="www\js\LlenarCB.js" />
     <EntityDeploy Include="Modelo.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>

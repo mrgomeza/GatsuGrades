@@ -13,18 +13,23 @@
 
 <body>
     <h1 class="titulo_h2">Asignar Horarios</h1>
-    <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
+
+    
+    <form method="post">
+        @using (Html.BeginForm("DesplegarGrados", "HORARIOs", FormMethod.Post, new { @id = "matForm" }))
+        {
+            @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+        }
+        @using (Html.BeginForm("ObtenerDatos", "HORARIOs", FormMethod.Post, new { @id = "datForm" }))
+        {
+            @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
+        }
+
 
         <div class="col-xs-3">
             <label class="">Materia:</label>
-            <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
-                @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @id= "matForm",@class = "form-control" })
-            </form>
-            <form action="@Url.Action("HorarioDesp","HORARIOs")" method="post">
-                @Html.DropDownList("DP_GRADO", null, htmlAttributes: new { @class = "form-control" })
-            </form>
+
             <br />
-            <button type="submit" name="button" class="btn btn-primary">Consultar</button>
         </div>
         <br />
         <div class="col-xs-3 panel panel-primary">
@@ -32,8 +37,10 @@
             <h4>@ViewData["Mat"]</h4>
             <h4>@ViewData["Grado"]</h4>
         </div>
-
+        <button type="submit" formaction="/HORARIOs/DespHor1">Consultar</button>
     </form>
+
+
     <form method="post">
         <table class="cal">
 
@@ -238,10 +245,16 @@
     </form>
     @section scripts
     {
-        <script type="text/javascript">
-            $(fuction() {
-                $("ID_MATERIA")
-            });
+        <script>
+            $('#ID_MATERIA').change(
+                function () {
+                    $("#matForm").submit();
+                });
+            $('#CB_GRADO').change(
+                function () {
+                    $("#datForm").submit();
+                });
+
         </script>
     }
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

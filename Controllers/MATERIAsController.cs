@@ -51,6 +51,8 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_MATERIA,MAT_COD,ID_PROFESOR,MAT_NOMBRE,MAT_GRADO,MAT_PARALELO")] MATERIA mATERIA)
         {
+            List<MATERIA> materias = db.MATERIA.ToList();
+            mATERIA.ID_MATERIA = materias.Last().ID_MATERIA + 1;
             if (ModelState.IsValid)
             {
                 db.MATERIA.Add(mATERIA);
