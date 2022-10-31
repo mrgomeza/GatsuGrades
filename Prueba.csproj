@@ -238,11 +238,24 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\ManejoCheckBox.js" />
     <Content Include="Scripts\Validaciones.js" />
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
+    <Content Include="www\estilos\LoginStyle.css" />
     <Content Include="www\estilos\TextosLogin.css" />
+    <Content Include="www\IMGS\fondohome.jpg" />
+    <Content Include="www\IMGS\fondohome1.jpg" />
+    <Content Include="www\IMGS\fondohome2.jpg" />
+    <Content Include="www\IMGS\fondohome3.jpg" />
     <Content Include="www\IMGS\logo.jpeg" />
+    <Content Include="www\IMGS\logogg1.png" />
+    <Content Include="www\IMGS\logogg2.png" />
+    <Content Include="www\IMGS\logogg3.png" />
+    <Content Include="www\IMGS\logogg4.png" />
+    <Content Include="www\IMGS\logogg5.png" />
+    <Content Include="www\IMGS\logogg6.png" />
+    <Content Include="www\IMGS\logogg7.png" />
     <Content Include="www\js\cambioColorBoton.js" />
     <Content Include="www\js\llenadoCBHor.js" />
     <Content Include="www\js\LlenarCB.js" />
@@ -346,6 +359,9 @@
     <Content Include="Views\REPRESENTANTEs\LoginRep.cshtml" />
     <Content Include="Views\REPRESENTANTEs\HomeRepresentantes.cshtml" />
     <Content Include="Views\HORARIOs\DespHor.cshtml" />
+    <Content Include="Views\PROFESORs\AsistenciasProf.cshtml" />
+    <Content Include="Views\Shared\_Layout3.cshtml" />
+    <Content Include="Views\Shared\_Layout4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

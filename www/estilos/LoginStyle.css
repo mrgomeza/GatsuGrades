@@ -1,0 +1,28 @@
+﻿﻿.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+.img-fluid {
+    width: inherit; /* Make images fill their parent's space. Solves IE8. */
+    max-width: auto; /* Add !important if needed. */
+}
+
+
+@media (max-width: 450px) {
+    .h-custom {
+        height: 100%;
+    }
+}
+
+.lead {
+    text-align: center;
+    font-size: large;
+}

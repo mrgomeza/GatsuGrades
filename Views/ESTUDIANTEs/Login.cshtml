@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     Layout = null;
 }
 
@@ -6,7 +7,10 @@
 
 <html>
 <head>
-    <title>Login</title>
+    <title>Login Administrador</title>
+
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -15,51 +19,64 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <link href="~/www/estilos/TextosLogin.css" rel="stylesheet" />
+    <link href="~/www/estilos/LoginStyle.css" rel="stylesheet" />
+
+
 </head>
 <body>
 
 
-    <div class="container my-5">
-        <div class="d-flex justify-content-center h-100">
-            <div class="user_card">
-                <div class="d-flex justify-content-center">
-                    <div class="brand_logo_container">
-                        <img src="~/www/IMGS/logo.jpeg" class="brand_logo" alt="Logo">
-                    </div>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="~/www/IMGS/logogg7.png" width="300" height="200"
+                         class="img-thumbnail rounded mx-auto d-block" alt="Sample image">
+                    <br />
                 </div>
-                <div class="d-flex justify-content-center form_container">
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                     <form action="@Url.Action("Login","ESTUDIANTEs")" method="post">
+                        <div class="d-flex flex-row align-items-center text-center justify-content-center justify-content-lg-start">
+                            <p class="lead fw-normal mb-0 me-3 fs-1 fw-bold text-center">Estudiante </p>
 
-                        <h3 class="h3TitleL">Estudiante</h3>
+                        </div>
 
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" name="us" class="form-control input_user" value="" placeholder="Nombre de usuario">
+                        <div class="divider d-flex align-items-center my-4">
+                            <p class="text-center fw-bold mx-3 mb-0"></p>
                         </div>
-                        <div class="input-group mb-2">
-                            <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" name="clave" class="form-control input_pass" value="" placeholder="Contraseña">
+
+
+
+                        <!-- User input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" id="form3Example3" name="us" class="form-control form-control-lg"
+                                   placeholder="Ingresa tu usuario" />
+                            <label class="form-label fs-4" for="form3Example3">Usuario</label>
                         </div>
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                            <button type="submit" name="button" class="btn login_btn">Iniciar Sesión</button>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-3">
+                            <input type="password" id="form3Example4" name="clave" class="form-control form-control-lg"
+                                   placeholder="Contraseña" />
+                            <label class="form-label fs-4" for="form3Example4">Contraseña</label>
                         </div>
-                        <div class="d-flex justify-content-center mt-3 login_container">
-                            <p class="alert-danger">@ViewData["Mensaje"]</p>
+
+
+
+                        <div class="text-center text-lg-start mt-4 pt-2">
+                            <button type="submit" class="btn btn-primary btn-lg"
+                                    style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                                INGRESAR
+                            </button>
+
                         </div>
+
                     </form>
                 </div>
-
-
             </div>
+
         </div>
-    </div>
-
-
-
+    </section>
 
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

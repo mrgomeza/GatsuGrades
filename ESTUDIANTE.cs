@@ -42,14 +42,14 @@ namespace Prueba
         public int ID_TIPOU { get; set; }
 
         [Display(Name = "NOMBRE")]
-        [StringLength(15, ErrorMessage = "El nombre debe ser de máximo 15 caracteres")]
+        [StringLength(50, ErrorMessage = "El nombre debe ser de máximo 50 caracteres")]
         [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
             ErrorMessage = "Coloque solo letras porfavor")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string EST_NOMBRE { get; set; }
 
         [Display(Name = "APELLIDO")]
-        [StringLength(15, ErrorMessage = "El apellido debe ser de máximo 15 caracteres")]
+        [StringLength(50, ErrorMessage = "El apellido debe ser de máximo 50 caracteres")]
         [RegularExpression(@"^[A-Z][a-zA-Z\s\u00C0-\u00FF]+$",
             ErrorMessage = "Coloque solo letras porfavor")]
         [Required(ErrorMessage = "Campo Requerido")]

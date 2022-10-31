@@ -15,34 +15,36 @@
     <div class="container">
         <h1 class="titulo_h2">Horarios Gatsu Grades</h1>
     </div>
-    <div class="row">
-        <div class="col">
-            <label class="">Materia:</label>
-            @using (Html.BeginForm("DesplegarGrados", "HORARIOs", FormMethod.Post, new { @id = "matForm" }))
-            {
-                @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <label class="">Materia:</label>
+                @using (Html.BeginForm("DesplegarGrados", "HORARIOs", FormMethod.Post, new { @id = "matForm" }))
+                {
+                    @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
 
+                }
+            </div>
+            <div class="col panel panel-primary">
+                <h4>@ViewData["ProfNombre"]</h4>
+                <h4>@ViewData["Mat"]</h4>
+                <h4>@ViewData["Grado"]</h4>
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="row">
+            <label class="">Grado:</label>
+            @using (Html.BeginForm("ObtenerDatos", "HORARIOs", FormMethod.Post, new { @id = "datForm" }))
+            {
+                @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
+                <br />
+                <div class="col-xs-3">
+                    <button type="submit" id="btnconsultar" name="btnconsultar" class="btn btn-primary">Consultar</button>
+                </div>
+                <br />
             }
         </div>
-        <div class="col panel panel-primary">
-            <h4>@ViewData["ProfNombre"]</h4>
-            <h4>@ViewData["Mat"]</h4>
-            <h4>@ViewData["Grado"]</h4>
-        </div>
-        <div class="col">
-        </div>
-    </div>
-    <div class="row">
-        <label class="">Grado:</label>
-        @using (Html.BeginForm("ObtenerDatos", "HORARIOs", FormMethod.Post, new { @id = "datForm" }))
-        {
-            @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
-            <br />
-            <div class="col-xs-3">
-                <button type="submit" id="btnconsultar" name="btnconsultar" class="btn btn-primary">Consultar</button>
-            </div>
-            <br />
-        }
     </div>
 
     <br />

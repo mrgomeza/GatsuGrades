@@ -15,37 +15,41 @@
 <div class="form-horizontal">
     <h4>Crear de Roles de Usuario</h4>
     <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.ID_TIPOU, htmlAttributes: new { @class = "control-label col-md-2",@hidden="hidden" })
-        <div class="col-md-10">
-            <input class="form-control text-box single-line" data-val="true" data-val-number="El campo ID TIPO USUARIO debe ser un número." data-val-range="Ingrese valores positivos" data-val-range-max="100" data-val-range-min="1" data-val-required="Campo Requerido" id="ID_TIPOU" name="ID_TIPOU" type="number" value=80 hidden>
-            <span class="field-validation-valid text-danger" data-valmsg-for="ID_TIPOU" data-valmsg-replace="true"></span>
+    <div class="container">
+        <div class="container-fluid">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_TIPOU, htmlAttributes: new { @class = "control-label col-md-2", @hidden = "hidden" })
+                    <div class="col-md-10">
+                        <input class="form-control text-box single-line" data-val="true" data-val-number="El campo ID TIPO USUARIO debe ser un número." data-val-range="Ingrese valores positivos" data-val-range-max="100" data-val-range-min="1" data-val-required="Campo Requerido" id="ID_TIPOU" name="ID_TIPOU" type="number" value=80 hidden>
+                        <span class="field-validation-valid text-danger" data-valmsg-for="ID_TIPOU" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TU_DESCRIP, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TU_DESCRIP, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TU_DESCRIP, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-offset-2 col-md-10">
+                    <p class="text-danger">@ViewData["Val"]</p>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Crear" class="btn btn-success mx-2 my-2" />
+                        @Html.ActionLink("Volver", "Index", "TIPO_USUARIO", new { @class = "btn btn-info mx-2 my-2" })
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.TU_DESCRIP, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TU_DESCRIP, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TU_DESCRIP, "", new { @class = "text-danger" })
         </div>
-    </div>
-    <div class="col-md-offset-2 col-md-10">
-        <p class="text-danger">@ViewData["Val"]</p>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Crear" class="btn btn-success mx-2 my-2" />
-            @Html.ActionLink("Volver", "Index", "TIPO_USUARIO", new { @class = "btn btn-info mx-2 my-2" })
-        </div>
-    </div>
-</div>
-}
+        }
 
-<div>
-    
-</div>
+        <div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

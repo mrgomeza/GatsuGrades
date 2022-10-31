@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Prueba.ESTUDIANTE>
+@{
+    ViewBag.Title = "AsistenciasProf";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AsistenciasProf</title>
+    
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <br />
+    <form action="@Url.Action("AsistenciasProf","PROFESORs")" method="post">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <label class="">Grado:</label>
+
+                    <select name="Grado" class="myselect" id="opt_grado">
+                        <option value="1">1 EGB</option>
+                        <option value="2">2 EGB</option>
+                        <option value="3">3 EGB</option>
+                        <option value="4">4 EGB</option>
+                        <option value="5">5 EGB</option>
+                        <option value="6">6 EGB</option>
+                        <option value="7">7 EGB</option>
+                        <option value="8">8 EGB</option>
+                        <option value="9">9 EGB</option>
+                    </select>
+
+
+
+                    <div class="col">
+                        <label class="">Materia:</label>
+                        <select name="Materia" class="myselect" id="opt_materia">
+                            <option value="MA">Matemática</option>
+                            <option value="LC">Lenguaje y Comunicación</option>
+                            <option value="CN">Ciencias Naturales</option>
+                            <option value="CS">Ciencias Sociales</option>
+                            <option value="EN">Inglés</option>
+                            <option value="IN">Computación</option>
+                        </select>
+                        <button type="submit" onclick="cargar()" name="button" class="btn btn-primary btn-sm">Consultar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (ViewBag.Alert != null)
+        {
+            <script>
+        alert("@ViewBag.Alert");
+            </script>
+        }
+
+    </form>
+
+    
+  
+
+    <h3>@ViewData["Mat"]</h3>
+
+    <div class="container">
+        <form name="f1" action="@Url.Action("CrearAsistencia","PROFESORs")" method="post">
+            <label class="">Horario:</label>
+            @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "dropdown-menu-left", placeholder = "Este dato es necesario..." })
+            <br />
+            <div class="container">
+                <input type="date" id="start" name="fecha"
+                       value="2022-10-24"
+                       min="2008-01-01" max="2040-12-31">
+                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+            </div>
+            <br />
+            <div class="container text-center">
+                <button class="btn btn-success  btn-sm" onclick="seleccionarTodo()">Marcar Todos</button>
+                <button class="btn btn-warning  btn-sm" onclick="desmarcarTodo()">Desmarcar Todos</button>
+            </div>
+            <br />
+            <table class="table table-responsive" align="center" style="width:65%">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EST_NOMBRE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EST_APELLIDO)
+                    </th>
+                    <th>
+                        Asistencia
+                    </th>
+                </tr>
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+                            </td>
+                            <td align="right">
+                                @Html.CheckBox("asis", true, htmlAttributes: new { @class = "checkbox-inline" })
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <br />
+            <h5>@ViewData["Res"]</h5>
+        </form>
+    </div>
+    <script src="~/Scripts/ManejoCheckBox.js"></script>
+
+</body>
+</html>
+
+
+

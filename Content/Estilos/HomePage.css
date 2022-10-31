@@ -22,15 +22,30 @@ a:hover {
 html,
 body {
     /*css for full size background image*/
-    background-image: url(https://scontent.fuio1-1.fna.fbcdn.net/v/t1.6435-9/117951977_584149465592657_4581451875401117936_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_ohc=Y0tDomd_8KUAX--JVIA&_nc_ht=scontent.fuio1-1.fna&oh=00_AT82SeWEdLqpQxaWwc-kqsacY4Pu2VhKOM77sZJH-tTxSQ&oe=6370E2CF);
+    /*background-image: url(https://scontent.fuio13-1.fna.fbcdn.net/v/t39.30808-6/300220743_410480817736104_435669264106792618_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=e3f864&_nc_ohc=fJt9-ro8zq8AX_OhI0h&_nc_ht=scontent.fuio13-1.fna&oh=00_AT_oLXDBdxhct87itaFKhK0nZpAzTZNQ6keU5WqvVyXy1g&oe=635F1FF7);*/
+    background-image: url('../../www/IMGS/fondohome3.jpg');
+    background-size: cover;
     height: 100%;
     color: black;
     text-align: center;
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
+.bg-image {
+    /* The image used */
+    background-image: url('../../www/IMGS/fondohome.jpg');
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
-.site-wrapper {
+    .site-wrapper {
     display: table;
     width: 100%;
     height: 100%; /* For at least Firefox */
