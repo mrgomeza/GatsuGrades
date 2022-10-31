@@ -1,6 +1,6 @@
 ﻿using GatsuGradesV6.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using System.Diagnostics;    
 
 namespace GatsuGradesV6.Controllers
 {
