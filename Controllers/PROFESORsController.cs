@@ -146,7 +146,7 @@ namespace Prueba.Controllers
         public ActionResult HomeProfesores()
         {
             PROFESOR prof = db.PROFESOR.Find(usu);
-            ViewData["nombre"] = "Bienvenido/a " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
+            //ViewData["nombre"] = "Bienvenido/a " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
             return View();
         }
         public ActionResult LoginProf()
