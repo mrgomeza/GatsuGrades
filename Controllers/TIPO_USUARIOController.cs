@@ -115,9 +115,17 @@ namespace Prueba.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             TIPO_USUARIO tIPO_USUARIO = db.TIPO_USUARIO.Find(id);
-            db.TIPO_USUARIO.Remove(tIPO_USUARIO);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            List<ESTUDIANTE> lstest = db.ESTUDIANTE.Where(est => est.ID_TIPOU==id).ToList();
+            List<PROFESOR> lstprof = db.PROFESOR.Where(pr => pr.ID_TIPOU == id).ToList();
+            List<REPRESENTANTE> lsrep = db.REPRESENTANTE.Where(rep => rep.ID_TIPOU == id).ToList();
+            if(lstest.Count ==0 && lstprof.Count ==0 && lsrep.Count == 0)
+            {
+                db.TIPO_USUARIO.Remove(tIPO_USUARIO);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Alert = "No puede borrar un registro con dependencias";
+            return RedirectToAction("Delete");
         }
 
         protected override void Dispose(bool disposing)
