@@ -7,7 +7,7 @@
     font-weight: bolder;
     font-size: 70px;
     color: black;
-    text-shadow: 0px 0px 10px #7EB8BD;
+
 }
 .navbar{
     margin:auto;
@@ -15,4 +15,9 @@
 .nav-item{
     text-align:center;
     vertical-align:central;
+}
+
+.botones{
+    text-align:right;
+
 }
