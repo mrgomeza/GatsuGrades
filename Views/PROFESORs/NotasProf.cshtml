@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Prueba.ESTUDIANTE>
 @{
-    ViewBag.Title = "AsistenciasProf";
+    ViewBag.Title = "NotasProf";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>AsistenciasProf</title>
+    <title>Gestión de Notas</title>
 
 </head>
 <body>
@@ -19,51 +19,20 @@
     <br />
 
     <label class="">Materia:</label>
-    <form action="@Url.Action("DesplegarGrados","PROFESORs")" method="post" id="matForm">
+    <form action="@Url.Action("DesplegarGrados1","PROFESORs")" method="post" id="matForm">
         @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
     </form>
 
-    <form action="@Url.Action("ObtenerDatos","PROFESORs")" method="post" id="datForm">
+    <form action="@Url.Action("ObtenerDatos1","PROFESORs")" method="post" id="datForm">
         @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
     </form>
 
-
-
-
-    <form action="@Url.Action("CargarHorario","PROFESORs")" method="post">
-        <button type="submit" name="button" class="btn btn-primary btn-sm">Consultar</button>
-
-        @if (ViewBag.Alert != null)
-        {
-            <script>
-        alert("@ViewBag.Alert");
-            </script>
-        }
-
+    <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
+        <button type="submit" class="btn btn-success btn-sm">Consultar</button>
     </form>
 
-
-
-
-    <h3>@ViewData["Mat"]</h3>
-
     <div class="container">
-        <form name="f1" action="@Url.Action("CrearAsistencia","PROFESORs")" method="post">
-            <label class="">Horario:</label>
-            @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "dropdown-menu-left", placeholder = "Este dato es necesario..." })
-            <br />
-            <div class="container">
-                <input type="date" id="start" name="fecha"
-                       value="2022-10-24"
-                       min="2008-01-01" max="2040-12-31">
-                <button type="submit" class="btn btn-success btn-sm">Guardar</button>
-            </div>
-            <br />
-            <div class="container text-center">
-                <button class="btn btn-success  btn-sm" onclick="seleccionarTodo()">Marcar Todos</button>
-                <button class="btn btn-warning  btn-sm" onclick="desmarcarTodo()">Desmarcar Todos</button>
-            </div>
-            <br />
+        <form name="f1" action="@Url.Action("","PROFESORs")" method="post">
             <table class="table table-responsive" align="center" style="width:65%">
                 <tr>
                     <th>
@@ -76,7 +45,28 @@
                         @Html.DisplayNameFor(model => model.EST_APELLIDO)
                     </th>
                     <th>
-                        Asistencia
+                        Parcial1
+                    </th>
+                    <th>
+                        Parcial2
+                    </th>
+                    <th>
+                        Parcial3
+                    </th>
+                    <th>
+                        ExQ1
+                    </th>
+                    <th>
+                        Parcial4
+                    </th>
+                    <th>
+                        Parcial5
+                    </th>
+                    <th>
+                        Parcial6
+                    </th>
+                    <th>
+                        ExQ2
                     </th>
                 </tr>
 
@@ -95,7 +85,28 @@
                                 @Html.DisplayFor(modelItem => item.EST_APELLIDO)
                             </td>
                             <td align="right">
-                                @Html.CheckBox("asis", true, htmlAttributes: new { @class = "checkbox-inline" })
+                                @Html.TextBox("np1", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("np2", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("np3", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("EQ1", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("np4", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("np5", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("np6", 0, new { @class = "form-control" })
+                            </td>
+                            <td align="right">
+                                @Html.TextBox("EQ2", 0, new { @class = "form-control" })
                             </td>
                         </tr>
                     }
@@ -130,6 +141,4 @@
     }
 </body>
 </html>
-
-
 

@@ -362,6 +362,7 @@
     <Content Include="Views\PROFESORs\AsistenciasProf.cshtml" />
     <Content Include="Views\Shared\_Layout3.cshtml" />
     <Content Include="Views\Shared\_Layout4.cshtml" />
+    <Content Include="Views\PROFESORs\NotasProf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

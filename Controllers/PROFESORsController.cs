@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MoreLinq;
 using Prueba;
 
 namespace Prueba.Controllers
@@ -15,12 +16,17 @@ namespace Prueba.Controllers
         private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
         public static int prof_conectado = 0;
         public static string grad_seleccionado = "";
+        public static string mat_seleccionado = "";
         public static List<HORARIO> horario_mat_grado = new List<HORARIO>();
         public static List<ESTUDIANTE> est_grado = new List<ESTUDIANTE>();
         public static int horario_seleccionado = 0;
         public static int mat_id = 0;
         public static int usu = 0;
         public static string cel = "";
+        public static int idtemp = 0;
+        public static string mats = "";
+        public static string grads = "";
+        public static MATGRAD model2 = new MATGRAD();
 
         // GET: PROFESORs
         public ActionResult Index()
@@ -28,12 +34,82 @@ namespace Prueba.Controllers
             var pROFESOR = db.PROFESOR.Include(p => p.TIPO_USUARIO);
             return View(pROFESOR.ToList());
         }
-        public ActionResult LoginAdmin()
+        
+        #region Notas
+        public ActionResult NotasProf()
         {
+            List<string> lst1 = db.MATERIA.Where(mat => mat.ID_PROFESOR == prof_conectado).Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            List<SelectListItem> lst = new List<SelectListItem>();
+            List<SelectListItem> lst2 = new List<SelectListItem>();
+
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            lst2.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.CB_GRADO = lst2;
             return View();
         }
+        [HttpPost]
+        public ActionResult CargarDatos()
+        {
+            grad_seleccionado = grads;
+            //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
+            est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+
+
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+
+            var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+            ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+
+            return View("NotasProf", est_grado);
+        }
+        #endregion
+        #region Asistencia
         public ActionResult AsistenciasProf()
         {
+            List<string> lst1 = db.MATERIA.Where(mat => mat.ID_PROFESOR == prof_conectado).Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            List<SelectListItem> lst = new List<SelectListItem>();
+            List<SelectListItem> lst2 = new List<SelectListItem>();
+
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            lst2.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.CB_GRADO = lst2;
+
+
             if (horario_mat_grado.Count == 0)
             {
                 var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
@@ -50,67 +126,124 @@ namespace Prueba.Controllers
             //horario_seleccionado = Horario;
             return View();
         }
-        //NOE CAMBIOS
+        //GESTIÓN ASISTENCIAS
         [HttpPost]
-        public ActionResult LoginAdmin(string us, string clave)
+        public ActionResult DesplegarGrados(string ID_MATERIA)
         {
-            List<PROFESOR> prof_temp = new List<PROFESOR>();
-            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave && prof.ID_TIPOU == 4).ToList();
-
-            if (prof_temp.Count != 0) //Usuario existe
+            if (horario_mat_grado.Count == 0)
             {
-                return RedirectToAction("Index", "Home");
+                var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+                //ViewBag.Horario = new SelectList(db.HORARIO, "ID_HORARIO", "HOR_DIA");
             }
             else
             {
-                ViewData["Mensaje"] = "Usuario no encontrado";
-                return View();
+                var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
+                //ViewBag.Horario = horarios;
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
             }
 
-        }
-        public ActionResult HomeProfesores()
-        {
-            PROFESOR prof = db.PROFESOR.Find(usu);
-            ViewData["nombre"] = "Bienvenido/a " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
-            return View();
-        }
-        public ActionResult LoginProf()
-        {
-
-            return View();
-        }
-
-        //NOE CAMBIOS
-        [HttpPost]
-        public ActionResult LoginProf(string us, string clave)
-        {
-            List<PROFESOR> prof_temp = new List<PROFESOR>();
-            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave).ToList();
 
 
-            if (prof_temp.Count != 0) //Usuario existe
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad = new List<SelectListItem>();
+            List<string> lst2 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado && mate.MAT_NOMBRE == ID_MATERIA).Select(mate => mate.MAT_GRADO).ToList();
+            lstgrad.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            for (int i = 0; i < lst2.Count; i++)
             {
-                prof_conectado = prof_temp[0].ID_PROFESOR;
-                usu = prof_temp.First().ID_PROFESOR;
-                return RedirectToAction("HomeProfesores", "PROFESORs");
+                lstgrad.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
+            }
+            List<string> lst1 = db.MATERIA.Where(mat => mat.ID_PROFESOR == prof_conectado).Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            //Llenamos de nuevo el combo de materias
+            List<SelectListItem> lst = new List<SelectListItem>();
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.CB_GRADO = lstgrad;
+
+            MATGRAD model = new MATGRAD()
+            {
+                matList = new SelectList(lst, "MAT_NOMBRE", "MAT_NOMBRE"),
+                matNombre = ID_MATERIA,
+                gradList = new SelectList(lstgrad, "MAT_GRADO", "MAT_GRADO")
+            };
+            mats = ID_MATERIA;
+            model2 = model;
+            return View("AsistenciasProf");
+        }
+        [HttpPost]
+        public ActionResult ObtenerDatos(string CB_GRADO)
+        {
+            if (horario_mat_grado.Count == 0)
+            {
+                var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+                //ViewBag.Horario = new SelectList(db.HORARIO, "ID_HORARIO", "HOR_DIA");
             }
             else
             {
-                ViewData["Mensaje"] = "Usuario no encontrado/Contraseña Incorrecta";
-                return View();
+                var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
+                //ViewBag.Horario = horarios;
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
             }
 
+
+            List<MATERIA> mat = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats && ma.MAT_GRADO == CB_GRADO).ToList();
+
+            PROFESOR prof = db.PROFESOR.Find(mat.First().ID_PROFESOR);
+            idtemp = mat.First().ID_MATERIA;
+            List<HORARIO> hora = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
+
+
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad = new List<SelectListItem>();
+            lstgrad.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst2 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado && mate.MAT_NOMBRE == mats).Select(mate => mate.MAT_GRADO).ToList();
+            for (int i = 0; i < lst2.Count; i++)
+            {
+                lstgrad.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
+            }
+
+
+            //Llenamos de nuevo el combo de materias
+            List<string> lst1 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado).Select(mate => mate.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst = new List<SelectListItem>();
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            ViewBag.ID_MATERIA = new SelectList(lst, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad, "Text", "Value", grads);
+            grads = CB_GRADO;
+
+            return View("AsistenciasProf");
         }
+
+
+
+
         [HttpPost]
-        public ActionResult AsistenciasProf(string Grado, string Materia)
+        public ActionResult CargarHorario()
         {
-            grad_seleccionado = Grado;
+            grad_seleccionado = grads;
             List<MATERIA> materias_prof = new List<MATERIA>();
             est_grado = new List<ESTUDIANTE>();
 
 
             //Listar Materias que da Profesor
-            materias_prof = db.MATERIA.Where(mat => mat.MAT_COD == Materia + Grado && mat.ID_PROFESOR == prof_conectado).ToList();
+            materias_prof = db.MATERIA.Where(mat => mat.MAT_NOMBRE == mats && mat.MAT_GRADO == grad_seleccionado && mat.ID_PROFESOR == prof_conectado).ToList();
 
             if (materias_prof.Count != 0)
             {
@@ -122,29 +255,50 @@ namespace Prueba.Controllers
 
                 if (horario_mat_grado.Count != 0)
                 {
-                    ViewData["Mat"] = "Gestión de Asistencias " + materias_prof[0].MAT_NOMBRE + " " + Grado + " EGB";
+                    ViewData["Mat"] = "Gestión de Asistencias " + materias_prof[0].MAT_NOMBRE + " " + grad_seleccionado + " EGB";
                     var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
                     ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
-                    
+
                     AsistenciasProf();
-                    //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
-                    //Listar combo box con dia y hora del horario
-                    //ViewBag.Horario = horarios;
-                    //Almacena el valor de horario seleccionado
+
+                    //Grados en base a materia Ingresada
+                    List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+                    lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+                    List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+                    for (int k = 0; k < lst3.Count; k++)
+                    {
+                        lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+                    }
+
+
+                    //Llenamos de nuevo el combo de materias
+                    List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+                    List<SelectListItem> lst11 = new List<SelectListItem>();
+
+                    lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+                    for (int r = 0; r < lstm1.Count; r++)
+                    {
+                        lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+                    }
+                    ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+                    ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+
+
+
                     //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
-                    est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == Grado).ToList();
+                    est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
 
 
                     if (est_grado.Count != 0)
                     {
                         //Colocar una tabla de estudiantes y bool asistencia, de acuerdo al horario filtrado
-                        return View(est_grado);
+                        return View("AsistenciasProf", est_grado);
                     }
                 }
                 else
                 {
                     //ViewBag.Horario = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == 0), "ID_HORARIO", "HOR_DIA");
-                    ViewBag.Alert = "La Materia " + materias_prof[0].MAT_NOMBRE + " no tiene un horario asignado en " + Grado + " EGB";
+                    ViewBag.Alert = "La Materia " + materias_prof[0].MAT_NOMBRE + " no tiene un horario asignado en " + grad_seleccionado + " EGB";
                     AsistenciasProf();
                 }
 
@@ -155,7 +309,7 @@ namespace Prueba.Controllers
                 ViewBag.Alert = "El profesor seleccionado no dicta la materia ";
                 AsistenciasProf();
             }
-            return View();
+            return View("AsistenciasProf");
         }
 
         //Carga de datos
@@ -188,10 +342,6 @@ namespace Prueba.Controllers
             List<ASISTENCIA> asis_val_aux = new List<ASISTENCIA>();
             string aux_conf = "";
             horario_seleccionado = Horario;
-
-            int day = fechaaux.Day; // Obtiene el día de una variable DateTime.3
-
-
 
             //Validaciones....
             for (int i = 0; i < est_grado.Count; i++)
@@ -251,11 +401,93 @@ namespace Prueba.Controllers
                     ViewData["Res"] = "Registro ingresado";
                 }
             }
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+
+
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+
             var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
             ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
             return View("AsistenciasProf", est_grado);
         }
+        #endregion
+        #region LoginAdmin
+        public ActionResult LoginAdmin()
+        {
+            return View();
+        }
+        //NOE CAMBIOS
+        [HttpPost]
+        public ActionResult LoginAdmin(string us, string clave)
+        {
+            List<PROFESOR> prof_temp = new List<PROFESOR>();
+            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave && prof.ID_TIPOU == 4).ToList();
 
+            if (prof_temp.Count != 0) //Usuario existe
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewData["Mensaje"] = "Usuario no encontrado";
+                return View();
+            }
+
+        }
+
+        #endregion
+        #region Login
+        public ActionResult LoginProf()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult LoginProf(string us, string clave)
+        {
+            List<PROFESOR> prof_temp = new List<PROFESOR>();
+            prof_temp = db.PROFESOR.Where(prof => prof.PROF_USU == us && prof.PROF_PASSWORD == clave).ToList();
+
+
+            if (prof_temp.Count != 0) //Usuario existe
+            {
+                prof_conectado = prof_temp[0].ID_PROFESOR;
+                usu = prof_temp.First().ID_PROFESOR;
+                return RedirectToAction("HomeProfesores", "PROFESORs");
+            }
+            else
+            {
+                ViewData["Mensaje"] = "Usuario no encontrado/Contraseña Incorrecta";
+                return View();
+            }
+
+        }
+        public ActionResult HomeProfesores()
+        {
+            PROFESOR prof = db.PROFESOR.Find(usu);
+            ViewData["nombre"] = "Bienvenido/a " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
+            return View();
+        }
+        #endregion
+        #region Métodos
         // GET: PROFESORs/Details/5
         public ActionResult Details(int? id)
         {
@@ -363,5 +595,7 @@ namespace Prueba.Controllers
             }
             base.Dispose(disposing);
         }
+        #endregion
+
     }
 }
