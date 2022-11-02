@@ -254,10 +254,17 @@ namespace Prueba.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            List<ESTUDIANTE> lstest=db.ESTUDIANTE.Where(est=>est.ID_REP==id).ToList();
             REPRESENTANTE rEPRESENTANTE = db.REPRESENTANTE.Find(id);
-            db.REPRESENTANTE.Remove(rEPRESENTANTE);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (lstest.Count() == 0)
+            {
+                db.REPRESENTANTE.Remove(rEPRESENTANTE);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Alert = "No puede borrar un registro con dependencias";
+            return View(rEPRESENTANTE);
+
         }
 
         protected override void Dispose(bool disposing)

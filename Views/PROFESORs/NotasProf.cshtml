@@ -27,9 +27,11 @@
         @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
     </form>
 
-    <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
-        <button type="submit" class="btn btn-success btn-sm">Consultar</button>
-    </form>
+    <div class="container">
+        <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
+            <button type="submit" class="btn btn-success btn-sm">Consultar</button>
+        </form>
+    </div>
 
     <div class="container">
         <form name="f1" action="@Url.Action("","PROFESORs")" method="post">
@@ -45,28 +47,37 @@
                         @Html.DisplayNameFor(model => model.EST_APELLIDO)
                     </th>
                     <th>
-                        Parcial1
+                        Parcial 1
                     </th>
                     <th>
-                        Parcial2
+                        Parcial 2
                     </th>
                     <th>
-                        Parcial3
+                        Parcial 3
                     </th>
                     <th>
-                        ExQ1
+                        Examen Q1
                     </th>
                     <th>
-                        Parcial4
+                        Total Q1
                     </th>
                     <th>
-                        Parcial5
+                        Parcial 4
                     </th>
                     <th>
-                        Parcial6
+                        Parcial 5
                     </th>
                     <th>
-                        ExQ2
+                        Parcial 6
+                    </th>
+                    <th>
+                        Examen Q2
+                    </th>
+                    <th>
+                        Total Q2
+                    </th>
+                    <th>
+                        Total
                     </th>
                 </tr>
 
@@ -74,41 +85,47 @@
                 {
                     foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EST_NOMBRE)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EST_APELLIDO)
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np1", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np2", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np3", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("EQ1", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np4", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np5", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("np6", 0, new { @class = "form-control" })
-                            </td>
-                            <td align="right">
-                                @Html.TextBox("EQ2", 0, new { @class = "form-control" })
-                            </td>
-                        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+                </td>
+                <td align="right">
+                    @Html.TextBox("np1", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("np2", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("np3", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("EQ1", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("TQ1", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("np4", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("np5", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("np6", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("EQ2", 0, new { @class = "form-control" })
+                </td>
+                <td align="right">
+                    @Html.TextBox("TQ2", 0, new { @class = "form-control" })
+                </td>
+            </tr>
                     }
                 }
             </table>

@@ -19,6 +19,10 @@ namespace Prueba.Controllers
         public static string grads ="";
         public static MATGRAD model2=new MATGRAD();
 
+        public static string nomdt = "";
+        public static string graddt = "";
+        public static string matdt = "";
+
 
         #region Pintar horario
         [HttpPost]
@@ -186,8 +190,7 @@ namespace Prueba.Controllers
             ViewBag.ID_MATERIA = lst;
             ViewBag.CB_GRADO = lst2;
 
-
-            return View();
+                return View();
         }
 
         [HttpPost]
@@ -228,12 +231,18 @@ namespace Prueba.Controllers
             List<MATERIA> mat = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats && ma.MAT_GRADO == CB_GRADO).ToList();
 
             PROFESOR prof = db.PROFESOR.Find(mat.First().ID_PROFESOR);
+
             idtemp = mat.First().ID_MATERIA;
             List<HORARIO> hora = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
 
-            ViewData["ProfNombre"] = "Nombre Profesor:" + prof.PROF_NOMBRE.ToString()+" "+ prof.PROF_APELLIDO.ToString();
-            ViewData["Mat"] = "Materia: " + mat.First().MAT_NOMBRE.ToString();
-            ViewData["Grado"] = "Grado: " + mat.First().MAT_GRADO.ToString();
+
+            nomdt= "Nombre Profesor: " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
+            matdt= "Materia: " + mat.First().MAT_NOMBRE.ToString();
+            graddt= "Grado: " + mat.First().MAT_GRADO.ToString();
+
+            ViewData["ProfNombre"] = nomdt;
+            ViewData["Mat"] = matdt;
+            ViewData["Grado"] = graddt;
             Pintar(hora);
 
 
@@ -717,6 +726,13 @@ namespace Prueba.Controllers
                         }
                         ViewBag.ID_MATERIA = new SelectList(lst, "Text", "Value", mats);
                         ViewBag.CB_GRADO = new SelectList(lstgrad, "Text", "Value", grads);
+                        //Mantener detalles del profesor
+                        if (nomdt != "" && graddt != "" && matdt != "")
+                        {
+                            ViewData["ProfNombre"] = nomdt;
+                            ViewData["Mat"] = matdt;
+                            ViewData["Grado"] = graddt;
+                        }
                         return View("HorarioDesp");
                     }
 
@@ -761,6 +777,13 @@ namespace Prueba.Controllers
                     }
                     ViewBag.ID_MATERIA = new SelectList(lst, "Text", "Value", mats);
                     ViewBag.CB_GRADO = new SelectList(lstgrad, "Text", "Value", grads);
+                    //Mantener detalles del profesor
+                    if (nomdt != "" && graddt != "" && matdt != "")
+                    {
+                        ViewData["ProfNombre"] = nomdt;
+                        ViewData["Mat"] = matdt;
+                        ViewData["Grado"] = graddt;
+                    }
                     return View("HorarioDesp");
                 }
             }
@@ -789,6 +812,13 @@ namespace Prueba.Controllers
             }
             ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
             ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+            //Mantener detalles del profesor
+            if (nomdt != "" && graddt != "" && matdt != "")
+            {
+                ViewData["ProfNombre"] = nomdt;
+                ViewData["Mat"] = matdt;
+                ViewData["Grado"] = graddt;
+            }
             return View("HorarioDesp");
 
         }

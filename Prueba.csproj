@@ -256,6 +256,7 @@
     <Content Include="www\IMGS\logogg5.png" />
     <Content Include="www\IMGS\logogg6.png" />
     <Content Include="www\IMGS\logogg7.png" />
+    <Content Include="www\IMGS\Semáforo Horario.png" />
     <Content Include="www\js\cambioColorBoton.js" />
     <Content Include="www\js\llenadoCBHor.js" />
     <Content Include="www\js\LlenarCB.js" />

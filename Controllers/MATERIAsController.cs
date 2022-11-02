@@ -118,9 +118,16 @@ namespace Prueba.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             MATERIA mATERIA = db.MATERIA.Find(id);
-            db.MATERIA.Remove(mATERIA);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            List<NOTA> lstnot = db.NOTA.Where(not => not.ID_MATERIA== id).ToList();
+            List<HORARIO> lsthor = db.HORARIO.Where(hor => hor.ID_MATERIA== id).ToList();
+            if(lsthor.Count==0 && lstnot.Count == 0)
+            {
+                db.MATERIA.Remove(mATERIA);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Alert = "No puede borrar un registro con dependencias";
+            return View(mATERIA);
         }
 
         protected override void Dispose(bool disposing)

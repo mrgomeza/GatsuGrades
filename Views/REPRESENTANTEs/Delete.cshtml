@@ -80,12 +80,19 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-<div class="form-actions no-color">
-    <input type="submit" value="Borrar" class="btn btn-danger" /> |
-    @Html.ActionLink("Volver", "Index", "REPRESENTANTEs", new { @class = "btn btn-primary" })
-</div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" /> |
+            @Html.ActionLink("Volver", "Index", "REPRESENTANTEs", new { @class = "btn btn-primary" })
+        </div>
+        if (ViewBag.Alert != null)
+        {
+            <script>
+        alert("@ViewBag.Alert");
+            </script>
+        }
     }
 </div>

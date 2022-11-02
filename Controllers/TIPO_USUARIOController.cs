@@ -125,7 +125,7 @@ namespace Prueba.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Alert = "No puede borrar un registro con dependencias";
-            return RedirectToAction("Delete");
+            return View(tIPO_USUARIO);
         }
 
         protected override void Dispose(bool disposing)

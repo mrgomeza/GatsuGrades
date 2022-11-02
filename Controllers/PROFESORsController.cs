@@ -89,6 +89,106 @@ namespace Prueba.Controllers
 
             return View("NotasProf", est_grado);
         }
+        //GESTIÓN ASISTENCIAS
+        [HttpPost]
+        public ActionResult DesplegarGrados1(string ID_MATERIA)
+        {
+            if (horario_mat_grado.Count == 0)
+            {
+                var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+                //ViewBag.Horario = new SelectList(db.HORARIO, "ID_HORARIO", "HOR_DIA");
+            }
+            else
+            {
+                var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
+                //ViewBag.Horario = horarios;
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+            }
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad = new List<SelectListItem>();
+            List<string> lst2 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado && mate.MAT_NOMBRE == ID_MATERIA).Select(mate => mate.MAT_GRADO).ToList();
+            lstgrad.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            for (int i = 0; i < lst2.Count; i++)
+            {
+                lstgrad.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
+            }
+            List<string> lst1 = db.MATERIA.Where(mat => mat.ID_PROFESOR == prof_conectado).Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            //Llenamos de nuevo el combo de materias
+            List<SelectListItem> lst = new List<SelectListItem>();
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+            ViewBag.ID_MATERIA = lst;
+            ViewBag.CB_GRADO = lstgrad;
+
+            MATGRAD model = new MATGRAD()
+            {
+                matList = new SelectList(lst, "MAT_NOMBRE", "MAT_NOMBRE"),
+                matNombre = ID_MATERIA,
+                gradList = new SelectList(lstgrad, "MAT_GRADO", "MAT_GRADO")
+            };
+            mats = ID_MATERIA;
+            model2 = model;
+            return View("NotasProf");
+        }
+        [HttpPost]
+        public ActionResult ObtenerDatos1(string CB_GRADO)
+        {
+            if (horario_mat_grado.Count == 0)
+            {
+                var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+                //ViewBag.Horario = new SelectList(db.HORARIO, "ID_HORARIO", "HOR_DIA");
+            }
+            else
+            {
+                var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
+                //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
+                //ViewBag.Horario = horarios;
+                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
+            }
+
+
+            List<MATERIA> mat = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats && ma.MAT_GRADO == CB_GRADO).ToList();
+
+            PROFESOR prof = db.PROFESOR.Find(mat.First().ID_PROFESOR);
+            idtemp = mat.First().ID_MATERIA;
+            List<HORARIO> hora = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
+
+
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad = new List<SelectListItem>();
+            lstgrad.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst2 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado && mate.MAT_NOMBRE == mats).Select(mate => mate.MAT_GRADO).ToList();
+            for (int i = 0; i < lst2.Count; i++)
+            {
+                lstgrad.Add(new SelectListItem() { Text = lst2[i], Value = lst2[i] });
+            }
+
+
+            //Llenamos de nuevo el combo de materias
+            List<string> lst1 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado).Select(mate => mate.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst = new List<SelectListItem>();
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst1.Count; i++)
+            {
+                lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
+            }
+
+            ViewBag.ID_MATERIA = new SelectList(lst, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad, "Text", "Value", grads);
+            grads = CB_GRADO;
+
+            return View("NotasProf");
+        }
         #endregion
         #region Asistencia
         public ActionResult AsistenciasProf()
@@ -582,9 +682,17 @@ namespace Prueba.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             PROFESOR pROFESOR = db.PROFESOR.Find(id);
-            db.PROFESOR.Remove(pROFESOR);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            List<MATERIA> lstmat=db.MATERIA.Where(mt=>mt.ID_PROFESOR==id).ToList();
+            if(lstmat.Count == 0)
+            {
+                db.PROFESOR.Remove(pROFESOR);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.Alert = "No puede borrar un registro con dependencias";
+            return View(pROFESOR);
+
+
         }
 
         protected override void Dispose(bool disposing)

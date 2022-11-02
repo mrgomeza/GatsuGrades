@@ -21,7 +21,7 @@ namespace Prueba
             this.ASISTENCIA = new HashSet<ASISTENCIA>();
             this.NOTA = new HashSet<NOTA>();
         }
-    
+        [Display(Name = "ID")]
         public int ID_ESTUDIANTE { get; set; }
 
         [Display(Name = "USUARIO ESTUDIANTE")]
