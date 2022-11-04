@@ -189,6 +189,7 @@
     </Compile>
     <Compile Include="Modelos\ComboMatGradViewModel.cs" />
     <Compile Include="Modelos\MATGRAD.cs" />
+    <Compile Include="Modelos\NotasModel.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
     <Compile Include="NOTA.cs">
       <DependentUpon>ModelGG.tt</DependentUpon>
@@ -242,6 +243,7 @@
     <Content Include="Scripts\Validaciones.js" />
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
+    <Content Include="www\estilos\estnota.css" />
     <Content Include="www\estilos\LoginStyle.css" />
     <Content Include="www\estilos\TextosLogin.css" />
     <Content Include="www\IMGS\fondohome.jpg" />

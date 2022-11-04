@@ -34,7 +34,55 @@ namespace Prueba.Controllers
             var pROFESOR = db.PROFESOR.Include(p => p.TIPO_USUARIO);
             return View(pROFESOR.ToList());
         }
-        
+        public ActionResult CrearNota(float[] NP1, float[] NP2, float[] EQ1, float[] Q1, float[] NP3, float[] NP4, float[] EQ2, float[] Q2, float[] FINAL)
+        {
+            List<int> mat = db.MATERIA.Where(mate => mats == mate.MAT_NOMBRE && mate.MAT_GRADO == grad_seleccionado).Select(mate => mate.ID_MATERIA).ToList();
+
+            //Instancia NOTA
+            NOTA nota = new NOTA();
+
+            //Crear Nota
+            int id_anio = 2022;
+            int mat_id = mat[0];
+
+            for (int i = 0; i < est_grado.Count; i++)
+            {
+            }
+
+
+            //Ingresar datos al modelo
+            List<NotasModel> model = new List<NotasModel>();
+            for (int i = 0; i < est_grado.Count; i++)
+            {
+                NotasModel aux = new NotasModel();
+                aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+                aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                aux.NP1 = 0;
+                model.Add(aux);
+            }
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+            return View("NotasProf", model);
+        }
         #region Notas
         public ActionResult NotasProf()
         {
@@ -58,9 +106,21 @@ namespace Prueba.Controllers
         [HttpPost]
         public ActionResult CargarDatos()
         {
-            grad_seleccionado = grads;
             //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
+            grad_seleccionado = grads;
             est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
+
+            //Ingresar datos al modelo
+            List<Prueba.NotasModel> model = new List<NotasModel>();
+            for (int i = 0; i < est_grado.Count; i++)
+            {
+                NotasModel aux = new NotasModel();
+                aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+                aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                aux.NP1 = 0;
+                model.Add(aux);
+            }
 
             //Grados en base a materia Ingresada
             List<SelectListItem> lstgrad1 = new List<SelectListItem>();
@@ -70,8 +130,6 @@ namespace Prueba.Controllers
             {
                 lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
             }
-
-
             //Llenamos de nuevo el combo de materias
             List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
             List<SelectListItem> lst11 = new List<SelectListItem>();
@@ -84,10 +142,8 @@ namespace Prueba.Controllers
             ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
             ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
 
-            var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
-            ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
 
-            return View("NotasProf", est_grado);
+            return View("NotasProf", model);
         }
         //GESTIÓN ASISTENCIAS
         [HttpPost]

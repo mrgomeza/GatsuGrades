@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Prueba.ESTUDIANTE>
+﻿@model IEnumerable<Prueba.NotasModel>
 @{
     ViewBag.Title = "NotasProf";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
+<link href="~/www/estilos/estnota.css" rel="stylesheet" />
 <!DOCTYPE html>
 
 <html>
@@ -18,24 +18,35 @@
     <br />
     <br />
 
-    <label class="">Materia:</label>
-    <form action="@Url.Action("DesplegarGrados1","PROFESORs")" method="post" id="matForm">
-        @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
-    </form>
-
-    <form action="@Url.Action("ObtenerDatos1","PROFESORs")" method="post" id="datForm">
-        @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
-    </form>
-
     <div class="container">
-        <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
-            <button type="submit" class="btn btn-success btn-sm">Consultar</button>
-        </form>
+        <div class="row">
+            <div class="col">
+                <label class="">Materia:</label>
+                <form action="@Url.Action("DesplegarGrados1","PROFESORs")" method="post" id="matForm">
+                    @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+                </form>
+            </div>
+            <div class="col">
+                <label class="">Grado:</label>
+                <form action="@Url.Action("ObtenerDatos1","PROFESORs")" method="post" id="datForm">
+                    @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
+                </form>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
+                <button type="submit" class="btn btn-success btn-sm">Consultar</button>
+            </form>
+        </div>
+
     </div>
-
+    <br />
     <div class="container">
-        <form name="f1" action="@Url.Action("","PROFESORs")" method="post">
-            <table class="table table-responsive" align="center" style="width:65%">
+        <form name="f1" action="@Url.Action("CrearNota","PROFESORs")" method="post">
+
+            <table class="table table-responsive" align="center" style="width:100%">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
@@ -47,90 +58,84 @@
                         @Html.DisplayNameFor(model => model.EST_APELLIDO)
                     </th>
                     <th>
-                        Parcial 1
+                        @Html.DisplayNameFor(model => model.NP1)
                     </th>
                     <th>
-                        Parcial 2
+                        @Html.DisplayNameFor(model => model.NP2)
                     </th>
                     <th>
-                        Parcial 3
+                        @Html.DisplayNameFor(model => model.EQ1)
                     </th>
                     <th>
-                        Examen Q1
+                        @Html.DisplayNameFor(model => model.Q1)
                     </th>
                     <th>
-                        Total Q1
+                        @Html.DisplayNameFor(model => model.NP3)
                     </th>
                     <th>
-                        Parcial 4
+                        @Html.DisplayNameFor(model => model.NP4)
                     </th>
                     <th>
-                        Parcial 5
+                        @Html.DisplayNameFor(model => model.EQ2)
                     </th>
                     <th>
-                        Parcial 6
+                        @Html.DisplayNameFor(model => model.Q2)
                     </th>
                     <th>
-                        Examen Q2
+                        @Html.DisplayNameFor(model => model.FINAL)
                     </th>
-                    <th>
-                        Total Q2
-                    </th>
-                    <th>
-                        Total
-                    </th>
+                    <th>Acciones</th>
                 </tr>
 
                 @if (Model != null)
                 {
                     foreach (var item in Model)
                     {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EST_NOMBRE)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EST_APELLIDO)
-                </td>
-                <td align="right">
-                    @Html.TextBox("np1", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("np2", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("np3", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("EQ1", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("TQ1", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("np4", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("np5", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("np6", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("EQ2", 0, new { @class = "form-control" })
-                </td>
-                <td align="right">
-                    @Html.TextBox("TQ2", 0, new { @class = "form-control" })
-                </td>
-            </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+                            </td>
+                            <td>
+                                @Html.TextBox("NP1", item.NP1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("NP2", item.NP2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("EQ1", item.EQ1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("Q1", item.Q1, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value="0" })
+                            </td>
+                            <td>
+                                @Html.TextBox("NP3", item.NP3, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("NP4", item.NP4, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("EQ2", item.EQ2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                            </td>
+                            <td>
+                                @Html.TextBox("Q2", item.Q2, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value = "0" })
+                            </td>
+                            <td>
+                                @Html.TextBox("FINAL", item.FINAL, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value = "0" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Editar", "", new { id = item.ID_NOTA }, new { @class = "btn btn-primary" })
+                            </td>
+                        </tr>
                     }
                 }
             </table>
-            <br />
-            <h5>@ViewData["Res"]</h5>
+            <button type="submit" class="btn btn-warning btn-sm">Guardar</button>
         </form>
     </div>
     <script src="~/Scripts/ManejoCheckBox.js"></script>
@@ -158,4 +163,5 @@
     }
 </body>
 </html>
+
 
