@@ -439,9 +439,30 @@ namespace Prueba.Controllers
         {
             DateTime fechaaux = fecha;
             String[] conf = asis;
+            List<string> vals=new List<string>();
             List<ASISTENCIA> asis_val_aux = new List<ASISTENCIA>();
             string aux_conf = "";
+            string bol = "";
+            int aux=0;
             horario_seleccionado = Horario;
+
+            for(int i = 0; i < est_grado.Count; i++)
+            {
+                
+                if (conf[aux] == "true" && conf[aux + 1] == "false")
+                {
+                    bol = "true";
+                    aux = aux + 2;
+
+                }
+                else
+                {
+                    bol = "false";
+                    aux = aux + 1;
+                }
+                   
+                vals.Add(bol);
+            }
 
             //Validaciones....
             for (int i = 0; i < est_grado.Count; i++)
