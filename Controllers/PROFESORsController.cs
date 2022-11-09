@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -547,6 +548,7 @@ namespace Prueba.Controllers
             if (asis_val_aux.Count == est_grado.Count)
             {
                 //LLAMAR AL METODO
+
                 ViewData["Res"] = "Ya existen asistencias registradas de los estudiantes en la fecha seleccionada";
             }
             else //Crea asistencias 
@@ -576,6 +578,8 @@ namespace Prueba.Controllers
                     db.ASISTENCIA.Add(asis_est);
                     db.SaveChanges();
                     ViewData["Res"] = "Registro ingresado";
+
+
                 }
             }
             //Grados en base a materia Ingresada

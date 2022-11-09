@@ -68,6 +68,7 @@
                             <table class="table table-responsive" align="center" style="width:65%">
                                 <tr>
                                     <th>
+                                     
                                         @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
                                     </th>
                                     <th>
@@ -95,8 +96,9 @@
                                             <td>
                                                 @Html.DisplayFor(modelItem => item.EST_APELLIDO)
                                             </td>
-                                            <td>
-                                                <input class="checkbox-inline" id="asis" name="asis" type="checkbox" value="true" size="50">
+                                            <td class="affix center-block">
+
+                                                <input class="form-check-input" id="asis" name="asis" type="checkbox" value="true">
                                                 <input name="asis" type="hidden" value="false">
                                             </td>
                                         </tr>
