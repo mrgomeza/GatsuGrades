@@ -1,0 +1,92 @@
+﻿@model IEnumerable<reporteNotaEst>
+@{
+    ViewBag.Title = "NotasEst";
+
+}
+
+<h2>Reporte Notas @ViewData["nombre"] </h2>
+
+<p>
+
+    @Html.ActionLink("Descargar Excel", "ExportContentToXls")
+    @Html.ActionLink("Descargar PDF", "ExportContentToPdf")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MAT_NOMBRE)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NP1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Q1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Q2)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FINAL)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.MAT_NOMBRE)
+            </th>
+
+            <th>
+                @Html.DisplayFor(modelItem => item.NP1)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.NP2)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.EQ1)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Q1)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.NP3)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.NP4)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.EQ2)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.Q2)
+            </th>
+
+            <th>
+                @Html.DisplayFor(modelItem => item.FINAL)
+            </th>
+
+        </tr>
+    }
+
+</table>
+

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Prueba;
+using Rotativa;
 
 namespace Prueba.Controllers
 {
@@ -136,5 +137,12 @@ namespace Prueba.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+       
+
+
+
+
     }
 }

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 using Prueba;
+using Rotativa;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace Prueba.Controllers
 {
@@ -114,10 +119,64 @@ namespace Prueba.Controllers
         private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
         public static string cel = "";
         public static int usu = 0;
+        public static List<reporteNotaEst> repNota = null;
         public ActionResult Login()
         {
             return View();
         }
+
+        
+
+        public ActionResult NotasEst()
+        {
+
+            ESTUDIANTE estu = db.ESTUDIANTE.Find(usu);
+            ViewData["nombre"] =  estu.EST_NOMBRE.ToString() + " " + estu.EST_APELLIDO.ToString();
+
+            ESTUDIANTE est = new ESTUDIANTE(); 
+            est = db.ESTUDIANTE.Find(usu);
+            string est_grado = est.EST_USU.Substring(est.EST_USU.Length - 1, 1);
+
+            List<MATERIA> materias = new List<MATERIA>();
+            materias =  db.MATERIA.Where(ma => ma.MAT_GRADO == est_grado).ToList();
+
+            NOTA nAux = new NOTA();
+            repNota = new List<reporteNotaEst>();
+
+
+            for (int i = 0; i < materias.Count; i++)
+            {
+                nAux = db.NOTA.Find(materias[i].ID_MATERIA);
+
+                reporteNotaEst auxNota = new reporteNotaEst();
+
+                auxNota.MAT_NOMBRE = materias[i].MAT_NOMBRE; 
+                auxNota.NP1 = nAux.NP1;
+                auxNota.NP2 = nAux.NP2;
+                auxNota.EQ1 = nAux.EQ1;
+                auxNota.Q1 = nAux.Q1;
+                auxNota.NP3 = nAux.NP3;
+                auxNota.NP4 = nAux.NP4;
+                auxNota.EQ2 = nAux.EQ2;
+                auxNota.Q2 = nAux.Q2;
+
+                auxNota.FINAL = nAux.FINAL;
+
+                repNota.Add(auxNota);
+            }
+
+
+            return View(repNota);
+
+
+        }
+
+
+
+
+
+
+
         public ActionResult HomeEstudiante()
         {
             ESTUDIANTE est = db.ESTUDIANTE.Find(usu);
@@ -278,5 +337,36 @@ namespace Prueba.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+        public void ExportContentToXls()
+        {
+            var gv = new GridView
+            {
+                DataSource = repNota
+            };
+            gv.DataBind();
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition",
+                                String.Format("attachment;filename=Notas_{0}.xlsx", DateTime.Now));
+            Response.ContentType = "application/excel";
+
+            var strw = new StringWriter();
+            var htmlTw = new HtmlTextWriter(strw);
+
+            gv.RenderControl(htmlTw);
+            Response.Write(strw.ToString());
+            Response.End();
+        }
+
+        public ActionResult ExportContentToPdf()
+        {
+            string nArchivo = String.Format("Notas_{0}.pdf", DateTime.Now);
+            return new ActionAsPdf("NotasEst", new { nombre = "NotasGlobal" }) { FileName = nArchivo };
+        }
+
+
+
     }
 }

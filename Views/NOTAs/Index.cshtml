@@ -10,6 +10,9 @@
 <h2>Gestión de Notas</h2>
 
 <p>
+
+    @Html.ActionLink("Descargar Excel", "ExportContentToXls")
+
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
@@ -101,7 +104,7 @@
             @Html.DisplayFor(modelItem => item.ESTUDIANTE.EST_USU)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MATERIA.MAT_COD)
+            @Html.DisplayFor(modelItem => item.MATERIA.MAT_NOMBRE)
         </td>
         <td align="right">
             @Html.ActionLink("Edit", "Edit", new { id=item.ID_NOTA }) |

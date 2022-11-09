@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Prueba;
+using System.IO;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Prueba.Controllers
 {
@@ -136,5 +139,29 @@ namespace Prueba.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public void ExportContentToXls()
+        {
+            var gv = new GridView
+            {
+                DataSource = db.NOTA.OrderBy(x => x.ID_ESTUDIANTE).ToList()
+            };
+            gv.DataBind();
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition",
+                                String.Format("attachment;filename=Notas_{0}.xls", DateTime.Now));
+            Response.ContentType = "application/excel";
+
+            var strw = new StringWriter();
+            var htmlTw = new HtmlTextWriter(strw);
+
+            gv.RenderControl(htmlTw);
+            Response.Write(strw.ToString());
+            Response.End();
+
+        }
+
+
     }
 }
