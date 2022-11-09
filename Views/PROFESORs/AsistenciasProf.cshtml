@@ -1,158 +1,142 @@
-﻿@model IEnumerable<Prueba.ESTUDIANTE>
+﻿@model IEnumerable<Prueba.Modelos.Asistencia>
+
 @{
-    ViewBag.Title = "Asistencias Profesor";
+    ViewBag.Title = "AsistenciasProf";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
+<!DOCTYPE html>
 
-<br />
-<br />
-<br />
-<br />
-<div class="container">
-    <div class="container-fluid">
-        <label class="h1 mx-2 my-2">Materia:</label>
-        <div class="row">
-            <div class="col">
-                <form action="@Url.Action("DesplegarGrados","PROFESORs")" method="post" id="matForm">
-                    @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control mx-2 my-2" })
-                </form>
-            </div>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AsistenciasProf</title>
 
+</head>
+<body>
+    <br />
+    <br />
+    <br />
+    <br />
 
-            <div class="col">
-                <form action="@Url.Action("ObtenerDatos","PROFESORs")" method="post" id="datForm">
-                    @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control mx-2 my-2" })
-                </form>
-            </div>
-
-            <div class="col">
-                <form action="@Url.Action("CargarHorario","PROFESORs")" method="post">
-                    <button type="submit" name="button" class="btn btn-primary btn-sm mx-2 my-2 btn-md">Consultar</button>
-
-                    @if (ViewBag.Alert != null)
-                    {
-                        <script>
-        alert("@ViewBag.Alert");
-                        </script>
-                    }
-
-                </form>
-
-            </div>
-
-            <h3>@ViewData["Mat"]</h3>
-
-            <div class="row">
-                <div class="col">
-                    <div class="container">
-                        <form name="f1" action="@Url.Action("CrearAsistencia","PROFESORs")" method="post">
-                            <label class="h2 mx-2 my-2">Horario:</label>
-                            @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "dropdown-menu-left mx-2 my-2", placeholder = "Este dato es necesario..." })
-                            <br /><br />
-                            <div class="container">
-                                <input type="date" id="start" name="fecha"
-                                       value="2022-10-24"
-                                       min="2022-01-01" max="2040-12-31">
-                                <button type="submit" class="btn btn-success btn-md mx-2 my-2 ">Guardar</button>
-                                <button class="btn btn-success btn-md  mx-3 my-2 botones" onclick="seleccionarTodo()">Marcar Todos</button>
-                                <button class="btn btn-warning btn-md  mx-3 my-2 botones" onclick="desmarcarTodo()">Desmarcar Todos</button>
-                                <div class="container text-right">
-
-                                </div>
-
-                            </div>
-                            <br />
-
-                            <br />
-                            <table class="table table-responsive" align="center" style="width:65%">
-                                <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.EST_NOMBRE)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.EST_APELLIDO)
-                                    </th>
-                                    <th>
-                                        Asistencia
-                                    </th>
-                                </tr>
-
-                                @if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.EST_NOMBRE)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.EST_APELLIDO)
-                                            </td>
-                                            <td>
-                                                <input class="checkbox-inline" id="asis" name="asis" type="checkbox" value="true" size="50">
-                                                <input name="asis" type="hidden" value="false">
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                            </table>
-                            <br />
-                            <h5>@ViewData["Res"]</h5>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
+    <div class="row">
+        <div class="col">
+            <form action="@Url.Action("DesplegarGrados","PROFESORs")" method="post" id="matForm">
+                <label class="">Materia:</label>
+                @Html.DropDownList("ID_MATERIA", null, htmlAttributes: new { @class = "form-control" })
+            </form>
         </div>
 
+        <div class="col">
+            <form action="@Url.Action("ObtenerDatos","PROFESORs")" method="post" id="datForm">
+                <label class="">Grado:</label>
+                @Html.DropDownList("CB_GRADO", null, htmlAttributes: new { @class = "form-control" })
+            </form>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
+        <div class="col">
+            <form action="@Url.Action("CargarHorario1","PROFESORs")" method="post" id="horform">
+                <label class="">Horario:</label>
+                @Html.DropDownList("Horario", null, htmlAttributes: new { @class = "form-control" })
+            </form>
+        </div>
     </div>
-</div>
+    <br />
+    <div class="row">
+        <form action="@Url.Action("ConsultarAsistencia","PROFESORs")" method="post" id="horform">
+            <label class="">Fecha:</label>
+            @Html.TextBox("fecha", "2022-10-24", htmlAttributes: new { @class = "form-control", @type = "date" })
+
+            <br />
+            <button type="submit" class="btn btn-warning btn-sm">Consultar</button>
+        </form>
+    </div>
 
 
+    <div class="container text-center">
+        <br />
+        <button class="btn btn-success  btn-sm" onclick="seleccionarTodo()">Marcar Todos</button>
+        <button class="btn btn-warning  btn-sm" onclick="desmarcarTodo()">Desmarcar Todos</button>
+    </div>
 
-<script src="~/Scripts/ManejoCheckBox.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    $(document).ready(
-        function () {
-            check();
-        });
-</script>
-@section scripts
-    {
+    <br />
+    <div class="container">
+        <form name="f1" action="@Url.Action("CrearAsistencia","PROFESORs")" method="post">
+
+            <br />
+            <br />
+            <table class="table table-responsive" align="center" style="width:65%">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EST_NOMBRE)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EST_APELLIDO)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ASIS_CONF)
+                    </th>
+                </tr>
+
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ID_ESTUDIANTE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_NOMBRE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EST_APELLIDO)
+                            </td>
+                            <td align="right">
+                                @Html.CheckBox("asis", item.ASIS_CONF)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <br />
+            <h5>@ViewData["Res"]</h5>
+            <button type="submit" class="btn btn-success btn-sm">Guardar</button>
+        </form>
+    </div>
+    <script src="~/Scripts/ManejoCheckBox.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        $('#ID_MATERIA').change(
+        $(document).ready(
             function () {
-                $("#matForm").submit();
-
+                check();
             });
-        $("#CB_GRADO").change(
-            function () {
-                $("#datForm").submit();
-            }
-        );
     </script>
-}
+    @section scripts
+    {
+        <script>
+            $('#ID_MATERIA').change(
+                function () {
+                    $("#matForm").submit();
 
+                });
+            $("#CB_GRADO").change(
+                function () {
+                    $("#datForm").submit();
+                }
+            );
+            $("#Horario").change(
+                function () {
+                    $("#horform").submit();
+                }
+            );
+        </script>
+    }
+</body>
+</html>
 
 
 

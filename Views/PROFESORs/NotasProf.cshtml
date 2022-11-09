@@ -38,13 +38,16 @@
         </div>
         <br />
         <div class="row">
+            <div class="col">
+                <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
+                    <button type="submit" class="btn btn-warning btn-sm">Consultar</button>
+                    @Html.ActionLink("Descargar Excel", "ExportContentToXls", "PROFESORs", new { @class = "btn btn-success" })
+                    @Html.ActionLink("Descargar PDF", "ExportContentToPdf", "PROFESORs", new { @class = "btn btn-danger" })
+                </form>
 
-            <form action="@Url.Action("CargarDatos","PROFESORs")" method="post" id="datForm">
-                <button type="submit" class="btn btn-success btn-sm">Consultar</button>
-            </form>
         </div>
 
-    </div>
+        </div>
     <br />
     <div class="container">
         <form name="f1" action="@Url.Action("CrearNota","PROFESORs")" method="post">
@@ -211,6 +214,7 @@
             }
 
         </form>
+        
         <div class="container">
             <h5>@ViewData["Res"]</h5>
         </div>

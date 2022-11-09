@@ -178,3 +178,4 @@ C:\Hosting_ISI\Prueba\obj\Debug\Prueba.csproj.CoreCompileInputs.cache
 C:\Hosting_ISI\Prueba\obj\Debug\Prueba.csproj.CopyComplete
 C:\Hosting_ISI\Prueba\obj\Debug\Prueba.dll
 C:\Hosting_ISI\Prueba\obj\Debug\Prueba.pdb
+C:\Hosting_ISI\Prueba\bin\Rotativa.dll
