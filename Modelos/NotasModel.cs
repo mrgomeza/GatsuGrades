@@ -17,21 +17,22 @@ namespace Prueba
         [Display(Name = "APELLIDO")]
         public string EST_APELLIDO { get; set; }
         [Display(Name = "PAR 1")]
-        public Nullable<float> NP1 { get; set; }
+        public Nullable<float> np1 { get; set; }
         [Display(Name = "PAR 2")]
-        public Nullable<float> NP2 { get; set; }
+        public Nullable<float> np2 { get; set; }
         [Display(Name = "EX Q1")]
-        public Nullable<float> EQ1 { get; set; }
+        public Nullable<float> eq1 { get; set; }
         [Display(Name = "QUIM 1")]
-        public Nullable<float> Q1 { get; set; }
+        public Nullable<float> q1 { get; set; }
         [Display(Name = "PAR 3")]
-        public Nullable<float> NP3 { get; set; }
+        public Nullable<float> np3 { get; set; }
         [Display(Name = "PAR 4")]
-        public Nullable<float> NP4 { get; set; }
+        public Nullable<float> np4 { get; set; }
         [Display(Name = "EX Q2")]
-        public Nullable<float> EQ2 { get; set; }
+        public Nullable<float> eq2 { get; set; }
         [Display(Name = "QUIM 2")]
-        public Nullable<float> Q2 { get; set; }
-        public Nullable<float> FINAL { get; set; }
+        public Nullable<float> q2 { get; set; }
+        [Display(Name = "FINAL")]
+        public Nullable<float> final { get; set; }
     }
 }

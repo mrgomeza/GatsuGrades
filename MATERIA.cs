@@ -42,7 +42,7 @@ namespace Prueba
         public string MAT_NOMBRE { get; set; }
 
         [Display(Name = "GRADO")]
-        [StringLength(5, ErrorMessage = "El grado puede tener hasta 5 caracteres")]//Debe contener número
+        [StringLength(3, ErrorMessage = "El grado puede tener hasta 3 caracteres")]//Debe contener número
         [Required(ErrorMessage = "Campo Requerido")]
         public string MAT_GRADO { get; set; }
 

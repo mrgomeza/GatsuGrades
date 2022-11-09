@@ -27,6 +27,8 @@ namespace Prueba.Controllers
         public static string mats = "";
         public static string grads = "";
         public static MATGRAD model2 = new MATGRAD();
+        public static List <NotasModel> model= new List<NotasModel>();
+        public static List<NotasModel> modelaux = new List<NotasModel>();
 
         // GET: PROFESORs
         public ActionResult Index()
@@ -34,55 +36,7 @@ namespace Prueba.Controllers
             var pROFESOR = db.PROFESOR.Include(p => p.TIPO_USUARIO);
             return View(pROFESOR.ToList());
         }
-        public ActionResult CrearNota(float[] NP1, float[] NP2, float[] EQ1, float[] Q1, float[] NP3, float[] NP4, float[] EQ2, float[] Q2, float[] FINAL)
-        {
-            List<int> mat = db.MATERIA.Where(mate => mats == mate.MAT_NOMBRE && mate.MAT_GRADO == grad_seleccionado).Select(mate => mate.ID_MATERIA).ToList();
 
-            //Instancia NOTA
-            NOTA nota = new NOTA();
-
-            //Crear Nota
-            int id_anio = 2022;
-            int mat_id = mat[0];
-
-            for (int i = 0; i < est_grado.Count; i++)
-            {
-            }
-
-
-            //Ingresar datos al modelo
-            List<NotasModel> model = new List<NotasModel>();
-            for (int i = 0; i < est_grado.Count; i++)
-            {
-                NotasModel aux = new NotasModel();
-                aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
-                aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
-                aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
-                aux.NP1 = 0;
-                model.Add(aux);
-            }
-
-            //Grados en base a materia Ingresada
-            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
-            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
-            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
-            for (int k = 0; k < lst3.Count; k++)
-            {
-                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
-            }
-            //Llenamos de nuevo el combo de materias
-            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
-            List<SelectListItem> lst11 = new List<SelectListItem>();
-            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
-
-            for (int r = 0; r < lstm1.Count; r++)
-            {
-                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
-            }
-            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
-            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
-            return View("NotasProf", model);
-        }
         #region Notas
         public ActionResult NotasProf()
         {
@@ -103,25 +57,151 @@ namespace Prueba.Controllers
             ViewBag.CB_GRADO = lst2;
             return View();
         }
+
+        public ActionResult EditNota(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            NOTA not = db.NOTA.Find(id);
+            if (not == null)
+            {
+                return HttpNotFound();
+            }
+            ESTUDIANTE est = db.ESTUDIANTE.Find(not.ID_ESTUDIANTE);
+            ViewData["est"] = "Estudiante: " + est.EST_NOMBRE.ToString() + " " + est.EST_APELLIDO.ToString();
+            return View(not);
+        }
+        [HttpPost]
+        public ActionResult EditNota([Bind(Include = "ID_NOTA,ID_ESTUDIANTE,NP1,NP2,EQ1,NP3,NP4,EQ2")] NOTA not)
+        {
+            
+            List<NotasModel> model2 = new List<NotasModel>();
+            if (ModelState.IsValid)
+            {
+                NOTA nota_temp = db.NOTA.Find(not.ID_NOTA);
+
+                nota_temp.NP1 = not.NP1;
+                nota_temp.NP2 = not.NP2;
+                nota_temp.EQ1 = not.EQ1;
+                nota_temp.NP3 = not.NP3;
+                nota_temp.NP4 = not.NP4;
+                nota_temp.EQ2 = not.EQ2;
+
+                float np1 = (float)not.NP1;
+                float np2 = (float)not.NP2;
+                float eq1 = (float)not.EQ1;
+                float np3 = (float)not.NP3;
+                float np4 = (float)not.NP4;
+                float eq2 = (float)not.EQ2;
+                float tot1 = 0; float tot2 = 0; float fin = 0;
+
+                if (not.NP1 != 0 && not.NP2 != 0 && not.EQ1 != 0)
+                {
+                    tot1 = (float)CalcularPromedioParcial(np1, np2, eq1);
+                    nota_temp.Q1 = tot1;
+                }
+                if (not.NP4 != 0 && not.NP5 != 0 && not.EQ2 != 0)
+                {
+                    tot2 = (float)CalcularPromedioParcial(np3, np4, eq2);
+                    nota_temp.Q2 = tot2;
+                }
+                if (tot1 != 0 && tot2 != 0)
+                {
+                    fin = (tot1 + tot2) / 2;
+                    nota_temp.FINAL = fin;
+                }
+                db.SaveChanges();
+                
+            }
+            CargarDatosdef();
+            return RedirectToAction( "NotasProf", "PROFESORs", model);
+        }
+
+        [HttpPost]
+        public List<NOTA> validarNota(int mat_id, List<ESTUDIANTE> est)
+        {
+            //Instancia NOTA
+            List<NOTA> nota = new List<NOTA>();
+            //Parametros
+            int anio = 1;
+
+            //Consulta
+            for (int i = 0; i < est.Count; i++)
+            {
+                List<NOTA> n = new List<NOTA>();
+                //Un solo registro
+                int estu = est[i].ID_ESTUDIANTE;
+                n = db.NOTA.Where(not => not.ID_MATERIA == mat_id && not.ID_ESTUDIANTE == estu).ToList();
+                if (n.Count != 0)
+                {
+                    nota.Add(n[0]);
+                }
+            }
+            return nota;
+        }
+        public static bool validacion = false;
         [HttpPost]
         public ActionResult CargarDatos()
         {
+            validacion = false;
+            model.Clear();
+            //Creo un nuevo Modelo
+            if (grad_seleccionado != grads && mat_seleccionado != mats) { model = new List<NotasModel>(); }
+
             //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
             grad_seleccionado = grads;
+            mat_seleccionado = mats;
             est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
 
-            //Ingresar datos al modelo
-            List<Prueba.NotasModel> model = new List<NotasModel>();
-            for (int i = 0; i < est_grado.Count; i++)
-            {
-                NotasModel aux = new NotasModel();
-                aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
-                aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
-                aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
-                aux.NP1 = 0;
-                model.Add(aux);
-            }
 
+            //Validar existencia de nota
+            List<int> mat = db.MATERIA.Where(mate => mats == mate.MAT_NOMBRE && mate.MAT_GRADO == grad_seleccionado).Select(mate => mate.ID_MATERIA).ToList();
+
+            //Existe nota
+            List<NOTA> aux_nota = validarNota(mat[0], est_grado);
+            if (aux_nota.Count != 0)
+            {
+                model = new List<NotasModel>();
+                for (int i = 0; i < aux_nota.Count; i++)
+                {
+                    NotasModel aux = new NotasModel();
+                    aux.ID_ESTUDIANTE = aux_nota[i].ID_ESTUDIANTE;
+                    aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                    aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                    if (aux_nota[i].NP1 != 0) { aux.np1 = aux_nota[i].NP1; }
+                    if (aux_nota[i].NP2 != 0) { aux.np2 = aux_nota[i].NP2; }
+                    if (aux_nota[i].EQ1 != 0) { aux.eq1 = aux_nota[i].EQ1; }
+                    if (aux_nota[i].NP3 != 0) { aux.np3 = aux_nota[i].NP3; }
+                    if (aux_nota[i].NP4 != 0) { aux.np4 = aux_nota[i].NP4; }
+                    if (aux_nota[i].EQ2 != 0) { aux.eq2 = aux_nota[i].EQ2; }
+                    if (aux_nota[i].Q1 != 0) { aux.q1 = aux_nota[i].Q1; }
+                    if (aux_nota[i].Q2 != 0) { aux.q2 = aux_nota[i].Q2; }
+                    if (aux_nota[i].FINAL != 0) { aux.final = aux_nota[i].FINAL; }
+                    aux.ID_NOTA = aux_nota[i].ID_NOTA;
+                    model.Add(aux);
+                }
+                validacion = true;
+                ViewData["en"] = "false";
+                //ViewData["Res"] = "Ya existe un registro de notas";
+            }
+            else
+            {
+                //Ingresar datos al modelo por primera vez
+                if (model.Count == 0)
+                {
+                    for (int i = 0; i < est_grado.Count; i++)
+                    {
+                        NotasModel aux = new NotasModel();
+                        aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+                        aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                        aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                        model.Add(aux);
+                        ViewData["en"] = "true";
+                    }
+                }
+            }
             //Grados en base a materia Ingresada
             List<SelectListItem> lstgrad1 = new List<SelectListItem>();
             lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
@@ -141,10 +221,182 @@ namespace Prueba.Controllers
             }
             ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
             ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
-
-
             return View("NotasProf", model);
         }
+        [HttpPost]
+        public void CargarDatosdef()
+        {
+            validacion = false;
+            //Creo un nuevo Modelo
+            if (grad_seleccionado != grads && mat_seleccionado != mats) { modelaux = new List<NotasModel>(); }
+
+            //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
+            grad_seleccionado = grads;
+            mat_seleccionado = mats;
+            est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
+
+
+            //Validar existencia de nota
+            List<int> mat = db.MATERIA.Where(mate => mats == mate.MAT_NOMBRE && mate.MAT_GRADO == grad_seleccionado).Select(mate => mate.ID_MATERIA).ToList();
+
+            //Existe nota
+            List<NOTA> aux_nota = validarNota(mat[0], est_grado);
+            if (aux_nota.Count != 0)
+            {
+                modelaux = new List<NotasModel>();
+                for (int i = 0; i < aux_nota.Count; i++)
+                {
+                    NotasModel aux = new NotasModel();
+                    aux.ID_ESTUDIANTE = aux_nota[i].ID_ESTUDIANTE;
+                    aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                    aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                    if (aux_nota[i].NP1 != 0) { aux.np1 = aux_nota[i].NP1; }
+                    if (aux_nota[i].NP2 != 0) { aux.np2 = aux_nota[i].NP2; }
+                    if (aux_nota[i].EQ1 != 0) { aux.eq1 = aux_nota[i].EQ1; }
+                    if (aux_nota[i].NP3 != 0) { aux.np3 = aux_nota[i].NP3; }
+                    if (aux_nota[i].NP4 != 0) { aux.np4 = aux_nota[i].NP4; }
+                    if (aux_nota[i].EQ2 != 0) { aux.eq2 = aux_nota[i].EQ2; }
+                    if (aux_nota[i].Q1 != 0) { aux.q1 = aux_nota[i].Q1; }
+                    if (aux_nota[i].Q2 != 0) { aux.q2 = aux_nota[i].Q2; }
+                    if (aux_nota[i].FINAL != 0) { aux.final = aux_nota[i].FINAL; }
+                    aux.ID_NOTA = aux_nota[i].ID_NOTA;
+                    modelaux.Add(aux);
+                }
+                validacion = true;
+                //ViewData["Res"] = "Ya existe un registro de notas";
+                ViewData["en"] = "false";
+            }
+            else
+            {
+                //Ingresar datos al modelo por primera vez
+                if (modelaux.Count == 0)
+                {
+                    for (int i = 0; i < est_grado.Count; i++)
+                    {
+                        NotasModel aux = new NotasModel();
+                        aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+                        aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                        aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+                        modelaux.Add(aux);
+                        ViewData["en"] = "false";
+                    }
+                }
+            }
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+        }
+        public double CalcularPromedioParcial(float p1, float p2, float ex)
+        {
+            float parciales = (p1 + p2) / 2;
+            double prom_fin = (double)((parciales * 0.8) + (ex * 0.2));
+            return prom_fin;
+        }
+        [HttpPost]
+        public ActionResult CrearNota(float[] np1, float[] np2, float[] eq1, float[] q1, float[] np3, float[] np4, float[] eq2, float[] q2, float[] final)
+        {
+            //dimensionar listas vacias de quimestres y final
+            q2= np2;
+            q1 = np1;
+            final = eq1;
+            List<int> mat = db.MATERIA.Where(mate => mats == mate.MAT_NOMBRE && mate.MAT_GRADO == grad_seleccionado).Select(mate => mate.ID_MATERIA).ToList();
+
+            //Crea nota porque no hay existencias
+            if (validacion == false)
+            {
+                //Ingresar datos al modelo
+                model = new List<NotasModel>();
+                //Instancia NOTA
+
+                //Parametros
+                int anio = 1;
+                int mat_id = mat[0];
+
+                //Crear Nota
+                for (int i = 0; i < est_grado.Count; i++)
+                {
+                    NOTA nota = new NOTA();
+                    nota.ID_MATERIA = mat_id;
+                    nota.ID_ANO = anio;
+                    nota.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+
+                    //PARCIAL 1
+                    nota.NP1 = np1[i];
+                    nota.NP2 = np2[i];
+                    nota.EQ1 = eq1[i];
+                    //Realiza calculos si las notas están completas
+                    if (np1[i] != 0 && np2[i] != 0 && eq1[i] != 0)
+                    {
+                        q1[i] = (float)CalcularPromedioParcial(np1[i], np2[i], eq1[i]);
+                        nota.Q1 = q1[i];
+                    }
+
+                    //PARCIAL 2  
+                    nota.NP3 = np3[i];
+                    nota.NP4 = np4[i];
+                    nota.EQ2 = eq2[i];
+                    //Realiza calculos si las notas están completas
+                    if (np3[i] != 0 && np4[i] != 0 && eq2[i] != 0)
+                    {
+                        q2[i] = (float)CalcularPromedioParcial(np3[i], np4[i], eq2[i]);
+                        nota.Q2 = q2[i];
+                    }
+
+                    //final -si las notas están completas
+                    if (q2[i] != 0 && q1[i] != 0)
+                    {
+                        final[i] = (q1[i] + q2[i]) / 2;
+                        nota.FINAL = final[i];
+                    }
+
+                    db.NOTA.Add(nota);
+                    db.SaveChanges();
+                    ViewData["Res"] = "Registros ingresado";
+
+                    //INGRESO DATOS AL MODELO
+                    NotasModel aux = new NotasModel();
+                    aux.ID_ESTUDIANTE = est_grado[i].ID_ESTUDIANTE;
+                    aux.EST_NOMBRE = est_grado[i].EST_NOMBRE;
+                    aux.EST_APELLIDO = est_grado[i].EST_APELLIDO;
+
+                    if (np1[i] != 0) { aux.np1 = np1[i]; }
+                    if (np2[i] != 0) { aux.np2 = np2[i]; }
+                    if (eq1[i] != 0) { aux.eq1 = eq1[i]; }
+                    if (np3[i] != 0) { aux.np3 = np3[i]; }
+                    if (np4[i] != 0) { aux.np4 = np4[i]; }
+                    if (eq2[i] != 0) { aux.eq2 = eq2[i]; }
+                    if (q1[i] != 0) { aux.q1 = q1[i]; }
+                    if (q2[i] != 0) { aux.q2 = q2[i]; }
+                    if (final[i] != 0) { aux.final = final[i]; }
+                    model.Add(aux);
+                }
+            }
+
+            //Existe nota
+            else
+            {
+                ViewData["Res"] = "No puede ingresar datos. Registro existente";
+            }
+            CargarDatos();
+            return View("NotasProf", model);
+        }
+
         //GESTIÓN ASISTENCIAS
         [HttpPost]
         public ActionResult DesplegarGrados1(string ID_MATERIA)
@@ -386,8 +638,6 @@ namespace Prueba.Controllers
 
             return View("AsistenciasProf");
         }
-
-
 
 
         [HttpPost]
@@ -683,7 +933,7 @@ namespace Prueba.Controllers
         // GET: PROFESORs/Create
         public ActionResult Create()
         {
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP");
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP",2);
             return View();
         }
 
@@ -696,12 +946,13 @@ namespace Prueba.Controllers
         {
             if (ModelState.IsValid)
             {
+                pROFESOR.ID_TIPOU = 2;
                 db.PROFESOR.Add(pROFESOR);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View(pROFESOR);
         }
 
@@ -717,7 +968,7 @@ namespace Prueba.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
             return View(pROFESOR);
         }
 
@@ -730,11 +981,13 @@ namespace Prueba.Controllers
         {
             if (ModelState.IsValid)
             {
+                pROFESOR.ID_TIPOU = 2;
                 db.Entry(pROFESOR).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", pROFESOR.ID_TIPOU);
+            ViewBag.ID_TIPOU = new SelectList(db.TIPO_USUARIO, "ID_TIPOU", "TU_DESCRIP", 2);
+            ViewBag.PROF_PASSWORD = db.PROFESOR.Find(pROFESOR.ID_PROFESOR).PROF_PASSWORD; 
             return View(pROFESOR);
         }
 

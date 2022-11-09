@@ -1,7 +1,7 @@
 ﻿@model Prueba.ESTUDIANTE
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Estudiante";
 }
 
 <link href="~/www/estilos/CRUDStyle.css" rel="stylesheet" />
@@ -29,7 +29,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ID_REP, "ID_REP", htmlAttributes: new { @class = "control-label col-md-2" })
+            <!--@Html.LabelFor(model => model.ID_REP, "ID_REP", htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <label class="control-label col-md-2" for="ID_REP">REPRESENTANTE</label>
             <div class="col-md-10">
                 @Html.DropDownList("ID_REP", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ID_REP, "", new { @class = "text-danger" })
@@ -37,9 +38,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ID_TIPOU, "ID_TIPOU", htmlAttributes: new { @class = "control-label col-md-2" })
+            <!--@Html.LabelFor(model => model.ID_TIPOU, "ID_TIPOU", htmlAttributes: new { @class = "control-label col-md-2" })-->
+            <label class="control-label col-md-2" for="ID_REP">ROL</label>
             <div class="col-md-10">
-                @Html.DropDownList("ID_TIPOU", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ID_TIPOU", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
                 @Html.ValidationMessageFor(model => model.ID_TIPOU, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -71,15 +73,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EST_FECHANAC, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_FECHANAC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EST_FECHANAC, new { htmlAttributes = new { @class = "form-control", type="date"} })
                 @Html.ValidationMessageFor(model => model.EST_FECHANAC, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EST_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.EST_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2", @hidden = "hidden" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_PASSWORD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.EST_PASSWORD, new { htmlAttributes = new { @class = "form-control", @hidden = "hidden", @value = "AnTech2022" } })
                 @Html.ValidationMessageFor(model => model.EST_PASSWORD, "", new { @class = "text-danger" })
             </div>
         </div>

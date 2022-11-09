@@ -226,6 +226,7 @@ namespace Prueba.Controllers
         {
             if (ModelState.IsValid)
             {
+                rEPRESENTANTE.ID_TIPOU = 3;
                 db.Entry(rEPRESENTANTE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

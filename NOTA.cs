@@ -11,21 +11,28 @@ namespace Prueba
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class NOTA
     {
         public int ID_NOTA { get; set; }
         public int ID_MATERIA { get; set; }
         public int ID_ESTUDIANTE { get; set; }
         public int ID_ANO { get; set; }
+        [Display(Name = "NOTA PARCIAL 1")]
         public Nullable<float> NP1 { get; set; }
+        [Display(Name = "NOTA PARCIAL 2")]
         public Nullable<float> NP2 { get; set; }
+        [Display(Name = "NOTA PARCIAL 3")]
         public Nullable<float> NP3 { get; set; }
+        [Display(Name = "EXAMEN Q1")]
         public Nullable<float> EQ1 { get; set; }
         public Nullable<float> Q1 { get; set; }
+        [Display(Name = "NOTA PARCIAL 4")]
         public Nullable<float> NP4 { get; set; }
         public Nullable<float> NP5 { get; set; }
         public Nullable<float> NP6 { get; set; }
+        [Display(Name = "EXAMEN Q1")]
         public Nullable<float> EQ2 { get; set; }
         public Nullable<float> Q2 { get; set; }
         public Nullable<float> FINAL { get; set; }

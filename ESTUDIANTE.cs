@@ -27,8 +27,8 @@ namespace Prueba
         [Display(Name = "USUARIO ESTUDIANTE")]
         [StringLength(10, ErrorMessage =
             "El usuario debe ser de máximo 10 caracteres")]
-        [RegularExpression(@"^[a-z]+$",
-            ErrorMessage = "Coloque solo letras en minúscula porfavor")]
+        [RegularExpression(@"^[a-z0-9]+$",
+            ErrorMessage = "Coloque solo letras en minúscula porfavor y número")]
         [Required(ErrorMessage = "Campo Requerido")]
         public string EST_USU { get; set; }
 

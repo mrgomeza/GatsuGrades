@@ -40,7 +40,7 @@ namespace Prueba.Controllers
         // GET: MATERIAs/Create
         public ActionResult Create()
         {
-            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR, "ID_PROFESOR", "PROF_USU");
+            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR.Where(prof => prof.ID_TIPOU == 2), "ID_PROFESOR", "PROF_USU");
             return View();
         }
 
@@ -52,15 +52,22 @@ namespace Prueba.Controllers
         public ActionResult Create([Bind(Include = "ID_MATERIA,MAT_COD,ID_PROFESOR,MAT_NOMBRE,MAT_GRADO,MAT_PARALELO")] MATERIA mATERIA)
         {
             List<MATERIA> materias = db.MATERIA.ToList();
-            mATERIA.ID_MATERIA = materias.Last().ID_MATERIA + 1;
-            if (ModelState.IsValid)
+            List<int> ids=new List<int>();
+            for(int i = 0; i < materias.Count; i++)
+            {
+                ids.Add(materias[i].ID_MATERIA);
+            }
+            mATERIA.ID_MATERIA = ids.Max()+1;
+            List<MATERIA> matvalc = db.MATERIA.Where(m=>m.MAT_COD==mATERIA.MAT_COD).ToList();
+            List<MATERIA> matvalmh = db.MATERIA.Where(m => m.MAT_NOMBRE == mATERIA.MAT_NOMBRE && m.MAT_GRADO==mATERIA.MAT_GRADO).ToList();
+            if (ModelState.IsValid && matvalc.Count==0 && matvalmh.Count==0)
             {
                 db.MATERIA.Add(mATERIA);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR, "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
+            ViewData["Val"] = "No fue posible ingresar, existen campos coincidentes con materias ya ingresadas";
+            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR.Where(prof=>prof.ID_TIPOU==2), "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
             return View(mATERIA);
         }
 
@@ -76,7 +83,7 @@ namespace Prueba.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR, "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
+            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR.Where(prof => prof.ID_TIPOU == 2), "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
             return View(mATERIA);
         }
 
@@ -93,7 +100,7 @@ namespace Prueba.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR, "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
+            ViewBag.ID_PROFESOR = new SelectList(db.PROFESOR.Where(prof => prof.ID_TIPOU == 2), "ID_PROFESOR", "PROF_USU", mATERIA.ID_PROFESOR);
             return View(mATERIA);
         }
 

@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Prueba.NotasModel>
 @{
-    ViewBag.Title = "NotasProf";
+    ViewBag.Title = "Notas Profesor";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 <link href="~/www/estilos/estnota.css" rel="stylesheet" />
@@ -15,7 +15,10 @@
 <body>
     <br />
     <br />
-    <br />
+
+    <div class="container">
+        <h1 class="text-center font-weight-bold ">Gestión de Notas</h1>
+    </div>
     <br />
 
     <div class="container">
@@ -46,8 +49,8 @@
     <div class="container">
         <form name="f1" action="@Url.Action("CrearNota","PROFESORs")" method="post">
 
-            <table class="table table-responsive" align="center" style="width:100%">
-                <tr>
+            <table class="table table-bordered table-responsive " align="center" style="width:100%">
+                <tr class="table-info">
                     <th>
                         @Html.DisplayNameFor(model => model.ID_ESTUDIANTE)
                     </th>
@@ -58,33 +61,33 @@
                         @Html.DisplayNameFor(model => model.EST_APELLIDO)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.NP1)
+                        @Html.DisplayNameFor(model => model.np1)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.NP2)
+                        @Html.DisplayNameFor(model => model.np2)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EQ1)
+                        @Html.DisplayNameFor(model => model.eq1)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Q1)
+                        <p class="text-danger"> @Html.DisplayNameFor(model => model.q1)</p>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.NP3)
+                        @Html.DisplayNameFor(model => model.np3)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.NP4)
+                        @Html.DisplayNameFor(model => model.np4)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.EQ2)
+                        @Html.DisplayNameFor(model => model.eq2)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Q2)
+                        <p class="text-danger"> @Html.DisplayNameFor(model => model.q2)</p>
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.FINAL)
+                        <p class="text-primary"> @Html.DisplayNameFor(model => model.final)</p>
                     </th>
-                    <th>Acciones</th>
+                    <th></th>
                 </tr>
 
                 @if (Model != null)
@@ -102,41 +105,115 @@
                                 @Html.DisplayFor(modelItem => item.EST_APELLIDO)
                             </td>
                             <td>
-                                @Html.TextBox("NP1", item.NP1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("NP1", item.np1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("NP1", item.np1, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("NP2", item.NP2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("NP2", item.np2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("NP2", item.np2, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("EQ1", item.EQ1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("EQ1", item.eq1, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("EQ1", item.eq1, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("Q1", item.Q1, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value="0" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("Q1", item.q1, htmlAttributes: new { style = "width: 40px", type = "number", disabled = "disabled", value = "0" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("Q1", item.q1, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("NP3", item.NP3, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("NP3", item.np3, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("NP3", item.np3, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("NP4", item.NP4, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("NP4", item.np4, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("NP4", item.np4, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("EQ2", item.EQ2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("EQ2", item.eq2, htmlAttributes: new { style = "width: 40px", type = "number", min = "1", max = "10" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("EQ2", item.eq2, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("Q2", item.Q2, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value = "0" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("Q2", item.q2, htmlAttributes: new { style = "width: 40px", type = "number", disabled = "disabled", value = "0" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("Q2", item.q2, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.TextBox("FINAL", item.FINAL, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value = "0" })
+                                @if (@ViewData["en"] == "true")
+                                {
+                                    @Html.TextBox("FINAL", item.final, htmlAttributes: new { style = "width: 40px", disabled = "disabled", value = "0" })
+                                }
+                                else
+                                {
+                                    @Html.TextBox("FINAL", item.final, htmlAttributes: new { style = "width: 40px", type = "text", disabled = "disabled" })
+                                }
                             </td>
                             <td>
-                                @Html.ActionLink("Editar", "", new { id = item.ID_NOTA }, new { @class = "btn btn-primary" })
+                                @if (@ViewData["en"] == "false")
+                                {
+                                    @Html.ActionLink("Editar", "EditNota", new { id = item.ID_NOTA }, new { @class = "btn btn-primary" })
+                                }
+
                             </td>
                         </tr>
                     }
                 }
             </table>
-            <button type="submit" class="btn btn-warning btn-sm">Guardar</button>
+            @if (@ViewData["en"] == "true")
+            {
+                <button type="submit" class="btn btn-warning btn-sm">Guardar</button>
+            }
+
         </form>
+        <div class="container">
+            <h5>@ViewData["Res"]</h5>
+        </div>
     </div>
     <script src="~/Scripts/ManejoCheckBox.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -163,5 +240,4 @@
     }
 </body>
 </html>
-
 

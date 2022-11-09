@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Prueba.ESTUDIANTE>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Gestión Estudiantes";
 }
 
 
@@ -16,10 +16,10 @@
 <table class="table table-responsive">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TIPO_USUARIO.TU_DESCRIP)
+            ROL
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.REPRESENTANTE.REP_USU)
+            REPRESENTANTE
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EST_USU)
@@ -36,14 +36,12 @@
         <th>
             @Html.DisplayNameFor(model => model.EST_FECHANAC)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EST_PASSWORD)
-        </th>
+        <!-- <th>@Html.DisplayNameFor(model => model.EST_PASSWORD)</th>-->
 
         <th></th>
-    </tr>
+        </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model) {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.TIPO_USUARIO.TU_DESCRIP)
@@ -66,9 +64,9 @@
     <td>
         @Html.DisplayFor(modelItem => item.EST_FECHANAC)
     </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.EST_PASSWORD)
-    </td>
+    <!--<td>
+         @Html.DisplayFor(modelItem => item.EST_PASSWORD)
+    </td>-->
 
     <td align="right">
 
@@ -96,6 +94,6 @@
 
     </td>
 </tr>
-}
+    }
 
-</table>
+    </table>

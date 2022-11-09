@@ -49,7 +49,12 @@ namespace Prueba.Controllers
         public ActionResult Create([Bind(Include = "ID_TIPOU,TU_DESCRIP")] TIPO_USUARIO tIPO_USUARIO)
         {
             List<TIPO_USUARIO> usuarios = db.TIPO_USUARIO.ToList();
-            tIPO_USUARIO.ID_TIPOU= usuarios.Last().ID_TIPOU + 1;
+            List<int> ids = new List<int>();
+            for (int i = 0; i < usuarios.Count; i++)
+            {
+                ids.Add(usuarios[i].ID_TIPOU);
+            }
+            tIPO_USUARIO.ID_TIPOU = ids.Max() + 1;
             List <TIPO_USUARIO> usu = db.TIPO_USUARIO.Where(us => us.ID_TIPOU == tIPO_USUARIO.ID_TIPOU || us.TU_DESCRIP== tIPO_USUARIO.TU_DESCRIP).ToList();
             if (ModelState.IsValid && usu.Count==0)
             {

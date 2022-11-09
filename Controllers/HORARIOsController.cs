@@ -235,15 +235,30 @@ namespace Prueba.Controllers
             idtemp = mat.First().ID_MATERIA;
             List<HORARIO> hora = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
 
+            //Seleccionar todos los horarios de la materia
+            List<MATERIA> mat2 = db.MATERIA.Where( ma=>ma.MAT_GRADO == CB_GRADO).ToList();
+            List<HORARIO> hora2 = new List<HORARIO>();
+            for (int i = 0; i < mat2.Count; i++)
+            {
+                int aux = mat2[i].ID_MATERIA;
+                List<HORARIO> horaux = db.HORARIO.Where(hor => hor.ID_MATERIA == aux ).ToList();
+                for( int j = 0; j < horaux.Count; j++)
+                {
+                    hora2.Add(horaux[j]);
+                }
+            }
+            
 
-            nomdt= "Nombre Profesor: " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
+
+            nomdt = "Nombre Profesor: " + prof.PROF_NOMBRE.ToString() + " " + prof.PROF_APELLIDO.ToString();
             matdt= "Materia: " + mat.First().MAT_NOMBRE.ToString();
             graddt= "Grado: " + mat.First().MAT_GRADO.ToString();
 
             ViewData["ProfNombre"] = nomdt;
             ViewData["Mat"] = matdt;
             ViewData["Grado"] = graddt;
-            Pintar(hora);
+
+            Pintar(hora2);
 
 
             //Grados en base a materia Ingresada
@@ -704,8 +719,20 @@ namespace Prueba.Controllers
                         db.SaveChanges();
                         ViewData[dat] = "Se ingreso la materia";
                         ViewData[dat1] = "blue";
-                        horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
-                        Pintar(horasp);
+                        //horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
+                        //Llenar horas completadas
+                        List<MATERIA> mat3 = db.MATERIA.Where(ma => ma.MAT_GRADO ==grads).ToList();
+                        List<HORARIO> hora3 = new List<HORARIO>();
+                        for (int x = 0; x < mat3.Count; x++)
+                        {
+                            int aux = mat3[x].ID_MATERIA;
+                            List<HORARIO> horaux = db.HORARIO.Where(hor => hor.ID_MATERIA == aux).ToList();
+                            for (int j = 0; j < horaux.Count; j++)
+                            {
+                                hora3.Add(horaux[j]);
+                            }
+                        }
+                        Pintar(hora3);
                         //Grados en base a materia Ingresada
                         List<SelectListItem> lstgrad = new List<SelectListItem>();
                         List<string> lst2 = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
@@ -755,8 +782,20 @@ namespace Prueba.Controllers
                     db.SaveChanges();
                     ViewData[dat] = "Se ingreso la materia";
                     ViewData[dat1] = "blue";
-                    horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
-                    Pintar(horasp);
+                    //horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
+                    //Llenar horas de todos los horarios
+                    List<MATERIA> mat4 = db.MATERIA.Where(ma => ma.MAT_GRADO == grads).ToList();
+                    List<HORARIO> hora4 = new List<HORARIO>();
+                    for (int x = 0; x < mat4.Count; x++)
+                    {
+                        int aux = mat4[x].ID_MATERIA;
+                        List<HORARIO> horaux = db.HORARIO.Where(hor => hor.ID_MATERIA == aux).ToList();
+                        for (int j = 0; j < horaux.Count; j++)
+                        {
+                            hora4.Add(horaux[j]);
+                        }
+                    }
+                    Pintar(hora4);
                     //Grados en base a materia Ingresada
                     List<SelectListItem> lstgrad = new List<SelectListItem>();
                     List<string> lst2 = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
@@ -790,8 +829,19 @@ namespace Prueba.Controllers
             //ViewBag.Alert = "Lo sentimos, esta solicitud no existe.";
             ViewData[dat] = "No se pudo ingresar";
             ViewData[dat1] = "orange";
-            horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
-            Pintar(horasp);
+            //horasp = db.HORARIO.Where(hor => hor.ID_MATERIA == idtemp).ToList();
+            List<MATERIA> mat2 = db.MATERIA.Where(ma => ma.MAT_GRADO == grads).ToList();
+            List<HORARIO> hora2 = new List<HORARIO>();
+            for (int x = 0; x < mat2.Count; x++)
+            {
+                int aux = mat2[x].ID_MATERIA;
+                List<HORARIO> horaux = db.HORARIO.Where(hor => hor.ID_MATERIA == aux).ToList();
+                for (int j = 0; j < horaux.Count; j++)
+                {
+                    hora2.Add(horaux[j]);
+                }
+            }
+            Pintar(hora2);
             //Grados en base a materia Ingresada
             List<SelectListItem> lstgrad1 = new List<SelectListItem>();
             List<string> lst3 = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();

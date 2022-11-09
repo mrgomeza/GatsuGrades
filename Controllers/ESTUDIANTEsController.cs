@@ -114,6 +114,9 @@ namespace Prueba.Controllers
         private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
         public static string cel = "";
         public static int usu = 0;
+        public static string estgrado = "";
+        HorarioModel modelHor = new HorarioModel();
+
         public ActionResult Login()
         {
             return View();
@@ -124,7 +127,284 @@ namespace Prueba.Controllers
             ViewData["nombre"] = "Bienvenido/a " + est.EST_NOMBRE.ToString() + " " + est.EST_APELLIDO.ToString();
             return View();
         }
+        #region Horario Estudiante
+        public ActionResult EstHorario()
+        {
+            ESTUDIANTE est = db.ESTUDIANTE.Find(usu);
+            estgrado = est.EST_USU.Substring(est.EST_USU.Length - 1, 1);
+            //Lista de Materias
+            List<MATERIA> lstMAT = db.MATERIA.Where(mt => mt.MAT_GRADO == estgrado).ToList();
+            List<HORARIO> lstHOR = new List<HORARIO>();
 
+            //Se agregar todos los horarios de las Materias del estudiante
+            for (int i = 0; i < lstMAT.Count; i++)
+            {
+                int aux = lstMAT[i].ID_MATERIA;
+                List<HORARIO> lstaux = db.HORARIO.Where(h => h.ID_MATERIA == aux).ToList();
+                for (int j = 0; j < lstaux.Count; j++)
+                {
+                    lstHOR.Add(lstaux[j]);
+                }
+            }
+            //Se colocan 
+            for(int i = 0; i < lstHOR.Count; i++)
+            {
+                MATERIA mat=new MATERIA();
+                if (lstHOR[i].HOR_HORA== DateTime.Parse("2022-10-16 7:40:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat =db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc1"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B1[0]=mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if(lstHOR[i].HOR_DIA=="Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc2"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B1[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA=="Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc3"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B1[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA=="Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc4"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B1[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc5"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B1[4] = mat.MAT_NOMBRE.ToString();
+                    }
+
+
+                }
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc6"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B2[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc7"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B2[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc8"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B2[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc9"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B2[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc10"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B2[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc11"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B3[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc12"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B3[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc13"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B3[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc14"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B3[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc15"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B3[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc16"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B4[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc17"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B4[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc18"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B4[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc19"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B4[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc20"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B4[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc21"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B5[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc22"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B5[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc23"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B5[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc24"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B5[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc25"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B5[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc26"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B6[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc27"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B6[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc28"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B6[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc29"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B6[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc30"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B6[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                
+                if (lstHOR[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
+                {
+                    if (lstHOR[i].HOR_DIA == "Lunes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc31"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B7[0] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Martes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc32"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B7[1] = mat.MAT_NOMBRE.ToString();
+                    }
+
+                    if (lstHOR[i].HOR_DIA == "Miércoles")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc33"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B7[2] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Jueves")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc34"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B7[3] = mat.MAT_NOMBRE.ToString();
+                    }
+                    if (lstHOR[i].HOR_DIA == "Viernes")
+                    {
+                        mat = db.MATERIA.Find(lstHOR[i].ID_MATERIA);
+                        ViewData["Confc35"] = mat.MAT_COD.Substring(0, 2);
+                        modelHor.B7[4] = mat.MAT_NOMBRE.ToString();
+                    }
+                }
+                
+                
+            }
+
+            return View(modelHor);
+        }
+        #endregion
         // GET: ESTUDIANTEs
         public ActionResult Index()
         {
@@ -228,6 +508,7 @@ namespace Prueba.Controllers
         {
             if (ModelState.IsValid)
             {
+                eSTUDIANTE.ID_TIPOU = 1;
                 db.Entry(eSTUDIANTE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

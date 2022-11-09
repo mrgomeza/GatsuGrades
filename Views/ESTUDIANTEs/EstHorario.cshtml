@@ -1,0 +1,178 @@
+﻿@model  Prueba.HorarioModel
+@{
+    ViewBag.Title = "Horario";
+    Layout = "~/Views/Shared/_Layout4.cshtml";
+}
+<link rel="stylesheet" type="text/css" href="~/www/estilos/esthor2.css">
+<h2>EstHorario</h2>
+<div class="container">
+    <div class="table-responsive">
+        <form method="post">
+            <table class="cal">
+
+                <thead>
+
+                    <tr class="table-primary">
+                        <th></th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <tr>
+
+                        <td class="horas">7:40 a 8:20 </td>
+                        <td class="@ViewData["Confc1"]">
+                            @Html.DisplayFor(modelItem => modelItem.B1[0])
+                        </td>
+                        <td class="@ViewData["Confc2"]">
+                            @Html.DisplayFor(modelItem => modelItem.B1[1])
+                        </td>
+                        <td class="@ViewData["Confc3"]">
+                            @Html.DisplayFor(modelItem => modelItem.B1[2])
+                        </td>
+                        <td class="@ViewData["Confc4"]">
+                            @Html.DisplayFor(modelItem => modelItem.B1[3])
+                        </td>
+                        <td class="@ViewData["Confc5"]">
+                            @Html.DisplayFor(modelItem => modelItem.B1[4])
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="horas">8:20 a 9:00 </td>
+                        <td class="@ViewData["Confc6"]">
+                            @Html.DisplayFor(modelItem => modelItem.B2[0])
+                        </td>
+                        <td class="@ViewData["Confc7"]">
+                            @Html.DisplayFor(modelItem => modelItem.B2[1])
+                        </td>
+                        <td class="@ViewData["Confc8"]">
+                            @Html.DisplayFor(modelItem => modelItem.B2[2])
+                        </td>
+                        <td class="@ViewData["Confc9"]">
+                            @Html.DisplayFor(modelItem => modelItem.B2[3])
+                        </td>
+                        <td class="@ViewData["Confc10"]">
+                            @Html.DisplayFor(modelItem => modelItem.B2[4])
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="horas">9:00 a 9:40 </td>
+                        <td class="@ViewData["Confc11"]">
+                            @Html.DisplayFor(modelItem => modelItem.B3[0])
+                        </td>
+                        <td class="@ViewData["Confc12"]">
+                            @Html.DisplayFor(modelItem => modelItem.B3[1])
+                        </td>
+                        <td class="@ViewData["Confc13"]">
+                            @Html.DisplayFor(modelItem => modelItem.B3[2])
+                        </td>
+                        <td class="@ViewData["Confc14"]">
+                            @Html.DisplayFor(modelItem => modelItem.B3[3])
+                        </td>
+                        <td class="@ViewData["Confc15"]">
+                            @Html.DisplayFor(modelItem => modelItem.B3[4])
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="horas">9:40 a 10:10 </td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+
+                    <tr>
+                        <td class="horas">10:10 a 10:50 </td>
+                        <td class="@ViewData["Confc16"]">
+                            @Html.DisplayFor(modelItem => modelItem.B4[0])
+                        </td>
+                        <td class="@ViewData["Confc17"]">
+                            @Html.DisplayFor(modelItem => modelItem.B4[1])
+                        </td>
+                        <td class="@ViewData["Confc18"]">
+                            @Html.DisplayFor(modelItem => modelItem.B4[2])
+                        </td>
+                        <td class="@ViewData["Confc19"]">
+                            @Html.DisplayFor(modelItem => modelItem.B4[3])
+                        </td>
+                        <td class="@ViewData["Confc20"]">
+                            @Html.DisplayFor(modelItem => modelItem.B4[4])
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="horas">10:50 a 11:30 </td>
+                        <td class="@ViewData["Confc21"]">
+                            @Html.DisplayFor(modelItem => modelItem.B5[0])
+                        </td>
+                        <td class="@ViewData["Confc22"]">
+                            @Html.DisplayFor(modelItem => modelItem.B5[1])
+                        </td>
+                        <td class="@ViewData["Confc23"]">
+                            @Html.DisplayFor(modelItem => modelItem.B5[2])
+                        </td>
+                        <td class="@ViewData["Confc24"]">
+                            @Html.DisplayFor(modelItem => modelItem.B5[3])
+                        </td>
+                        <td class="@ViewData["Confc25"]">
+                            @Html.DisplayFor(modelItem => modelItem.B5[4])
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="horas">11:30 a 11:50 </td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                        <td class="rec">RECREO<span> Patio</span></td>
+                    </tr>
+                    <tr>
+                        <td class="horas">11:50 a 12:30 </td>
+                        <td class="@ViewData["Confc26"]">
+                            @Html.DisplayFor(modelItem => modelItem.B6[0])
+                        </td>
+                        <td class="@ViewData["Confc27"]">
+                            @Html.DisplayFor(modelItem => modelItem.B6[1])
+                        </td>
+                        <td class="@ViewData["Confc28"]">
+                            @Html.DisplayFor(modelItem => modelItem.B6[2])
+                        </td>
+                        <td class="@ViewData["Confc29"]">
+                            @Html.DisplayFor(modelItem => modelItem.B6[3])
+                        </td>
+                        <td class="@ViewData["Confc30"]">
+                            @Html.DisplayFor(modelItem => modelItem.B6[4])
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="horas">12:30 a 13:10</td>
+                        <td class="@ViewData["Confc31"]">
+                            @Html.DisplayFor(modelItem => modelItem.B7[0])
+                        </td>
+                        <td class="@ViewData["Confc32"]">
+                            @Html.DisplayFor(modelItem => modelItem.B7[1])
+                        </td>
+                        <td class="@ViewData["Confc33"]">
+                            @Html.DisplayFor(modelItem => modelItem.B7[2])
+                        </td>
+                        <td class="@ViewData["Confc34"]">
+                            @Html.DisplayFor(modelItem => modelItem.B7[3])
+                        </td>
+                        <td class="@ViewData["Confc35"]">
+                            @Html.DisplayFor(modelItem => modelItem.B7[4])
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

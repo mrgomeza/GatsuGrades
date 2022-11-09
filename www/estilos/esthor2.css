@@ -21,6 +21,7 @@ table > caption {
     padding: 1% 1% 1% 1%;
     margin: 2% 2% 2% 2%;
 }
+
 .titulo_h {
     border: 5px solid grey;
     border-radius: 15px;
@@ -32,9 +33,9 @@ table > caption {
     padding: 1% 1% 1% 1%;
     margin: 2% 2% 2% 2%;
 }
+
 .titulo_h2 {
-    text-align: center;  
-    
+    text-align: center;
 }
 
 thead > tr > th {
@@ -43,7 +44,7 @@ thead > tr > th {
     border-radius: 10px;
     height: 50px;
     text-align: center;
-    vertical-align:central;
+    vertical-align: central;
     font-size: 25px;
     margin: 1%;
     padding: 1%;
@@ -86,7 +87,7 @@ table.cal > tbody > th, td {
     padding: 2%;
     height: 60px;
     border: 2px outset white;
-    vertical-align: top;
+    vertical-align: central;
     text-align: center;
     border-radius: 10px;
 }
@@ -107,29 +108,58 @@ th {
     border-radius: 10px;
 }
 
-.Lengua {
+
+
+.CS {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     padding: 0;
     margin: 0;
-    background-color: #A5D6A7;
+    background-color: #5CA5E8;
+}
+.MA {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #6F5CE8;
+}
+.LC {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #E4EA9D;
+}
+.CN {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #4FA267;
+}
+.EN {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #D6734C;
+}
+.EF {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #74B191;
+}
+.EA {
+    font-size: 150%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #9E74B1;
 }
 
-.Mates {
-    padding: 0;
-    margin: 0;
-    background-color: #FF8A80;
-}
-
-.Ingles {
-    padding: 0;
-    margin: 0;
-    background-color: #B39DDB;
-}
-
-.Musica {
-    padding: 0;
-    margin: 0;
-    background-color: #FFCDD2;
-}
 
 .bloque {
     padding: 0;
@@ -142,12 +172,12 @@ th {
     margin: 0;
     background-color: #EDCDA4;
     font-size: 200%;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .recreo {
     background-color: #FFffff;
-    margin:0;
+    margin: 0;
     padding: 0;
 }
 
@@ -161,9 +191,11 @@ span {
 td:active > span {
     visibility: visible;
 }
+
 .bootstrap-select .dropdown-menu {
     max-width: 100% !important;
 }
+
 .btn_bloque {
     width: 100%;
     height: 100%;

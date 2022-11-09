@@ -188,6 +188,7 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\ComboMatGradViewModel.cs" />
+    <Compile Include="Modelos\HorarioModel.cs" />
     <Compile Include="Modelos\MATGRAD.cs" />
     <Compile Include="Modelos\NotasModel.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.DistinctBy.cs" />
@@ -243,6 +244,7 @@
     <Content Include="Scripts\Validaciones.js" />
     <Content Include="www\estilos\CRUDStyle.css" />
     <Content Include="www\estilos\esthor.css" />
+    <Content Include="www\estilos\esthor2.css" />
     <Content Include="www\estilos\estnota.css" />
     <Content Include="www\estilos\LoginStyle.css" />
     <Content Include="www\estilos\TextosLogin.css" />
@@ -366,6 +368,9 @@
     <Content Include="Views\Shared\_Layout3.cshtml" />
     <Content Include="Views\Shared\_Layout4.cshtml" />
     <Content Include="Views\PROFESORs\NotasProf.cshtml" />
+    <Content Include="Views\PROFESORs\EditNota.cshtml" />
+    <Content Include="Views\ESTUDIANTEs\EstHorario.cshtml" />
+    <Content Include="Views\Shared\_Layout5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
