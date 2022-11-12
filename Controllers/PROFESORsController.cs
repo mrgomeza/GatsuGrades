@@ -120,8 +120,26 @@ namespace Prueba.Controllers
                 db.SaveChanges();
                 
             }
-            CargarDatosdef();
-            return RedirectToAction( "NotasProf", "PROFESORs", model);
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+            return View("NotasProf");
         }
 
         [HttpPost]
@@ -151,7 +169,6 @@ namespace Prueba.Controllers
         public ActionResult CargarDatos()
         {
             validacion = false;
-            model.Clear();
             //Creo un nuevo Modelo
             if (grad_seleccionado != grads && mat_seleccionado != mats) { model = new List<NotasModel>(); }
 
@@ -317,6 +334,7 @@ namespace Prueba.Controllers
         public ActionResult CrearNota(float[] np1, float[] np2, float[] eq1, float[] q1, float[] np3, float[] np4, float[] eq2, float[] q2, float[] final)
         {
             //dimensionar listas vacias de quimestres y final
+            List<NotasModel> lstmdnotas=new List<NotasModel>();
             q2= np2;
             q1 = np1;
             final = eq1;
@@ -398,8 +416,30 @@ namespace Prueba.Controllers
             {
                 ViewData["Res"] = "No puede ingresar datos. Registro existente";
             }
-            CargarDatos();
-            return View("NotasProf", model);
+
+            //Grados en base a materia Ingresada
+            List<SelectListItem> lstgrad1 = new List<SelectListItem>();
+            lstgrad1.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+            List<string> lst3 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado && ma.MAT_NOMBRE == mats).Select(ma => ma.MAT_GRADO).ToList();
+            for (int k = 0; k < lst3.Count; k++)
+            {
+                lstgrad1.Add(new SelectListItem() { Text = lst3[k], Value = lst3[k] });
+            }
+            //Llenamos de nuevo el combo de materias
+            List<string> lstm1 = db.MATERIA.Where(ma => ma.ID_PROFESOR == prof_conectado).Select(ma => ma.MAT_NOMBRE).Distinct().ToList();
+            List<SelectListItem> lst11 = new List<SelectListItem>();
+            lst11.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int r = 0; r < lstm1.Count; r++)
+            {
+                lst11.Add(new SelectListItem() { Text = lstm1[r], Value = lstm1[r] });
+            }
+            ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
+            ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
+
+            return View("NotasProf");
+
+            //return RedirectToAction("CargarDatos", "PROFESORs");
         }
 
         //GESTIÓN ASISTENCIAS

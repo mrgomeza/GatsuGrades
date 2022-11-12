@@ -76,7 +76,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.EST_APELLIDO)
                     </th>
-                    <th>
+                    <th class="text-center">
                         @Html.DisplayNameFor(model => model.ASIS_CONF)
                     </th>
                 </tr>
@@ -95,7 +95,7 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.EST_APELLIDO)
                             </td>
-                            <td align="right">
+                            <td class="text-center">
                                 @Html.CheckBox("asis", item.ASIS_CONF)
                             </td>
                         </tr>

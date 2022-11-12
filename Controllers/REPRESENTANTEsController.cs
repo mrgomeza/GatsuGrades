@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using System.Web.UI;
 using Prueba;
-
+using Rotativa;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 namespace Prueba.Controllers
 {
     public class REPRESENTANTEsController : Controller
@@ -114,6 +118,9 @@ namespace Prueba.Controllers
         private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
         public static int usu = 0;
         public static string cel = "";
+        List<ESTUDIANTE> estRep=new List<ESTUDIANTE>();
+        public static ESTUDIANTE estf=new ESTUDIANTE();
+        public static List<NotasEModel> modelN = null;
         public ActionResult HomeRepresentantes()
         {
             REPRESENTANTE rep = db.REPRESENTANTE.Find(usu);
@@ -122,7 +129,60 @@ namespace Prueba.Controllers
         }
         public ActionResult LoginRep()
         {
+            return View();
+        }
+        public ActionResult ConsultarEst(int ID_EST)
+        {
+            ESTUDIANTE est=db.ESTUDIANTE.Find(ID_EST);
+            estf = db.ESTUDIANTE.Find(ID_EST);
+            ViewData["nombre"] = "Estudiantes: "+ est.EST_NOMBRE.ToString()+" "+est.EST_APELLIDO.ToString();
+            string est_grado = est.EST_USU.Substring(est.EST_USU.Length - 1, 1);
 
+            List<MATERIA> materias = new List<MATERIA>();
+            materias = db.MATERIA.Where(ma => ma.MAT_GRADO == est_grado).ToList();
+
+            NOTA nAux = new NOTA();
+            List<NOTA> lstn = new List<NOTA>();
+            modelN = new List<NotasEModel>();
+
+
+            for (int i = 0; i < materias.Count; i++)
+            {
+                int aux = materias[i].ID_MATERIA;
+                lstn = db.NOTA.Where(n => n.ID_MATERIA == aux && n.ID_ESTUDIANTE == est.ID_ESTUDIANTE).ToList();
+
+                NotasEModel auxNota = new NotasEModel();
+                if (lstn.Count != 0)
+                {
+                    auxNota.MAT_NOMBRE = materias[i].MAT_NOMBRE;
+                    auxNota.NP1 = lstn[0].NP1;
+                    auxNota.NP2 = lstn[0].NP2;
+                    auxNota.EQ1 = lstn[0].EQ1;
+                    auxNota.Q1 = lstn[0].Q1;
+                    auxNota.NP3 = lstn[0].NP3;
+                    auxNota.NP4 = lstn[0].NP4;
+                    auxNota.EQ2 = lstn[0].EQ2;
+                    auxNota.Q2 = lstn[0].Q2;
+                    auxNota.FINAL = lstn[0].FINAL;
+                    modelN.Add(auxNota);
+                }
+
+            }
+
+
+
+
+
+            //Carga de Combo
+            REPRESENTANTE rep = db.REPRESENTANTE.Find(usu);
+            ViewBag.ID_EST = new SelectList(db.ESTUDIANTE.Where(es => es.ID_REP == rep.ID_REP), "ID_ESTUDIANTE", "EST_NOMBRE");
+            return View("NotasRep",modelN);
+        }
+        public ActionResult NotasRep()
+        {
+            REPRESENTANTE rep = db.REPRESENTANTE.Find(usu);
+            estRep = db.ESTUDIANTE.Where(es => es.ID_REP == rep.ID_REP).ToList();
+            ViewBag.ID_EST = new SelectList(db.ESTUDIANTE.Where(es => es.ID_REP == rep.ID_REP), "ID_ESTUDIANTE", "EST_NOMBRE");
             return View();
         }
 
@@ -275,6 +335,32 @@ namespace Prueba.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public void ExportContentToXls()
+        {
+            var gv = new GridView
+            {
+                DataSource = modelN
+            };
+            gv.DataBind();
+
+            Response.ClearContent();
+            Response.AddHeader("content-disposition",
+                                String.Format("attachment;filename=Notas_{0}_{1}.xls",estf.EST_NOMBRE.ToString(),estf.EST_APELLIDO.ToString()));
+            Response.ContentType = "application/excel";
+
+            var strw = new StringWriter();
+            var htmlTw = new HtmlTextWriter(strw);
+
+            gv.RenderControl(htmlTw);
+            Response.Write(strw.ToString());
+            Response.End();
+        }
+
+        public ActionResult ExportContentToPdf()
+        {
+            string nArchivo = String.Format("Notas_{0}.pdf", DateTime.Now);
+            return new ActionAsPdf("NotasEst", new { nombre = "NotasGlobal" }) { FileName = nArchivo };
         }
     }
 }

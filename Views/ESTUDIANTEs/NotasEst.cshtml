@@ -12,13 +12,13 @@
 <h2>Reporte Notas @ViewData["nombre"] </h2>
 
 <p>
-    @Html.ActionLink("Descargar Excel", "ExportContentToXls", "ESTUDIANTEs", new { @class = "btn btn-success" })
+    <!--@Html.ActionLink("Descargar Excel", "ExportContentToXls", "ESTUDIANTEs", new { @class = "btn btn-success" })-->
     @Html.ActionLink("Descargar PDF", "ExportContentToPdf", "ESTUDIANTEs", new { @class = "btn btn-danger" })
 
 </p>
-<table class="table">
-    <tr>
-        <th>
+<table class="table table-bordered">
+    <tr class="table-info">
+        <th >
             @Html.DisplayNameFor(model => model.MAT_NOMBRE)
         </th>
 

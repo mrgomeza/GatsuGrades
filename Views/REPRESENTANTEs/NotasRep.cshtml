@@ -1,0 +1,109 @@
+﻿@model IEnumerable<NotasEModel>
+@{
+    ViewBag.Title = "NotasRep";
+    Layout = "~/Views/Shared/_Layout5.cshtml";
+}
+<br />
+<br />
+<br />
+<h2>Notas Estudiantes</h2>
+<div class="row">
+    <div class="col">
+
+        <form action="@Url.Action("ConsultarEst","REPRESENTANTEs")" method="post" id="horform">
+            <label class="">Nombre Representado:</label>
+            @Html.DropDownList("ID_EST", null, htmlAttributes: new { @class = "form-control" })
+
+            <br />
+            <button type="submit" class="btn btn-warning btn-sm">Consultar</button>
+        </form>
+    </div>
+
+</div>
+<h2> @ViewData["nombre"] </h2>
+
+<p>
+    @Html.ActionLink("Descargar", "ExportContentToXls", "REPRESENTANTEs", new { @class = "btn btn-success" })
+
+
+</p>
+<table class="table table-bordered">
+    <tr class="table-info">
+        <th>
+            @Html.DisplayNameFor(model => model.MAT_NOMBRE)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.NP1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ1)
+        </th>
+        <th>
+            <p class="text-danger">@Html.DisplayNameFor(model => model.Q1)</p>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NP4)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EQ2)
+        </th>
+        <th>
+            <p class="text-danger">@Html.DisplayNameFor(model => model.Q2)</p>
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FINAL)
+        </th>
+
+        <th></th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.MAT_NOMBRE)
+                </th>
+
+                <th>
+                    @Html.DisplayFor(modelItem => item.NP1)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.NP2)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.EQ1)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Q1)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.NP3)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.NP4)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.EQ2)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Q2)
+                </th>
+
+                <th>
+                    @Html.DisplayFor(modelItem => item.FINAL)
+                </th>
+
+            </tr>
+        }
+    }
+    </table>
+
