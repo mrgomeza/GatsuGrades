@@ -17,12 +17,13 @@ namespace Prueba.Controllers
 {
     public class PROFESORsController : Controller
     {
-        private GatsuGradesv8Entities db = new GatsuGradesv8Entities();
+       public static GatsuGradesv8Entities db = new GatsuGradesv8Entities();
         public static int prof_conectado = 0;
         public static string grad_seleccionado = "";
         public static string mat_seleccionado = "";
         public static List<HORARIO> horario_mat_grado = new List<HORARIO>();
         public static List<ESTUDIANTE> est_grado = new List<ESTUDIANTE>();
+
         public static string horario_seleccionado = "";
         public static int mat_id = 0;
         public static int usu = 0;
@@ -147,6 +148,7 @@ namespace Prueba.Controllers
         {
             //Instancia NOTA
             List<NOTA> nota = new List<NOTA>();
+
             //Parametros
             int anio = 1;
 
@@ -164,6 +166,20 @@ namespace Prueba.Controllers
             }
             return nota;
         }
+        //ayuda plox
+        public bool siValida(int i)
+        {
+            bool r;
+            est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
+            List<NOTA> n = new List<NOTA>();
+            n = validarNota(i, est_grado);
+            if (n != null)
+                r = true;
+            else
+                r=false;
+            return r;
+        }
+
         public static bool validacion = false;
         [HttpPost]
         public ActionResult CargarDatos()
@@ -324,12 +340,13 @@ namespace Prueba.Controllers
             ViewBag.ID_MATERIA = new SelectList(lst11, "Text", "Value", mats);
             ViewBag.CB_GRADO = new SelectList(lstgrad1, "Text", "Value", grads);
         }
-        public double CalcularPromedioParcial(float p1, float p2, float ex)
+        public static double CalcularPromedioParcial(float p1, float p2, float ex)
         {
             float parciales = (p1 + p2) / 2;
             double prom_fin = (double)((parciales * 0.8) + (ex * 0.2));
             return prom_fin;
         }
+        
         [HttpPost]
         public ActionResult CrearNota(float[] np1, float[] np2, float[] eq1, float[] q1, float[] np3, float[] np4, float[] eq2, float[] q2, float[] final)
         {
