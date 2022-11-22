@@ -491,8 +491,9 @@ namespace Prueba.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID_ESTUDIANTE,EST_USU,ID_REP,ID_TIPOU,EST_NOMBRE,EST_APELLIDO,EST_CEDULA,EST_FECHANAC,EST_PASSWORD")] ESTUDIANTE eSTUDIANTE)
+        public ActionResult Create([Bind(Include = "ID_ESTUDIANTE,EST_USU,ID_REP,ID_TIPOU,EST_NOMBRE,EST_APELLIDO,EST_CEDULA,EST_FECHANAC,EST_PASSWORD")] ESTUDIANTE eSTUDIANTE,string grado)
         {
+            string grad = grado;
             List<ESTUDIANTE> usu = db.ESTUDIANTE.Where(es => es.EST_USU == eSTUDIANTE.EST_USU).ToList();
             List<ESTUDIANTE> na = db.ESTUDIANTE.Where(es => es.EST_NOMBRE == eSTUDIANTE.EST_NOMBRE && es.EST_APELLIDO == eSTUDIANTE.EST_APELLIDO).ToList();
             List<ESTUDIANTE> ce = db.ESTUDIANTE.Where(es => es.EST_CEDULA == eSTUDIANTE.EST_CEDULA).ToList();
@@ -502,6 +503,7 @@ namespace Prueba.Controllers
 
             if (ModelState.IsValid &&usu.Count == 0 && na.Count == 0 && ce.Count == 0 && prof.Count == 0 && reps.Count == 0 && cel == "correcto")
             {
+                eSTUDIANTE.EST_USU = eSTUDIANTE.EST_USU + grad;
                 eSTUDIANTE.ID_TIPOU = 1;
                 db.ESTUDIANTE.Add(eSTUDIANTE);
                 db.SaveChanges();
@@ -555,10 +557,12 @@ namespace Prueba.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID_ESTUDIANTE,EST_USU,ID_REP,ID_TIPOU,EST_NOMBRE,EST_APELLIDO,EST_CEDULA,EST_FECHANAC,EST_PASSWORD")] ESTUDIANTE eSTUDIANTE)
+        public ActionResult Edit([Bind(Include = "ID_ESTUDIANTE,EST_USU,ID_REP,ID_TIPOU,EST_NOMBRE,EST_APELLIDO,EST_CEDULA,EST_FECHANAC,EST_PASSWORD")] ESTUDIANTE eSTUDIANTE,string grado)
         {
+            string grad = grado;
             if (ModelState.IsValid)
             {
+                eSTUDIANTE.EST_USU = eSTUDIANTE.EST_USU.Replace(eSTUDIANTE.EST_USU.Substring(eSTUDIANTE.EST_USU.Length-1),grado);
                 eSTUDIANTE.ID_TIPOU = 1;
                 db.Entry(eSTUDIANTE).State = EntityState.Modified;
                 db.SaveChanges();

@@ -14,85 +14,101 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>ESTUDIANTE</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID_ESTUDIANTE)
+<div class="form-horizontal">
+    <h4>ESTUDIANTE</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID_ESTUDIANTE)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_USU, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_USU, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EST_USU, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <!--@Html.LabelFor(model => model.ID_REP, "ID_REP", htmlAttributes: new { @class = "control-label col-md-2" })-->
-            <label class="control-label col-md-2" for="ID_REP">REPRESENTANTE</label>
-            <div class="col-md-10">
-                @Html.DropDownList("ID_REP", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ID_REP, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <!--@Html.LabelFor(model => model.ID_TIPOU, "ID_TIPOU", htmlAttributes: new { @class = "control-label col-md-2" })-->
-            <label class="control-label col-md-2" for="ID_REP">ROL</label>
-            <div class="col-md-10">
-                @Html.DropDownList("ID_TIPOU", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
-                @Html.ValidationMessageFor(model => model.ID_TIPOU, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EST_NOMBRE, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_APELLIDO, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_APELLIDO, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EST_APELLIDO, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_CEDULA, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_CEDULA, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EST_CEDULA, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_FECHANAC, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_FECHANAC, new { htmlAttributes = new { @class = "form-control", type="date"} })
-                @Html.ValidationMessageFor(model => model.EST_FECHANAC, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EST_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2", @hidden = "hidden" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EST_PASSWORD, new { htmlAttributes = new { @class = "form-control", @hidden = "hidden", @value = "AnTech2022" } })
-                @Html.ValidationMessageFor(model => model.EST_PASSWORD, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-success" />
-                @Html.ActionLink("Volver", "Index","ESTUDIANTEs", new { @class = "btn btn-primary" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_USU, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_USU, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EST_USU, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        <!--@Html.LabelFor(model => model.ID_REP, "ID_REP", htmlAttributes: new { @class = "control-label col-md-2" })-->
+        <label class="control-label col-md-2" for="ID_REP">REPRESENTANTE</label>
+        <div class="col-md-10">
+            @Html.DropDownList("ID_REP", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ID_REP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <!--@Html.LabelFor(model => model.ID_TIPOU, "ID_TIPOU", htmlAttributes: new { @class = "control-label col-md-2" })-->
+        <label class="control-label col-md-2" for="ID_REP">ROL</label>
+        <div class="col-md-10">
+            @Html.DropDownList("ID_TIPOU", null, htmlAttributes: new { @class = "form-control", @disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.ID_TIPOU, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_NOMBRE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_NOMBRE, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EST_NOMBRE, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_APELLIDO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_APELLIDO, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EST_APELLIDO, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_CEDULA, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_CEDULA, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.EST_CEDULA, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_FECHANAC, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_FECHANAC, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+            @Html.ValidationMessageFor(model => model.EST_FECHANAC, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Grado</label>
+        <div class="col-md-10">
+            <select name="grado" id="grado" class="form-control" style="width:100%">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EST_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2", @hidden = "hidden" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.EST_PASSWORD, new { htmlAttributes = new { @class = "form-control", @hidden = "hidden", @value = "AnTech2022" } })
+            @Html.ValidationMessageFor(model => model.EST_PASSWORD, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar" class="btn btn-success" />
+            @Html.ActionLink("Volver", "Index", "ESTUDIANTEs", new { @class = "btn btn-primary" })
+        </div>
+    </div>
+</div>
 }
 
 

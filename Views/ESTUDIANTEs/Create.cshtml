@@ -74,6 +74,22 @@
             @Html.ValidationMessageFor(model => model.EST_FECHANAC, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        <label class="control-label col-md-2">Grado</label>
+        <div class="col-md-10">
+            <select name="grado" id="grado" class="form-control" style="width:100%">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.EST_PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -82,6 +98,8 @@
             @Html.ValidationMessageFor(model => model.EST_PASSWORD, "", new { @class = "text-danger" })
         </div>
     </div>
+
+
     <div class="col-md-offset-2 col-md-10">
         <p class="text-danger">@ViewData["Val"]</p>
     </div>

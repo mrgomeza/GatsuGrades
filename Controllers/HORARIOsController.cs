@@ -23,154 +23,260 @@ namespace Prueba.Controllers
         public static string graddt = "";
         public static string matdt = "";
 
+        private string ObtenerColor(HORARIO hora)
+        {
+            string color = "";
+            MATERIA mat=db.MATERIA.Find(hora.ID_MATERIA);
+            if (mat.MAT_NOMBRE == "Matemática")
+            {
+                color = "#6F5CE8";
+            }
+            if (mat.MAT_NOMBRE == "Ciencias Sociales")
+            {
+                color = "#5CA5E8";
+            }
+            if (mat.MAT_NOMBRE == "Ciencias Naturales")
+            {
+                color = "#4FA267";
+            }
+            if (mat.MAT_NOMBRE == "Lengua")
+            {
+                color = "#E4EA9D";
+            }
+            if (mat.MAT_NOMBRE == "Inglés")
+            {
+                color = "#D6734C";
+            }
+            if (mat.MAT_NOMBRE == "Educación Física")
+            {
+                color = "#74B191";
+            }
+            if (mat.MAT_NOMBRE == "Educación Artística")
+            {
+                color = "#9E74B1";
+            }
 
+
+            return color;
+        }
         #region Pintar horario
         [HttpPost]
         private void Pintar(List<HORARIO> hora)
         {
             for (int i = 0; i < hora.Count; i++)
             {
+                MATERIA mat = new MATERIA();
                 string color = "#F1CD64";
                 string dia = hora[i].HOR_DIA;
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 7:40:00.000"))
                 {
-                    ViewData["Confc1"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf"] = mat.MAT_NOMBRE;
+                    ViewData["Confc1"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 7:40:00.000"))
                 {
-                    ViewData["Confc2"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf2"] = mat.MAT_NOMBRE;
+                    ViewData["Confc2"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 7:40:00.000"))
                 {
-                    ViewData["Confc3"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf3"] = mat.MAT_NOMBRE;
+                    ViewData["Confc3"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 7:40:00.000"))
                 {
-                    ViewData["Confc4"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf4"] = mat.MAT_NOMBRE;
+                    ViewData["Confc4"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 7:40:00.000"))
                 {
-                    ViewData["Confc5"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf5"] = mat.MAT_NOMBRE;
+                    ViewData["Confc5"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
                 {
-                    ViewData["Confc6"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf6"] = mat.MAT_NOMBRE;
+                    ViewData["Confc6"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
                 {
-                    ViewData["Confc7"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf7"] = mat.MAT_NOMBRE;
+                    ViewData["Confc7"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
                 {
-                    ViewData["Confc8"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf8"] = mat.MAT_NOMBRE;
+                    ViewData["Confc8"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
                 {
-                    ViewData["Confc9"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf9"] = mat.MAT_NOMBRE;
+                    ViewData["Confc9"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 8:20:00.000"))
                 {
-                    ViewData["Confc10"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf10"] = mat.MAT_NOMBRE;
+                    ViewData["Confc10"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
                 {
-                    ViewData["Confc11"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf11"] = mat.MAT_NOMBRE;
+                    ViewData["Confc11"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
                 {
-                    ViewData["Confc12"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf12"] = mat.MAT_NOMBRE;
+                    ViewData["Confc12"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
                 {
-                    ViewData["Confc13"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf13"] = mat.MAT_NOMBRE;
+                    ViewData["Confc13"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
                 {
-                    ViewData["Confc14"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf14"] = mat.MAT_NOMBRE;
+                    ViewData["Confc14"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 9:00:00.000"))
                 {
-                    ViewData["Confc15"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf15"] = mat.MAT_NOMBRE;
+                    ViewData["Confc15"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
                 {
-                    ViewData["Confc16"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf16"] = mat.MAT_NOMBRE;
+                    ViewData["Confc16"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
                 {
-                    ViewData["Confc17"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf17"] = mat.MAT_NOMBRE;
+                    ViewData["Confc17"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
                 {
-                    ViewData["Confc18"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf18"] = mat.MAT_NOMBRE;
+                    ViewData["Confc18"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
                 {
-                    ViewData["Confc19"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf19"] = mat.MAT_NOMBRE;
+                    ViewData["Confc19"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:10:00.000"))
                 {
-                    ViewData["Confc20"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf20"] = mat.MAT_NOMBRE;
+                    ViewData["Confc20"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
                 {
-                    ViewData["Confc21"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf21"] = mat.MAT_NOMBRE;
+                    ViewData["Confc21"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
                 {
-                    ViewData["Confc22"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf22"] = mat.MAT_NOMBRE;
+                    ViewData["Confc22"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
                 {
-                    ViewData["Confc23"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf23"] = mat.MAT_NOMBRE;
+                    ViewData["Confc23"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
                 {
-                    ViewData["Confc24"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf24"] = mat.MAT_NOMBRE;
+                    ViewData["Confc24"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 10:50:00.000"))
                 {
-                    ViewData["Confc25"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf25"] = mat.MAT_NOMBRE;
+                    ViewData["Confc25"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
                 {
-                    ViewData["Confc26"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf26"] = mat.MAT_NOMBRE;
+                    ViewData["Confc26"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
                 {
-                    ViewData["Confc27"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf27"] = mat.MAT_NOMBRE;
+                    ViewData["Confc27"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
                 {
-                    ViewData["Confc28"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf28"] = mat.MAT_NOMBRE;
+                    ViewData["Confc28"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
                 {
-                    ViewData["Confc29"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf29"] = mat.MAT_NOMBRE;
+                    ViewData["Confc29"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 11:50:00.000"))
                 {
-                    ViewData["Confc30"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf30"] = mat.MAT_NOMBRE;
+                    ViewData["Confc30"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Lunes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
                 {
-                    ViewData["Confc31"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf31"] = mat.MAT_NOMBRE;
+                    ViewData["Confc31"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Martes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
                 {
-                    ViewData["Confc32"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf32"] = mat.MAT_NOMBRE;
+                    ViewData["Confc32"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Miércoles" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
                 {
-                    ViewData["Confc33"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf33"] = mat.MAT_NOMBRE;
+                    ViewData["Confc33"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Jueves" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
                 {
-                    ViewData["Confc34"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf34"] = mat.MAT_NOMBRE;
+                    ViewData["Confc34"] = ObtenerColor(hora[i]);
                 }
                 if (hora[i].HOR_DIA == "Viernes" && hora[i].HOR_HORA == DateTime.Parse("2022-10-16 12:30:00.000"))
                 {
-                    ViewData["Confc35"] = color;
+                    mat = db.MATERIA.Find(hora[i].ID_MATERIA);
+                    ViewData["Conf35"] = mat.MAT_NOMBRE;
+                    ViewData["Confc35"] = ObtenerColor(hora[i]);
                 }
             }
         }
@@ -182,6 +288,8 @@ namespace Prueba.Controllers
             List<SelectListItem> lst = new List<SelectListItem>();
             List<SelectListItem> lst2 = new List<SelectListItem>();
 
+            lst.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
             for (int i = 0; i < lst1.Count; i++)
             {
                 lst.Add(new SelectListItem() { Text = lst1[i], Value = lst1[i] });
@@ -190,7 +298,7 @@ namespace Prueba.Controllers
             ViewBag.ID_MATERIA = lst;
             ViewBag.CB_GRADO = lst2;
 
-                return View();
+            return View();
         }
 
         [HttpPost]
@@ -228,6 +336,7 @@ namespace Prueba.Controllers
         }
         public ActionResult ObtenerDatos(string CB_GRADO)
         {
+            if (mats != "") { 
             List<MATERIA> mat = db.MATERIA.Where(ma => ma.MAT_NOMBRE == mats && ma.MAT_GRADO == CB_GRADO).ToList();
 
             PROFESOR prof = db.PROFESOR.Find(mat.First().ID_PROFESOR);
@@ -283,6 +392,24 @@ namespace Prueba.Controllers
             ViewBag.CB_GRADO = lstgrad;
             grads = CB_GRADO;
 
+            return View("HorarioDesp");
+            }
+
+
+            List<string> lst3 = db.MATERIA.Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
+
+            List<SelectListItem> lst5 = new List<SelectListItem>();
+            List<SelectListItem> lst4 = new List<SelectListItem>();
+
+            lst5.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst3.Count; i++)
+            {
+                lst5.Add(new SelectListItem() { Text = lst3[i], Value = lst3[i] });
+            }
+
+            ViewBag.ID_MATERIA = lst5;
+            ViewBag.CB_GRADO = lst4;
             return View("HorarioDesp");
         }
         
@@ -668,7 +795,7 @@ namespace Prueba.Controllers
         private ActionResult PresionaBotondef1(string dia, DateTime hora, string dat,string dat1)
         {
             //Validacion
-
+            
             List<HORARIO> lsth = db.HORARIO.ToList();
             List<MATERIA> lstm = db.MATERIA.ToList();
 
@@ -691,7 +818,7 @@ namespace Prueba.Controllers
             DateTime auxhora = hora;
             bool val = false;
 
-
+            if (matemp != null) { 
             for (int i = 0; i < lstm.Count(); i++)
             {
                 if (lstm[i].MAT_GRADO == matemp.MAT_GRADO && lstm[i].ID_MATERIA != matemp.ID_MATERIA)
@@ -870,7 +997,22 @@ namespace Prueba.Controllers
                 ViewData["Grado"] = graddt;
             }
             return View("HorarioDesp");
+            }
+            List<string> lst6 = db.MATERIA.Select(mat => mat.MAT_NOMBRE).Distinct().ToList();
 
+            List<SelectListItem> lst5 = new List<SelectListItem>();
+            List<SelectListItem> lst4 = new List<SelectListItem>();
+
+            lst5.Add(new SelectListItem() { Text = "Seleccionar", Value = "All" });
+
+            for (int i = 0; i < lst6.Count; i++)
+            {
+                lst5.Add(new SelectListItem() { Text = lst6[i], Value = lst6[i] });
+            }
+
+            ViewBag.ID_MATERIA = lst5;
+            ViewBag.CB_GRADO = lst4;
+            return View("HorarioDesp");
         }
 
         // GET: HORARIOs
