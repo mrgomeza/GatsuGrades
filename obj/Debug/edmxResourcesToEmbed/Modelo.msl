@@ -116,9 +116,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="sp_RegistrarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_RegistrarEstudiante" />
-    <FunctionImportMapping FunctionImportName="sp_ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.sp_ValidarEstudiante" />
-    <FunctionImportMapping FunctionImportName="ValidarEstudiante_SP" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante_SP" />
-    <FunctionImportMapping FunctionImportName="ValidarEstudiante" FunctionName="GatsuGradesv6Model.Store.ValidarEstudiante" />
   </EntityContainerMapping>
 </Mapping>

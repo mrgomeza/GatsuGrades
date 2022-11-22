@@ -1,0 +1,157 @@
+﻿@model IEnumerable<NotasEModel>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Notas @ViewData["nombre"]</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="contenerdor_img">
+                    <img src="https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/a7/10/75/a7107592-35dc-bdcb-5974-d46e60626fa8/source/512x512bb.jpg" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="contenedorText">
+                    <p>Unidad Educativa GATSU</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <br /><br />
+        <p>Notas del estudiante @ViewData["nombre"]</p>
+    </div>
+
+    <div class="container">
+        <div class="container-fluid">
+            <table class="table table-hover table-responsive">
+                <tr class="table table-info">
+                    <th>
+                        @Html.DisplayNameFor(model => model.MAT_NOMBRE)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.NP1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NP2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EQ1)
+                    </th>
+                    <th>
+                        <p class="text">@Html.DisplayNameFor(model => model.Q1)</p>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NP3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NP4)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EQ2)
+                    </th>
+                    <th>
+                        <p class="text">@Html.DisplayNameFor(model => model.Q2)</p>
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.FINAL)
+                    </th>
+
+                    <th></th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.MAT_NOMBRE)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NP1)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NP2)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.EQ1)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Q1)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NP3)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.NP4)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.EQ2)
+                            </th>
+                            <th>
+                                @Html.DisplayFor(modelItem => item.Q2)
+                            </th>
+
+                            <th>
+                                @Html.DisplayFor(modelItem => item.FINAL)
+                            </th>
+
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</body>
+</html>
+<style>
+    p{
+        font-size:x-large;
+        color:darkmagenta;
+        font-weight: bold;
+    }
+    th{
+        font-size:large;
+        font-weight:bold;
+        color:darkblue;
+    }
+    img{
+        display:flex;
+        height:100px;
+        width:80px;
+        
+    }
+    .text{
+        color:red;
+    }
+    .contenerdor_img{
+        display:flex;
+        text-align:right;
+        vertical-align:central;
+    }
+    .contenedorText{
+        display:flex;
+        text-align:center;
+        align-content:center;
+        vertical-align:central;
+    }
+</style>
