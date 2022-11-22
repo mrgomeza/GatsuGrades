@@ -704,7 +704,7 @@ namespace Prueba.Controllers
                     matid = mate.Select(mat => mat.ID_MATERIA).ToList();
                     lsthemp = db.HORARIO.Where(hor => matid.Contains(hor.ID_MATERIA) && hor.HOR_DIA == auxdia && hor.HOR_HORA == auxhora).ToList();
 
-
+                    //Disponibilidad de Profesor
                     int idprof = matemp.ID_PROFESOR;
                     var materiap = db.MATERIA.Where(mat => mat.ID_PROFESOR == idprof).ToList();
                     var matpid = materiap.Select(mat => mat.ID_MATERIA).ToList();

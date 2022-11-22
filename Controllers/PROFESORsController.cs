@@ -172,7 +172,7 @@ namespace Prueba.Controllers
             //Creo un nuevo Modelo
             if (grad_seleccionado != grads && mat_seleccionado != mats) { model = new List<NotasModel>(); }
 
-            //Listar estudiantes del grado seleccionado - De acuerdo al ultimo caracter del nombre de ususario Estudiante
+            //Listar estudiantes del grado seleccionado - De acuerdo al último caracter del nombre de ususario Estudiante
             grad_seleccionado = grads;
             mat_seleccionado = mats;
             est_grado = db.ESTUDIANTE.Where(est => est.EST_USU.Substring(est.EST_USU.Length - 1, 1) == grad_seleccionado).ToList();
@@ -390,7 +390,7 @@ namespace Prueba.Controllers
 
                     db.NOTA.Add(nota);
                     db.SaveChanges();
-                    ViewData["Res"] = "Registros ingresado";
+                    ViewData["Res"] = "Registros ingresados";
 
                     //INGRESO DATOS AL MODELO
                     NotasModel aux = new NotasModel();
@@ -446,19 +446,7 @@ namespace Prueba.Controllers
         [HttpPost]
         public ActionResult DesplegarGrados1(string ID_MATERIA)
         {
-            if (horario_mat_grado.Count == 0)
-            {
-                var dic_Aut = db.HORARIO.ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
-                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
-                //ViewBag.Horario = new SelectList(db.HORARIO, "ID_HORARIO", "HOR_DIA");
-            }
-            else
-            {
-                var dic_Aut = db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id).ToDictionary(s => s.ID_HORARIO, s => (s.HOR_DIA + " " + s.HOR_HORA.ToString("HH:mm")));
-                //SelectList horarios = new SelectList(db.HORARIO.Where(hor => hor.ID_MATERIA == mat_id), "ID_HORARIO", "HOR_DIA", horario_mat_grado[0].ID_HORARIO);
-                //ViewBag.Horario = horarios;
-                ViewBag.Horario = new SelectList(dic_Aut, "Key", "Value");
-            }
+            
             //Grados en base a materia Ingresada
             List<SelectListItem> lstgrad = new List<SelectListItem>();
             List<string> lst2 = db.MATERIA.Where(mate => mate.ID_PROFESOR == prof_conectado && mate.MAT_NOMBRE == ID_MATERIA).Select(mate => mate.MAT_GRADO).ToList();
