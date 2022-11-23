@@ -635,10 +635,63 @@ namespace Prueba.Controllers
             Response.End();
         }
 
+        public ActionResult tablaNotas()
+        {
+            if (db.ESTUDIANTE.Find(usu) != null)
+            {
+                ESTUDIANTE estu = db.ESTUDIANTE.Find(usu);
+                ViewData["nombre"] = estu.EST_NOMBRE.ToString() + " " + estu.EST_APELLIDO.ToString();
+
+                ESTUDIANTE est = new ESTUDIANTE();
+                est = db.ESTUDIANTE.Find(usu);
+                string est_grado = est.EST_USU.Substring(est.EST_USU.Length - 1, 1);
+
+                List<MATERIA> materias = new List<MATERIA>();
+                materias = db.MATERIA.Where(ma => ma.MAT_GRADO == est_grado).ToList();
+
+                NOTA nAux = new NOTA();
+                List<NOTA> lstn = new List<NOTA>();
+                modelN = new List<NotasEModel>();
+
+
+                for (int i = 0; i < materias.Count; i++)
+                {
+                    int aux = materias[i].ID_MATERIA;
+                    lstn = db.NOTA.Where(n => n.ID_MATERIA == aux && n.ID_ESTUDIANTE == est.ID_ESTUDIANTE).ToList();
+
+                    NotasEModel auxNota = new NotasEModel();
+                    if (lstn.Count != 0)
+                    {
+                        auxNota.MAT_NOMBRE = materias[i].MAT_NOMBRE;
+                        auxNota.NP1 = lstn[0].NP1;
+                        auxNota.NP2 = lstn[0].NP2;
+                        auxNota.EQ1 = lstn[0].EQ1;
+                        auxNota.Q1 = lstn[0].Q1;
+                        auxNota.NP3 = lstn[0].NP3;
+                        auxNota.NP4 = lstn[0].NP4;
+                        auxNota.EQ2 = lstn[0].EQ2;
+                        auxNota.Q2 = lstn[0].Q2;
+                        auxNota.FINAL = lstn[0].FINAL;
+                        modelN.Add(auxNota);
+                    }
+
+                }
+
+
+                return View(modelN);
+            }
+            else
+            {
+                return View();
+            }
+        }
+
         public ActionResult ExportContentToPdf()
         {
             string nArchivo = String.Format("Notas_{0}.pdf", DateTime.Now);
-            return new ActionAsPdf("NotasEst", new { nombre = "NotasGlobal" }) { FileName = nArchivo };
+
+            return new ActionAsPdf("tablaNotas", new { nombre = "NotasGlobal" }) { FileName = nArchivo };
         }
+    
     }
 }

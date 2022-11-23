@@ -732,6 +732,8 @@
     <Content Include="Views\Shared\_Layout5.cshtml" />
     <Content Include="Views\ESTUDIANTEs\NotasEst.cshtml" />
     <Content Include="Views\REPRESENTANTEs\NotasRep.cshtml" />
+    <Content Include="Views\ESTUDIANTEs\tablaNotas.cshtml" />
+    <Content Include="Views\REPRESENTANTEs\TablaEst.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
